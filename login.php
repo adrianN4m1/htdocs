@@ -7,11 +7,11 @@
     <title>Login - Brand</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
-    <link rel="stylesheet" href="assets/css/-Login-form-Page-BS4--Login-form-Page-BS4.css">
-    <link rel="stylesheet" href="assets/css/Add-Another-Button-1.css">
-    <link rel="stylesheet" href="assets/css/Add-Another-Button.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
-    <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
+    <link rel="stylesheet" href="Starubigaz_Admin/assets/css/-Login-form-Page-BS4--Login-form-Page-BS4.css">
+    <link rel="stylesheet" href="Starubigaz_Admin/assets/css/Add-Another-Button-1.css">
+    <link rel="stylesheet" href="Starubigaz_Admin/assets/css/Add-Another-Button.css">
+    <link rel="stylesheet" href="Starubigaz_Admin/assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="Starubigaz_Admin/assets/css/Projects-Grid-images.css">
 </head>
 
 <body class="bg-gradient-primary" style="background: var(--bs-border-color);color: var(--bs-card-border-color);border-color: var(--bs-white);margin-top: 50px;">
