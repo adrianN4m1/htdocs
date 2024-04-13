@@ -24,10 +24,10 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="inventory.html"><i class="fas fa-database"></i><span>Products</span></a><a class="nav-link" href="branch_information.html"><i class="fas fa-info"></i><span>&nbsp;Branch Info</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="inventory.php"><i class="fas fa-database"></i><span>Products</span></a><a class="nav-link active" href="branch_information.php"><i class="fas fa-info"></i><span>&nbsp;Branch Info</span></a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="rewards.html"><i class="fas fa-award"></i><span>Rewards</span></a><a class="nav-link" href="transaction.html"><i class="fas fa-cash-register"></i><span>Transactions</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="rewards.php"><i class="fas fa-award"></i><span>Rewards</span></a><a class="nav-link" href="transaction.php"><i class="fas fa-cash-register"></i><span>Transactions</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
