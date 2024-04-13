@@ -24,10 +24,10 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="inventory.php"><i class="fas fa-database"></i><span>Products</span></a><a class="nav-link active" href="branch_information.php"><i class="fas fa-info"></i><span>&nbsp;Branch Info</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="inventory.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-database"></i><span>Products</span></a><a class="nav-link active" href="branch_information.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-info"></i><span>&nbsp;Branch Info</span></a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="rewards.php"><i class="fas fa-award"></i><span>Rewards</span></a><a class="nav-link" href="transaction.php"><i class="fas fa-cash-register"></i><span>Transactions</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="rewards.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-award"></i><span>Rewards</span></a><a class="nav-link" href="transaction.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-cash-register"></i><span>Transactions</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -60,7 +60,8 @@
                     <div class="row">
                         <div class="col-md-6 d-flex">
                             <h3 class="text-dark mb-0" style="display: inline;">Dashboard /&nbsp;&nbsp;</h3>
-                            <h3 class="text-dark mb-0" style="display: inline;">branch_name</h3>
+                            <h3 class="text-dark mb-0" style="display: inline;"><?php include("php/branch_code_display.php")?></h3>
+                            
                         </div>
                         <div class="col-md-6 float-end d-xxl-flex justify-content-xxl-end"><a class="btn btn-success d-xxl-flex justify-content-xxl-end btn-icon-split" role="button" style="background: rgba(255,255,255,0.42);border-style: solid;border-color: rgb(230,230,230);" href="error_pages/error_print.html"><span class="text-light icon" style="background: rgb(230,230,230);"><i class="fas fa-print" style="color: rgb(106,106,106);"></i></span><span class="d-xxl-flex text" style="color: rgb(106,106,106);">Print Reports</span></a></div>
                     </div>

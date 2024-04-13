@@ -25,10 +25,10 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="inventory.php"><i class="fas fa-database"></i><span>Products</span></a><a class="nav-link active" href="branch_information.php"><i class="fas fa-info"></i><span>&nbsp;Branch Info</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="inventory.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-database"></i><span>Products</span></a><a class="nav-link active" href="branch_information.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-info"></i><span>&nbsp;Branch Info</span></a></li>
                     <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="rewards.php"><i class="fas fa-award"></i><span>Rewards</span></a><a class="nav-link" href="transaction.php"><i class="fas fa-cash-register"></i><span>Transactions</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="rewards.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-award"></i><span>Rewards</span></a><a class="nav-link" href="transaction.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-cash-register"></i><span>Transactions</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -57,7 +57,7 @@
                         </ul>
                     </div>
                 </nav>
-                <div class="container">
+                <!-- <div class="container">
                     <div class="row">
                         <div class="col-md-6 d-xxl-flex align-items-xxl-center">
                             <h5 class="text-dark d-inline-block mb-0">Branch /&nbsp;&nbsp;</h5><span style="font-size: 20px;font-weight: bold;">Tandang Sora Branch</span>
@@ -82,7 +82,8 @@
                                 <h5 style="display: inline-block;font-weight: bold;color: rgb(111,111,111);">Address :&nbsp; &nbsp;</h5><span style="font-size: 20px;font-style: italic;">Quezon City, Elliptical, E. Rodriguez 2233</span>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+                    <?php include("php/branch_information/branch_name_display.php")?>
                     <div class="row gy-4"></div>
                     <div class="row gy-4" style="padding-bottom: 20px;margin-top: -6px;">
                         <div class="col">
