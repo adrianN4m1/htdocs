@@ -34,9 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             case 'Super Admin':
                 echo '<script>window.location.href = "http://localhost/Super_Admin_V_4_0/index.php";</script>';
                 break;
-            case 'Admin':
-                '<script>window.location.href = "http://localhost/Starubigaz_Admin/index.php";</script>';
-                break;
+                case 'Admin':
+                    echo '<script>window.location.href = "http://localhost/Starubigaz_Admin/index.php?user_id=' . $row['user_id'] . '";</script>';
+                    break;
             case 'Customer':
                 header("Location: customer_dashboard.php");
                 break;
