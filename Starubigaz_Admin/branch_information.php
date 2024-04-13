@@ -93,7 +93,7 @@
                                     <div class="card-body" style="height: 50vh;overflow-y: scroll;">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="text-md-end dataTables_filter" id="dataTable_filter-4"><label class="form-label" style="width: 100%;"><input type="search" class="form-control form-control-sm" onkeyup="searchTable()" aria-controls="dataTable" placeholder="Search" style="width: 100%;"></label></div>
+                                                <div class="text-md-end dataTables_filter" id="dataTable_filter-4"><label class="form-label" style="width: 100%;"><input type="search" id="searchInput" class="form-control form-control-sm" onkeyup="searchTable()" aria-controls="dataTable" placeholder="Search" style="width: 100%;"></label></div>
                                             </div>
                                             <div class="col-md-6 text-end"><button class="btn btn-outline-primary text-truncate float-none float-sm-none add-another-btn" data-bss-hover-animate="pulse" type="button" data-bs-target="#add-user-modal" data-bs-toggle="modal">Add User<i class="fas fa-user-plus edit-icon"></i></button></div>
                                         </div>
