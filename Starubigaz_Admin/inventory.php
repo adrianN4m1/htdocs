@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/Add-Another-Button.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
+    <script src="js/search.js"></script>
 </head>
 
 <body id="page-top">
@@ -47,9 +48,9 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">Sev Constantino</span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small"><?php include("getname.php")?></span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="../profile.html"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="/login.php"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
                                 </div>
                             </li>
@@ -63,7 +64,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-9 col-md-6 d-inline-flex justify-content-between align-items-start align-content-center"><label class="col-form-label" style="width: 100%;"><input class="d-xxl-flex align-items-xxl-center form-control form-control-sm" type="search" aria-controls="dataTable" placeholder="Search"></label></div>
+                                <div class="col-9 col-md-6 d-inline-flex justify-content-between align-items-start align-content-center"><label class="col-form-label" style="width: 100%;"><input id="searchInput" class="d-xxl-flex align-items-xxl-center form-control form-control-sm" type="search" aria-controls="dataTable" placeholder="Search" onkeyup="searchTable()"></label></div>
                                 <div class="col"></div>
                             </div>
                             <div class="row">
@@ -73,6 +74,7 @@
                                             <table class="table my-0" id="dataTable">
                                                 <thead>
                                                     <tr>
+                                                        <th>Image</th>
                                                         <th>Barcode</th>
                                                         <th>Product</th>
                                                         <th>Type</th>
@@ -83,7 +85,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
+                                                    <!-- <tr>
                                                         <td style="font-size: 16;">1x90239</td>
                                                         <td style="font-size: 16;">Diesel Max</td>
                                                         <td style="font-size: 16;">Diesel</td>
@@ -91,10 +93,12 @@
                                                         <td style="font-size: 16;">0x19230</td>
                                                         <td style="font-size: 16;">08-10-11</td>
                                                         <td style="font-size: 16;">Sev</td>
-                                                    </tr>
+                                                    </tr> -->
+                                                    <?php include("php/inventory/inventory_display.php")?>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr>
+                                                        <th><strong>Image</strong></th>
                                                         <td><strong>Barcode</strong></td>
                                                         <td><strong>Product</strong></td>
                                                         <td><strong>Type</strong></td>
