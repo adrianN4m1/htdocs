@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="assets/css/Add-Another-Button.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
+    <script src="js/search.js"></script>
 </head>
 
 <body id="page-top">
@@ -92,7 +93,7 @@
                                     <div class="card-body" style="height: 50vh;overflow-y: scroll;">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="text-md-end dataTables_filter" id="dataTable_filter-4"><label class="form-label" style="width: 100%;"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" style="width: 100%;"></label></div>
+                                                <div class="text-md-end dataTables_filter" id="dataTable_filter-4"><label class="form-label" style="width: 100%;"><input type="search" class="form-control form-control-sm" onkeyup="searchTable()" aria-controls="dataTable" placeholder="Search" style="width: 100%;"></label></div>
                                             </div>
                                             <div class="col-md-6 text-end"><button class="btn btn-outline-primary text-truncate float-none float-sm-none add-another-btn" data-bss-hover-animate="pulse" type="button" data-bs-target="#add-user-modal" data-bs-toggle="modal">Add User<i class="fas fa-user-plus edit-icon"></i></button></div>
                                         </div>
@@ -108,13 +109,14 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
+                                                    <!-- <tr>
                                                         <td style="font-size: 16;">1x90239</td>
                                                         <td style="font-size: 16;">Sev</td>
                                                         <td style="font-size: 16;">sev@email.com</td>
                                                         <td style="font-size: 16;">68.09</td>
                                                         <td style="font-size: 16;"><a class="btn btn-success btn-icon-split" role="button" style="border-style: none;padding-top: 0px;margin-right: 5px;" data-bs-target="#archive-modal" data-bs-toggle="modal"><span class="text-white-50 icon" style="margin-right: 0px;padding: 2px 8px;background: var(--bs-orange);color: var(--bs-orange);"><i class="far fa-file-archive" style="color: var(--bs-btn-color);"></i></span></a></td>
-                                                    </tr>
+                                                    </tr> -->
+                                                    <?php include("php/branch_information/branch_display_cst.php")?>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr></tr>
