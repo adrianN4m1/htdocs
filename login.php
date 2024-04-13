@@ -27,7 +27,7 @@
                             <div class="text-center">
                                 <h4 class="text-dark mb-4">Log in</h4>
                             </div>
-                            <form action="phplogin/check_users.php" method="POST">
+                            <form action="check_user.php" method="POST">
                                 <div class="mb-3"><input class="form-control form-control-user" type="email" id="email" aria-describedby="emailHelp" placeholder="Username" name="email"></div>
                                 <div class="mb-3"><input class="form-control form-control-user" type="password" id="password" placeholder="Password" name="password"></div>
                                 <div class="mb-3">
