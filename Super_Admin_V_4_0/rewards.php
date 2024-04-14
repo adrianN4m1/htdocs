@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="assets/css/Add-Another-Button.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -105,7 +106,8 @@
                                                     <label class="form-label" style="width: 100%;"><input type="search"
                                                             class="form-control form-control-sm"
                                                             aria-controls="dataTable" placeholder="Search"
-                                                            style="width: 100%;"></label></div>
+                                                            style="width: 100%;"></label>
+                                                </div>
                                             </div>
                                             <div class="col d-xxl-flex justify-content-xxl-end"><button
                                                     class="btn btn-outline-primary text-truncate text-end float-none float-sm-none add-another-btn"
@@ -159,7 +161,7 @@
                                                             </td>
                                                         </tr> -->
 
-                                                        <?php include("php/reward/reward_display.php")?>
+                                                        <?php include ("php/reward/reward_display.php") ?>
                                                     </tbody>
                                                     <tfoot>
                                                         <tr></tr>
@@ -234,7 +236,7 @@
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="archive-modal">
+    <div class="modal fade" role="dialog" tabindex="-1" id="archive-modal2">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -242,9 +244,47 @@
                         class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button"
-                        data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button"
+                        data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button" id="archive-confirm-btn 3"
                         style="background: var(--bs-red);" data-bs-target="#toast-1"
                         data-bs-toggle="toast">Archive</button></div>
+                <script>
+                    // Function to handle the click event of the archive button
+                    function handleArchiveButtonClick(rewardId,rImage) {
+                        // Show the confirmation modal
+                        $('#archive-modal2').modal('show');
+
+                        // Handle the click event of the 'Archive' button inside the modal
+                        document.getElementById('archive-confirm-btn 3').addEventListener('click', function () {
+                            proceedWithQuery(rewardId,rImage);
+                        });
+                    }
+
+                    // Function to proceed with the database update query
+                    function proceedWithQuery(rewardId,rImage) {
+                        // Send AJAX request to PHP file to update the database
+                        var xhr = new XMLHttpRequest();
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState == XMLHttpRequest.DONE) {
+                                if (xhr.status == 200) {
+                                    // Request successful, do something if needed
+                                    console.log(rImage);
+                                    // Optionally, you can reload the page or update the UI
+                                    // window.location.reload();
+                                    alert("Reward Archived successfully.");
+                                    window.location.href = "\\reward.php";
+                                } else {
+                                    // Error handling if needed
+                                    console.error("Failed to archive item");
+                                }
+                            }
+                        };
+                        // Construct the URL with both inventoryId and prodImage parameters
+                        var url = "php/reward/reward_archive.php?rewardid=" + rewardId + "&rImage=" + encodeURIComponent(rImage);
+                        xhr.open("GET", url, true);
+                        xhr.send();
+
+                    }
+                </script>
             </div>
         </div>
     </div>
@@ -291,9 +331,8 @@
                             <p style="margin-bottom: -3px;font-size: 10px;">Description(specify...)</p><textarea
                                 id="reward_desc" name="reward_desc" style="width: 100%;height: 81px;"></textarea>
                         </div>
-                        <div><button class="btn btn-light" type="button"
-                        data-bs-dismiss="modal">Close</button><button class="btn btn-primary"
-                        type="submit">Save</button></div>
+                        <div><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button
+                                class="btn btn-primary" type="submit">Save</button></div>
                     </form>
                 </div>
             </div>
