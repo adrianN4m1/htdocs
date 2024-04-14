@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/Add-Another-Button.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
+    <script src=js/search.js></script>
 </head>
 
 <body id="page-top">
@@ -67,8 +68,12 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="text-md-end dataTables_filter" id="dataTable_filter-2"><label class="form-label" style="width: 100%;"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" style="width: 100%;"></label></div>
-                                            </div>
+                                            <div class="text-md-end dataTables_filter" id="dataTable_filter-2">
+                                                    <label class="form-label" style="width: 100%;"><input type="search"
+                                                            class="form-control form-control-sm" id="searchInput" onkeyup="searchTable()"
+                                                            aria-controls="dataTable" placeholder="Search"
+                                                            style="width: 100%;"></label>
+                                                </div>                                            </div>
                                             <div class="col d-xxl-flex justify-content-xxl-end"></div>
                                         </div>
                                         <div style="height: 40vh;overflow-y: scroll;">
@@ -85,14 +90,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td><img src="assets/img/dogs/image2.jpeg" style="height: 50px;border-radius: 5px;"></td>
-                                                            <td style="font-size: 16;">0x12</td>
-                                                            <td style="font-size: 16;">Bag</td>
-                                                            <td style="font-size: 16;">Kung ang ilaw ay nagbibigay liwanag. bakit ang upuan ay toyota?</td>
-                                                            <td style="font-size: 16;">68.09</td>
-                                                            <td style="font-size: 16;">12</td>
-                                                        </tr>
+                                                    <?php include ("php/reward/reward_display.php") ?>
                                                     </tbody>
                                                     <tfoot>
                                                         <tr></tr>
