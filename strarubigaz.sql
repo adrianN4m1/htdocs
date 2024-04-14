@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2024 at 02:50 PM
+-- Generation Time: Apr 14, 2024 at 07:05 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,11 +45,34 @@ INSERT INTO `branches` (`branch_id`, `branch_name`, `full_address`, `user_id`, `
 (3, 'Pasay City', '420 A. Apolinario, Pasay City, Metro Manila', 17, 1),
 (4, 'Biñan', 'CALAX - Greenfield Parkway Exit', 18, 1),
 (5, 'San Pedro', '20 Pacita Avenue, San Pedro City, Laguna', 20, 1),
-(6, 'Cebu', '11 Mangubat St., Mactan, Cebu', 19, 1),
+(6, 'test', 'test', 19, 1),
 (7, 'test', 'test', NULL, 0),
-(8, 'adu', 'asda', NULL, 1),
-(9, 'kjhk', 'jh', NULL, 1),
-(10, 'test', 'test', 79, 1);
+(8, 'adu', 'asda', NULL, 0),
+(9, 'kjhk', 'jh', NULL, 0),
+(10, 'test', 'test', NULL, 0),
+(11, 'test', 'test', NULL, 0),
+(12, 'test', 'test', NULL, 0),
+(13, 'test', 'sd\r\n', NULL, 0),
+(14, 'test', '', NULL, 0),
+(15, 'test', '\r\n', NULL, 0),
+(16, 'sd', 'asd', NULL, 0),
+(17, 'test', '', NULL, 0),
+(18, 'test', '', NULL, 0),
+(19, 'test', '', NULL, 0),
+(20, 'test', '', NULL, 0),
+(21, 'test', '', NULL, 0),
+(22, 'test', 'sd', NULL, 0),
+(23, 'last', '', NULL, 0),
+(24, 'test', '', NULL, 0),
+(25, 'test', '', NULL, 0),
+(26, 'adu', '', NULL, 0),
+(27, 'test', '', NULL, 0),
+(28, 'test', '', NULL, 0),
+(29, 'd', '', NULL, 0),
+(30, 'd', '', NULL, 0),
+(31, 'b', '', NULL, 0),
+(32, 'adu', '', NULL, 0),
+(33, 'test', '', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -92,7 +115,15 @@ INSERT INTO `branch_customer` (`Bcust_ID`, `branch_id`, `user_id`, `Bcst_type`) 
 (21, 5, 71, 0),
 (22, 1, 72, 0),
 (23, 2, 74, 0),
-(24, 1, 75, 0);
+(24, 1, 75, 0),
+(25, 1, 80, 1),
+(26, 1, 81, 1),
+(27, 2, 86, 0),
+(28, 2, 87, 0),
+(29, 2, 88, 0),
+(30, 2, 89, 0),
+(31, 2, 90, 0),
+(32, 2, 91, 0);
 
 -- --------------------------------------------------------
 
@@ -127,12 +158,15 @@ CREATE TABLE `inventory` (
 
 INSERT INTO `inventory` (`inventory_id`, `product_id`, `quantity`, `Inv_Type`) VALUES
 (1, 1, 1000, 0),
-(2, 2, 1, 1),
-(3, 3, 6969, 1),
-(4, 4, 99999999, 1),
-(5, 5, 24, 1),
+(2, 2, 1, 0),
+(3, 3, 8000, 1),
+(4, 4, 99999999, 0),
+(5, 5, 24, 0),
 (6, 6, 24, 1),
-(7, 7, 10000, 1);
+(7, 7, 10000, 0),
+(8, 8, 1, 0),
+(9, 9, 999, 0),
+(10, 10, 6969, 1);
 
 -- --------------------------------------------------------
 
@@ -187,11 +221,14 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`product_id`, `product_name`, `Prod_type`, `price`, `supplier_id`, `expiration_date`, `Product_Type`, `base_price`, `prod_image`) VALUES
 (1, 'DAD', 'Diesel', 1550.00, 202400112, '0000-00-00', 1, 40.90, '416008438_2697363370425187_4118653189230528044_n.jpg'),
 (2, 'Karldereta', 'Diesel', 68.09, 202400112, '0000-00-00', 1, 40.90, '423105885_2147249585623914_3143380331863502220_n.jpg'),
-(3, 'Sevy', 'Diesel', 68.09, 202400112, '0000-00-00', 1, 40.90, '423541780_1085905049343969_6808135332460782536_n.jpg'),
-(4, 'LORD ISRAEL', 'Diesel', 68.09, 202400112, '0000-00-00', 1, 40.90, '430409393_943180997469614_7509784515726083412_n.jpg'),
-(5, '', 'Diesel', 68.09, 202400112, '0000-00-00', 1, 40.90, '96276354_2705802066212650_504183324659417088_n.jpg'),
-(6, '', 'Diesel', 68.09, 202400112, '0000-00-00', 1, 40.90, '423541780_1085905049343969_6808135332460782536_n.jpg'),
-(7, '', 'test', 1.00, 202400125, '0000-00-00', 1, 1.00, '416008438_2697363370425187_4118653189230528044_n.jpg');
+(3, 'test', 'tao', 70.00, 202400112, '2025-10-30', 1, 50.90, '430409393_943180997469614_7509784515726083412_n.jpg'),
+(4, 'LORD ISRAEL', 'Diesel', 68.09, 202400112, '0000-00-00', 1, 40.90, '96276354_2705802066212650_504183324659417088_n.jpg'),
+(5, '', 'Diesel', 68.09, 202400112, '0000-00-00', 1, 40.90, '423541780_1085905049343969_6808135332460782536_n.jpg'),
+(6, '', 'Diesel', 68.09, 202400112, '2024-01-01', 1, 40.90, '416008438_2697363370425187_4118653189230528044_n.jpg'),
+(7, 'kiwi', 'test', 1.00, 202400125, '0000-00-00', 1, 1.00, 'Screenshot 2023-07-27 204515.png'),
+(8, 'lechon', 'kawali', 1000.00, 202400112, '2025-12-02', 1, 2000.00, 'Screenshot 2023-08-22 204336.png'),
+(9, 'ang ate', 'breta', 78.00, 202400117, '0000-00-00', 1, NULL, 'Screenshot 2023-11-02 224602.png'),
+(10, 'SEV', 'CONSTANTINO', 69.00, 202400125, '2020-02-12', 1, 59.00, '423541780_1085905049343969_6808135332460782536_n.jpg');
 
 -- --------------------------------------------------------
 
@@ -220,7 +257,8 @@ CREATE TABLE `rewards` (
   `reward_id` int(11) NOT NULL,
   `reward_name` varchar(255) NOT NULL,
   `description` text DEFAULT NULL,
-  `point_value` int(11) NOT NULL
+  `point_value` int(11) NOT NULL,
+  `reward_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -260,15 +298,15 @@ CREATE TABLE `suppliers` (
 
 INSERT INTO `suppliers` (`supplier_id`, `supplier_name`, `contact_name`, `email`, `phone_number`, `address`, `Spplr_type`) VALUES
 (202400111, 'israel', 'Optimus', 'Optimus@gmail,com', '9123456891', 'test', 0),
-(202400112, 'test', 'test', 'test@gmail,com', '123544564', 'e rod', 1),
-(202400113, 'Autobots PetronShell', 'Optimus', 'Optimus@gmail,com', '9123456891', '42 San Miguel Avenue. 1550 Mandaluyong City', 1),
-(202400114, 'Autobots PetronShell', 'Optimus', 'Optimus@gmail,com', '9123456891', '43 San Miguel Avenue. 1550 Mandaluyong City', 1),
-(202400115, 'Autobots PetronShell', 'Optimus', 'Optimus@gmail,com', '9123456891', '44 San Miguel Avenue. 1550 Mandaluyong City', 1),
-(202400116, 'Decepticons ', 'Megatron', 'Megabai@gmail.com', '9123456891', 'Triangle Dr, Taguig, Metro Manila', 1),
-(202400117, 'Decepticons ', 'Megatron', 'Megabai@gmail.com', '9123456891', 'Triangle Dr, Taguig, Metro Manila', 1),
-(202400118, 'Decepticons ', 'Megatron', 'Megabai@gmail.com', '9123456891', 'Triangle Dr, Taguig, Metro Manila', 1),
-(202400119, 'Decepticons ', 'Megatron', 'Megabai@gmail.com', '9123456891', 'Triangle Dr, Taguig, Metro Manila', 1),
-(202400120, 'Decepticons ', 'Megatron', 'Megabai@gmail.com', '9123456891', 'Triangle Dr, Taguig, Metro Manila', 1),
+(202400112, 'aken', 'test', 'test@gmail,com', '123544564', 'test', 0),
+(202400113, 'Autobots PetronShell', 'Optimus', 'Optimus@gmail,com', '9123456891', '42 San Miguel Avenue. 1550 Mandaluyong City', 0),
+(202400114, 'Autobots PetronShell', 'Optimus', 'Optimus@gmail,com', '9123456891', '43 San Miguel Avenue. 1550 Mandaluyong City', 0),
+(202400115, 'Autobots PetronShell', 'Optimus', 'Optimus@gmail,com', '9123456891', '44 San Miguel Avenue. 1550 Mandaluyong City', 0),
+(202400116, 'Decepticons ', 'Megatron', 'Megabai@gmail.com', '9123456891', 'Triangle Dr, Taguig, Metro Manila', 0),
+(202400117, 'Decepticons ', 'Megatron', 'Megabai@gmail.com', '9123456891', 'test', 0),
+(202400118, 'Decepticons ', 'Megatron', 'Megabai@gmail.com', '9123456891', 'Triangle Dr, Taguig, Metro Manila', 0),
+(202400119, 'Decepticons ', 'Megatron', 'Megabai@gmail.com', '9123456891', 'Triangle Dr, Taguig, Metro Manila', 0),
+(202400120, 'Decepticons ', 'Megatron', 'Megabai@gmail.com', '9123456891', 'Triangle Dr, Taguig, Metro Manila', 0),
 (202400121, 'Capt. Lebron', 'Bronny', 'bronnyjames@gmail.com', '9123456891', 'Los Banos ', 1),
 (202400122, 'Capt. Lebron', 'Bronny', 'bronnyjames@gmail.com', '9123456891', 'Los Banos ', 1),
 (202400123, 'Capt. Lebron', 'Bronny', 'bronnyjames@gmail.com', '9123456891', 'Los Banos ', 1),
@@ -277,11 +315,13 @@ INSERT INTO `suppliers` (`supplier_id`, `supplier_name`, `contact_name`, `email`
 (202400126, 'Capt. Lebron', 'Bronny', 'bronnyjames@gmail.com', '9123456891', 'Los Banos ', 1),
 (202400127, 'Capt. Lebron', 'Bronny', 'bronnyjames@gmail.com', '9123456891', 'Los Banos ', 1),
 (202400128, 'Capt. Lebron', 'Bronny', 'bronnyjames@gmail.com', '9123456891', 'Los Banos ', 1),
-(202400129, 'Capt. Lebron', 'Bronny', 'bronnyjames@gmail.com', '9123456891', 'Los Banos ', 1),
-(202400130, 'Capt. Lebron', 'Bronny', 'bronnyjames@gmail.com', '9123456891', 'Los Banos ', 1),
-(202400131, 'Capt. Lebron', 'Bronny', 'bronnyjames@gmail.com', '9123456891', 'Los Banos ', 1),
+(202400129, 'Capt. Lebron', 'Bronny', 'bronnyjames@gmail.com', '9123456891', 'Los Banos ', 0),
+(202400130, 'Capt. Lebron', 'Bronny', 'bronnyjames@gmail.com', '9123456891', 'Los Banos ', 0),
+(202400131, 'Capt. Lebron', 'Bronny', 'bronnyjames@gmail.com', '9123456891', 'Los Banos ', 0),
 (202400132, '', '', '', '', '', 0),
-(202400133, '', '', '', '', '', 0);
+(202400133, '', '', '', '', '', 0),
+(202400134, 'tets', 'test', 'tetst@gmail.com', '123', 'aosjdla', 0),
+(202400135, 'test', 'test', 'test@gmail.com', '982312', 'lasdkjsla', 1);
 
 -- --------------------------------------------------------
 
@@ -355,7 +395,19 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `role`, `email`, `phone_
 (76, 'root', '123', 'Admin', 'sevyo@gmail.com', '09391386488', 0),
 (77, 'root', '123', 'Admin', 'Sadmin@gmail.com', '09391386488', 0),
 (78, 'Ralph Adrian Mones', '123', 'Admin', 'sevyo@gmail.com', '09391386488', 0),
-(79, 'test test', '123', 'Admin', 'test@gmail.com', '123445', 1);
+(79, 'test test', '123', 'Admin', 'test@gmail.com', '123445', 0),
+(80, 'anong@gmail.com asd', '123', 'Customer', 'asda@gmail.com', '2131', 1),
+(81, 'asd sd', '123', 'Customer', 'asdasdas@gmail.com', '123', 1),
+(82, 'test test', '123', 'Admin', 'test@gmail.com', '0971923', 0),
+(83, 'Ralph Adrian Mones', '123', 'Admin', 'sevyo@gmail.com', '09391386488', 0),
+(84, 'test test', '123', 'Customer', 's@gmail.com', '097212', 1),
+(85, ' ', '123', 'Customer', '', '', 1),
+(86, 'test test', '123', 'Customer', 'test@gmail.com', '0872813', 0),
+(87, 'test test', '123', 'Customer', 'test@gmail.com', '817293812', 0),
+(88, 'test test', '123', 'Customer', 'test@gmail.com', 'test', 0),
+(89, 'test test', '123', 'Customer', 'test@gmail.com', '127931', 0),
+(90, 'test test', '123', 'Customer', 'test@gmail.com', '0981273', 0),
+(91, 'asd test', '123', 'Customer', 'rlph12mones@gmail.com', '09982393', 0);
 
 --
 -- Indexes for dumped tables
@@ -447,13 +499,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `branches`
 --
 ALTER TABLE `branches`
-  MODIFY `branch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `branch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `branch_customer`
 --
 ALTER TABLE `branch_customer`
-  MODIFY `Bcust_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `Bcust_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `expenses`
@@ -465,7 +517,7 @@ ALTER TABLE `expenses`
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `inventory_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `inventory_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -483,7 +535,7 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `product_purchases`
@@ -507,7 +559,7 @@ ALTER TABLE `reward_claims`
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202400134;
+  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202400136;
 
 --
 -- AUTO_INCREMENT for table `transactions`
@@ -519,7 +571,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
