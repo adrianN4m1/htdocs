@@ -46,7 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Sorry, your file was not uploaded.";
     } else {
         if (move_uploaded_file($_FILES["reward_image"]["tmp_name"], $targetFile)) {
-            echo "The file ". htmlspecialchars(basename($_FILES["reward_image"]["name"])). " has been uploaded.";
 
             // Insert data into database
             $sql = "INSERT INTO rewards (reward_name, description, point_value, reward_image, reward_qty) VALUES (?, ?, ?, ?, ?)";
@@ -54,8 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("ssisi", $reward_name, $description, $point_value, $reward_img, $reward_qty);
 
             if ($stmt->execute()) {
-                echo "New record created successfully";
-            } else {
+                echo '<script>alert("Reward: ' . $reward_name . ' Registered!"); window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";</script>';
+                exit();
+                } else {
                 echo "Error: " . $sql . "<br>" . $stmt->error;
             }
             $stmt->close();
