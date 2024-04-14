@@ -15,7 +15,10 @@
     <link rel="stylesheet" href="assets/css/Add-Another-Button.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
+    <script src=js/search.js></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -104,7 +107,7 @@
                                             <div class="col-md-6">
                                                 <div class="text-md-end dataTables_filter" id="dataTable_filter-2">
                                                     <label class="form-label" style="width: 100%;"><input type="search"
-                                                            class="form-control form-control-sm"
+                                                            class="form-control form-control-sm" id="searchInput" onkeyup="searchTable()"
                                                             aria-controls="dataTable" placeholder="Search"
                                                             style="width: 100%;"></label>
                                                 </div>
@@ -244,23 +247,23 @@
                         class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button"
-                        data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button" id="archive-confirm-btn 3"
-                        style="background: var(--bs-red);" data-bs-target="#toast-1"
+                        data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button"
+                        id="archive-confirm-btn 3" style="background: var(--bs-red);" data-bs-target="#toast-1"
                         data-bs-toggle="toast">Archive</button></div>
                 <script>
                     // Function to handle the click event of the archive button
-                    function handleArchiveButtonClick(rewardId,rImage) {
+                    function handleArchiveButtonClick(rewardId, rImage) {
                         // Show the confirmation modal
                         $('#archive-modal2').modal('show');
 
                         // Handle the click event of the 'Archive' button inside the modal
                         document.getElementById('archive-confirm-btn 3').addEventListener('click', function () {
-                            proceedWithQuery(rewardId,rImage);
+                            proceedWithQuery(rewardId, rImage);
                         });
                     }
 
                     // Function to proceed with the database update query
-                    function proceedWithQuery(rewardId,rImage) {
+                    function proceedWithQuery(rewardId, rImage) {
                         // Send AJAX request to PHP file to update the database
                         var xhr = new XMLHttpRequest();
                         xhr.onreadystatechange = function () {
@@ -338,6 +341,7 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade" role="dialog" tabindex="-1" id="edit-award-modal" style="border-style: solid;">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -346,9 +350,15 @@
                         data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div style="padding-bottom: 0px;margin-bottom: 13px;"><input type="text" id="reward_id"
-                            placeholder="Reward ID" name="username"
-                            style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;" disabled="">
+                    <div class="d-xl-flex justify-content-xxl-center align-items-xxl-center"
+                        style="height: 200px;background: rgba(197,197,197,0.19);border-radius: 10px;margin: 12px;margin-right: 0px;margin-left: 0px;margin-top: 0px;margin-bottom: 0px;">
+                        <img class="border rounded border-1" style="height: 100%;" id="old_reward_image">
+                    </div>
+                    <input type="file" id="new_reward_image" name="new_reward_image" accept=".jpg, .jpeg, .png"
+                        style="padding-bottom: 10px;margin-bottom: 4px;width: 100%;padding-top: 4px;">
+                    <div style="padding-bottom: 0px;margin-bottom: 13px;"><input type="text" id="id" placeholder=""
+                            name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;"
+                            disabled="">
                         <p class="text-end"
                             style="margin: 0px;padding: 0px;border-color: var(--bs-modal-border-color);color: var(--bs-blue);font-size: 10px;">
                             This is an auto-generated text</p>
@@ -357,25 +367,102 @@
                     <div style="padding-bottom: 0px;margin-bottom: 14px;"></div>
                     <div style="padding-bottom: 0px;margin-bottom: 14px;"></div>
                     <div style="padding-bottom: 0px;margin-bottom: 14px;">
-                        <p style="margin-bottom: -3px;font-size: 10px;">Reward Name</p><input type="text"
-                            id="username-1" placeholder="Mannequin" name="mobile_number"
+                        <p style="margin-bottom: -3px;font-size: 10px;">Reward Name</p><input type="text" id="name"
+                            placeholder="" name="name"
                             style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                     </div>
                     <div style="padding-bottom: 0px;margin-bottom: 14px;">
                         <p style="margin-bottom: -3px;font-size: 10px;">Point Value</p>
-                        <div><span style="margin-right: 3px;">P</span><input type="text" id="username-4"
-                                placeholder="60.02" name="username"
+                        <div><span style="margin-right: 3px;">P</span><input type="text" id="point" placeholder=""
+                                name="point" style="--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;"></div>
+                        <p style="margin-bottom: -3px;font-size: 10px;">Stocks</p>
+                        <div><input type="text" id="stock" placeholder="" name="stock"
                                 style="--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;"></div>
                     </div>
                     <div style="padding-bottom: 0px;margin-bottom: 14px;">
-                        <p style="margin-bottom: -3px;font-size: 10px;">Description(specify...)</p><textarea
-                            style="width: 100%;height: 81px;"></textarea>
+                        <p style="margin-bottom: -3px;font-size: 10px;">Description(specify...)</p><textarea id="desc"
+                            name="desc" style="width: 100%;height: 81px;"></textarea>
                     </div>
+                    <div><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button
+                            id="edit-save-btn" class="btn btn-primary" type="submit">Save</button></div>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button"
-                        data-bs-dismiss="modal">Close</button><button class="btn btn-primary"
-                        type="button">Save</button></div>
             </div>
+            <script>
+                function showAlertAndRedirect(message, url) {
+                    alert(message);
+                    window.location.href = url;
+                }
+
+                function EditClick(element) {
+                    var rimage = element.getAttribute('data-rimage')
+                    var rid = element.getAttribute('data-rid');
+                    var rname = element.getAttribute('data-rname');
+                    var rdesc = element.getAttribute('data-rdesc');
+                    var rpoint = element.getAttribute('data-rpoint');
+                    var rqty = element.getAttribute('data-rqty');
+
+                    // Show the modal
+                    $('#edit-award-modal').modal('show');
+
+                    // Populate input fields with supplier data
+                    document.getElementById('old_reward_image').src = "/Super_Admin_V_4_0/php/reward/images/" + rimage;
+                    document.getElementById('id').value = rid;
+                    document.getElementById('name').value = rname;
+                    document.getElementById('desc').value = rdesc;
+                    document.getElementById('point').value = rpoint;
+                    document.getElementById('stock').value = rqty;
+                }
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Add event listener to the 'Save' button
+                    document.getElementById('edit-save-btn').addEventListener('click', function () {
+                        // Retrieve edited values from input fields
+                        var rewardId = document.getElementById('id').value;
+                        var rewardName = document.getElementById('name').value;
+                        var rewardDesc = document.getElementById('desc').value;
+                        var rewardPoint = document.getElementById('point').value;
+                        var rewardStock = document.getElementById('stock').value;
+                        var rewardImage = document.getElementById('new_reward_image', 'name').files[0]; // Get the selected image file
+                        var rimage = decodeURIComponent(document.getElementById('old_reward_image').src.split('/').pop());
+
+                        // Construct form data object to send via AJAX
+                        var formData = new FormData();
+                        formData.append('reward_id', rewardId);
+                        formData.append('reward_name', rewardName);
+                        formData.append('reward_desc', rewardDesc);
+                        formData.append('reward_point', rewardPoint);
+                        formData.append('reward_stock', rewardStock);
+                        formData.append('new_reward_image', rewardImage);
+                        formData.append('old_reward_image', rimage); // Append the image file
+
+                        // Send data to server using AJAX
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', 'php/reward/reward_edit.php', true);
+                        xhr.onreadystatechange = function () {
+                            if (xhr.readyState === 4) {
+                                if (xhr.status === 200) {
+                                    // Handle response from server
+                                    var response = xhr.responseText;
+                                    if (response === "success") {
+                                        showAlertAndRedirect("Reward Edit Successful", window.location.href);
+                                    } else if (response === "Image Already Exist!") {
+                                        showAlertAndRedirect("Image Already Exist!", window.location.href);
+                                    }
+                                    else if (response === "New image file type is not allowed. Please upload a JPG, JPEG, or PNG file.") {
+                                        showAlertAndRedirect("New image file type is not allowed. Please upload a JPG, JPEG, or PNG file.", window.location.href);
+                                    } else {
+                                        alert("Error: " + response);
+                                    }
+                                } else {
+                                    alert('Error: ' + xhr.status);
+                                }
+                            }
+                        };
+                        xhr.send(formData); // Send form data
+                    });
+                });
+
+
+            </script>
         </div>
     </div>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
