@@ -19,12 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $supplierId = $_POST['supplier_id'];
     $expirationDate = $_POST['expiration_date'];
     $invStock = $_POST['inv_stock'];
-    $productType = 1;
     $prodImage = $_FILES['prod_image']['name']; // Get image file name
     
     // Insert data into products table
-    $sql = "INSERT INTO products (product_name, Prod_type, price, supplier_id, expiration_date, Product_Type, base_price, prod_image) 
-            VALUES ('$productName', '$prodType', $price, $supplierId, '$expirationDate', $productType, $basePrice, '$prodImage')";
+    $sql = "INSERT INTO products (product_name, Prod_type, price, supplier_id, expiration_date, base_price, prod_image) 
+            VALUES ('$productName', '$prodType', $price, $supplierId, '$expirationDate', $basePrice, '$prodImage')";
 
     if (mysqli_query($conn, $sql)) {
         // Save image file

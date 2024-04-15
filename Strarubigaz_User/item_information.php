@@ -32,10 +32,10 @@
     </nav>
     <section class="py-5">
         <div class="container py-5">
-            <div><a href="buy_list.html"><i class="fas fa-arrow-left" style="font-size: 24px;"></i></a></div>
+            <div><a href="buy_list.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-arrow-left" style="font-size: 24px;"></i></a></div>
         </div>
         <div class="container">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-6 text-center"><img src="assets/img/products/4.jpg" style="width: 300px;border-radius: 10px;"></div>
                 <div class="col-md-6">
                     <div></div>
@@ -55,7 +55,9 @@
                     </div>
                     <p class="d-xxl-flex align-items-xxl-center">Items :&nbsp;<input class="form-control-sm" type="text" style="border-radius: 4px;border-width: 1px;border-color: var(--bs-gray-dark);font-size: 10px;text-align: center;width: 43.8px;" value="1"></p>
                 </div>
-            </div>
+            </div> -->
+
+            <?php include("php/item_information/item_inforation_display.php")?>
         </div>
     </section>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
