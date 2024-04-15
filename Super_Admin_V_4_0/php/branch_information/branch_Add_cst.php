@@ -25,12 +25,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Default values
     $role = "Customer"; // Default role
+    $userpts = 50;
     $user_type = 1; // Default user type
     
     // Prepare and execute SQL statement to insert data into users table
-    $sql = "INSERT INTO users (username, password, role, email, phone_number, user_type) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO users (username, password, role, email, phone_number, user_reward_pts,user_type) VALUES (?, ?, ?, ?, ?, ?,?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssi", $username, $password, $role, $email, $mobile_number, $user_type);
+    $stmt->bind_param("ssssssi", $username, $password, $role, $email, $mobile_number,$userpts, $user_type);
 
     if ($stmt->execute() === TRUE) {
 

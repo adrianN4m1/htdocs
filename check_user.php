@@ -22,13 +22,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = sanitize($_POST["password"]);
 
     // Fetch user from database
-    $sql = "SELECT * FROM users WHERE email='$username' AND password='$password'";
+    $sql = "SELECT * FROM users WHERE email='$username' AND password='$password' AND user_type = 1";
     $result = $conn->query($sql);
 
     if ($result->num_rows == 1) {
         // User found, fetch user details
         $row = $result->fetch_assoc();
-
         // Redirect user based on role
         switch ($row["role"]) {
             case 'Super Admin':
@@ -38,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo '<script>window.location.href = "http://localhost/Starubigaz_Admin/index.php?user_id=' . $row['user_id'] . '";</script>';
                     break;
             case 'Customer':
-                header("Location: customer_dashboard.php");
+                echo '<script>window.location.href = "http://localhost/Strarubigaz_User/index.php?user_id=' . $row['user_id'] . '";</script>';
                 break;
             default:
                 echo "Invalid role.";
@@ -47,7 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // End script execution
         exit();
     } else {
-        echo "Invalid username or password.";
+        echo '<script>alert("Invalid Username and Password");window.location.href = "http://localhost/login.php";</script>';
+
     }
 }
 ?>

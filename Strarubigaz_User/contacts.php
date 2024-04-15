@@ -17,17 +17,17 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md sticky-top navbar-shrink py-3" id="mainNav">
+<nav class="navbar navbar-light navbar-expand-md sticky-top navbar-shrink py-3" id="mainNav">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span class="bs-icon-sm bs-icon-circle bs-icon-primary shadow d-flex justify-content-center align-items-center me-2 bs-icon"><i class="fas fa-gas-pump"></i></span><span>Starubigaz</span></a>
             <div class="collapse navbar-collapse" id="navcol-1" style="margin-right: 0px;">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="buy_list.html">Buy</a></li>
-                    <li class="nav-item"><a class="nav-link" href="rewards.html">Rewards</a></li>
-                    <li class="nav-item"><a class="nav-link" href="transactions.html">Transactions</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="contacts.html">Settings</a></li>
+            <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.php?user_id=<?php include('parameters.php')?>">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="buy_list.php?user_id=<?php include('parameters.php')?>">Buy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="rewards.php?user_id=<?php include('parameters.php')?>">Rewards</a></li>
+                    <li class="nav-item"><a class="nav-link" href="transactions.php?user_id=<?php include('parameters.php')?>">Transactions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacts.php?user_id=<?php include('parameters.php')?>">Settings</a></li>
                 </ul>
-            </div><a href="cart.html"><i class="fas fa-shopping-bag" style="font-size: 20px;color: var(--bs-yellow);margin-right: 6px;"></i></a><span>0</span>
+                </div><a href="cart.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-shopping-bag" style="font-size: 20px;color: var(--bs-yellow);margin-right: 6px;"></i></a><span>0</span>
         </div>
     </nav>
     <section class="py-5">
