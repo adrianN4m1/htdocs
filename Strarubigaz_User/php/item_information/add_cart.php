@@ -59,13 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("iiid", $order_id, $product_id, $quantity, $price);
     $stmt->execute();
 
-    // Update the inventory quantity
-    $stmt = $conn->prepare("UPDATE inventory SET quantity = quantity - ? WHERE product_id = ?");
-    $stmt->bind_param("ii", $quantity, $product_id);
-    $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
-        echo "Item successfully added to the cart, and quantity has been updated in the inventory.";
+        echo "Item successfully added to the cart";
     } else {
         echo "Failed to update the inventory quantity.";
     }

@@ -8,8 +8,8 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
-$stmt = $conn->prepare("SELECT order_id FROM orders WHERE status = 'Pending' ORDER BY order_date DESC LIMIT 1");
+$user_id = isset($_GET['user_id']) ? $_GET['user_id'] : null;
+$stmt = $conn->prepare("SELECT order_id FROM orders WHERE status = 'Pending' AND user_id = $user_id ORDER BY order_date DESC LIMIT 1");
 $stmt->execute();
 $result = $stmt->get_result();
 
