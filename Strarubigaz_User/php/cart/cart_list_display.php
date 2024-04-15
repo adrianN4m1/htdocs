@@ -22,13 +22,14 @@ if ($result->num_rows > 0) {
 }
 
 // Prepare and execute the SQL query to fetch order items and product details
-$stmt = $conn->prepare("SELECT oi.quantity, oi.price, p.product_name, p.prod_image FROM order_items oi JOIN products p ON oi.product_id = p.product_id WHERE oi.order_id = ?");
+$stmt = $conn->prepare("SELECT oi.order_item_id, oi.quantity, oi.price, p.product_name, p.prod_image FROM order_items oi JOIN products p ON oi.product_id = p.product_id WHERE oi.order_id = ?");
 $stmt->bind_param("i", $order_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $order_item_id = $row['order_item_id'];
         $quantity = $row['quantity'];
         $price = $row['price'];
         $product_name = $row['product_name'];
@@ -46,7 +47,11 @@ if ($result->num_rows > 0) {
                             <h4>' . $product_name . '</h4>
                             <p class="d-inline">Quantity :&nbsp;</p><span>' . $quantity . '</span>
                             <div class="d-flex justify-content-between align-items-xxl-center" style="padding-top: 0px;">
-                                <p class="d-inline" style="font-size: 20px;font-weight: bold;margin-top: 20px;"><i class="fab fa-galactic-republic"></i>&nbsp;' . $price * $quantity . '</p><a href="#" style="color: var(--bs-red);font-size: 12px;text-decoration: underline;">remove</a>
+                                <p class="d-inline" style="font-size: 20px;font-weight: bold;margin-top: 20px;"><i class="fab fa-galactic-republic"></i>&nbsp;' . $price * $quantity . '</p>
+                                <form action="php/cart/remove_item.php" method="post" style="display: inline;">
+                                <input type="hidden" name="order_item_id" value='.$order_item_id.'>
+                                <button type="submit" style="color: var(--bs-red);font-size: 12px;text-decoration: underline;background: none;border: none;padding: 0;cursor: pointer;">remove</button>
+                            </form>                            
                             </div>
                         </div>
                     </div>

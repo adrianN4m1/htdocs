@@ -71,14 +71,7 @@
                         <h3 style="padding-top: 10px;margin-bottom: 50px;"><strong>Order Summary</strong></h3>
                         <div class="table-responsive">
                             <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Item</th>
-                                        <th>quantity</th>
-                                        <th>price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                                
                                     <!-- <tr style="border-color: rgb(255,255,255);">
                                         <td>Backpack ni Satanas</td>
                                         <td>1</td>
@@ -94,6 +87,16 @@
             </div>
         </div>
     </section>
+    <div class="modal fade" role="dialog" tabindex="-1" id="receipt-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Checkout</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <?php include("php/cart/cart_receipt.php")?>
+            </div>
+        </div>
+    </div>
     <footer class="ms-auto bg-primary-gradient">
         <div class="container py-4 py-lg-5" style="margin-top: 20px;">
             <hr>

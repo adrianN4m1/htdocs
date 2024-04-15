@@ -27,6 +27,15 @@ $result = $stmt->get_result();
 $total_price = 0; // Initialize total price
 
 if ($result->num_rows > 0) {
+    echo'<thead>
+    <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total</th>
+    </tr>
+</thead>
+<tbody>';
     while ($row = $result->fetch_assoc()) {
         $quantity = $row['quantity'];
         $price = $row['price'];
@@ -40,16 +49,18 @@ if ($result->num_rows > 0) {
             <td>' . $product_name . '</td>
             <td>' . $quantity . '</td>
             <td>' . $price . '</td>
+            <td>' . number_format($price *$quantity,2)  . '</td>
         </tr>';
     }
     echo '<tr style="border-color: rgb(255,255,255);">
     <td></td>
     <td style="font-weight: bold;text-align: right;border-top: 2px solid var(--bs-table-color);">Total :</td>
-    <td style="font-weight: bold;text-align: right;border-top: 2px solid rgb(45,45,45);font-size: 23px;">'.$total_price.'</td>
+    <td style="font-weight: bold;text-align: right;border-top: 2px solid rgb(45,45,45);font-size: 23px;">'.number_format($total_price,2).'</td>
 </tr>
 </tbody>
 </table>
-</div><button class="btn btn-primary" type="button" style="width: 100%;background: rgb(20,20,20);border-radius: 5px;border-style: none;border-top-style: none;box-shadow: 1px 1px 10px 1px var(--bs-gray);">Proceed to Checkout</button>';
+</div><button class="btn btn-primary" data-bs-target="#receipt-modal" data-bs-toggle="modal" type="button" style="width: 100%;background: rgb(20,20,20);border-radius: 5px;border-style: none;border-top-style: none;box-shadow: 1px 1px 10px 1px var(--bs-gray);">Proceed to Checkout</button></div>
+';
 } else {
     echo "No order items found for the given order ID.";
 }

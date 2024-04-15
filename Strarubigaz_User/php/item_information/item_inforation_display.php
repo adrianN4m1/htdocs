@@ -55,7 +55,7 @@ if ($product_id) {
                 </div>
                 <div class="col" style="text-align: center;"></div>
                 <p class="d-xxl-flex align-items-xxl-center">Items :&nbsp;
-                    <input class="form-control-sm" type="number" min="1" id="quantity" name="quantity" placeholder="1" value="" style="border-radius: 4px;border-width: 1px;border-color: var(--bs-gray-dark);font-size: 15px;text-align: center;width: 80px;">
+                    <input class="form-control-sm" type="number" min="1" id="quantity" name="quantity" placeholder="1" value="1" style="border-radius: 4px;border-width: 1px;border-color: var(--bs-gray-dark);font-size: 15px;text-align: center;width: 80px;">
                 </p>            
             </form>
                 </div>
