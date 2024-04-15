@@ -39,7 +39,8 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-7 col-md-6">
+            <div class="col-7 col-md-6">
+                <!-- <div class="col-7 col-md-6">
                     <div class="row" style="padding-top: 12px;padding-right: 20px;padding-left: 20px;padding-bottom: 20px;margin-bottom: -20px;">
                         <div class="col">
                             <div class="row">
@@ -61,69 +62,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="padding-top: 12px;padding-right: 20px;padding-left: 20px;padding-bottom: 20px;margin-bottom: -20px;">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col col-md-3" style="text-align: center;">
-                                    <div style="width: 100%;height: 100%;"><img src="assets/img/products/4.jpg" style="border-radius: 10px;width: 100%;height: 100%;" height="600px"></div>
-                                </div>
-                                <div class="col">
-                                    <h4>Backpack ni satanas</h4>
-                                    <p class="d-inline">Quantity :&nbsp;</p><span>2</span>
-                                    <div class="d-flex justify-content-between align-items-xxl-center" style="padding-top: 0px;">
-                                        <p class="d-inline" style="font-size: 20px;font-weight: bold;margin-top: 20px;"><i class="fab fa-galactic-republic"></i>&nbsp;4.12</p><a href="#" style="color: var(--bs-red);font-size: 12px;text-decoration: underline;">remove</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <hr>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="padding-top: 12px;padding-right: 20px;padding-left: 20px;padding-bottom: 20px;margin-bottom: -20px;">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col col-md-3" style="text-align: center;">
-                                    <div style="width: 100%;height: 100%;"><img src="assets/img/products/4.jpg" style="border-radius: 10px;width: 100%;height: 100%;" height="600px"></div>
-                                </div>
-                                <div class="col">
-                                    <h4>Backpack ni satanas</h4>
-                                    <p class="d-inline">Quantity :&nbsp;</p><span>2</span>
-                                    <div class="d-flex justify-content-between align-items-xxl-center" style="padding-top: 0px;">
-                                        <p class="d-inline" style="font-size: 20px;font-weight: bold;margin-top: 20px;"><i class="fab fa-galactic-republic"></i>&nbsp;4.12</p><a href="#" style="color: var(--bs-red);font-size: 12px;text-decoration: underline;">remove</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <hr>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="padding-top: 12px;padding-right: 20px;padding-left: 20px;padding-bottom: 20px;margin-bottom: -20px;">
-                        <div class="col">
-                            <div class="row">
-                                <div class="col col-md-3" style="text-align: center;">
-                                    <div style="width: 100%;height: 100%;"><img src="assets/img/products/4.jpg" style="border-radius: 10px;width: 100%;height: 100%;" height="600px"></div>
-                                </div>
-                                <div class="col">
-                                    <h4>Backpack ni satanas</h4>
-                                    <p class="d-inline">Quantity :&nbsp;</p><span>2</span>
-                                    <div class="d-flex justify-content-between align-items-xxl-center" style="padding-top: 0px;">
-                                        <p class="d-inline" style="font-size: 20px;font-weight: bold;margin-top: 20px;"><i class="fab fa-galactic-republic"></i>&nbsp;4.12</p><a href="#" style="color: var(--bs-red);font-size: 12px;text-decoration: underline;">remove</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <hr>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </div> -->
+                
+                <?php include("php/cart/cart_list_display.php")?>
                 </div>
                 <div class="col-md-6">
                     <div class="sticky-top" style="padding-top: 80px;">
@@ -138,7 +79,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style="border-color: rgb(255,255,255);">
+                                    <!-- <tr style="border-color: rgb(255,255,255);">
                                         <td>Backpack ni Satanas</td>
                                         <td>1</td>
                                         <td>12.34</td>
@@ -147,7 +88,8 @@
                                         <td>Lunchbox na blue</td>
                                         <td>2</td>
                                         <td>8.12</td>
-                                    </tr>
+                                    </tr> -->
+                                    <?php include("php/cart/cart_list_total.php")?>
                                     <tr style="border-color: rgb(255,255,255);">
                                         <td></td>
                                         <td style="font-weight: bold;text-align: right;border-top: 2px solid var(--bs-table-color);">Total :</td>
