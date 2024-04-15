@@ -27,7 +27,7 @@
                     <li class="nav-item"><a class="nav-link" href="transactions.php?user_id=<?php include('parameters.php')?>">Transactions</a></li>
                     <li class="nav-item"><a class="nav-link" href="contacts.php?user_id=<?php include('parameters.php')?>">Settings</a></li>
                 </ul>
-                </div><a href="cart.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-shopping-bag" style="font-size: 20px;color: var(--bs-yellow);margin-right: 6px;"></i></a><span>0</span>
+                </div><a href="cart.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-shopping-bag" style="font-size: 20px;color: var(--bs-yellow);margin-right: 6px;"></i></a><span><?php include('getlistcount.php')?></span>
         </div>
     </nav>
     <section class="py-5" style="padding-bottom: 0px;height: 80vh;margin-bottom: -48px;">
