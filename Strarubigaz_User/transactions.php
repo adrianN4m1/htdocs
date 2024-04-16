@@ -47,7 +47,7 @@
                             <th>Date</th>
                             <th>Transaction ID</th>
                             <th>Total Amount</th>
-                            <th>Points Earned</th>
+                            <th>Points</th>
                             <th></th>
                         </tr>
                     </thead>

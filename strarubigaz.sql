@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2024 at 01:31 PM
+-- Generation Time: Apr 16, 2024 at 08:09 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -165,15 +165,15 @@ INSERT INTO `inventory` (`inventory_id`, `product_id`, `quantity`, `Inv_Type`) V
 (3, 3, 5987, 1),
 (4, 4, 99999999, 0),
 (5, 5, 24, 0),
-(6, 6, 67, 1),
+(6, 6, 64, 1),
 (7, 7, 10000, 0),
 (8, 8, 555, 0),
 (9, 9, 999, 0),
 (10, 10, 110, 1),
 (11, 11, 2020, 0),
-(12, 12, 456, 1),
+(12, 12, 450, 1),
 (13, 13, 696, 1),
-(14, 14, 6564, 1),
+(14, 14, 6559, 1),
 (15, 15, 999, 1);
 
 -- --------------------------------------------------------
@@ -195,7 +195,11 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `user_id`, `branch_id`, `order_date`, `status`) VALUES
-(11, 51, 1, '2024-04-15 07:09:08', 'Pending');
+(11, 51, 1, '2024-04-15 07:09:08', 'Completed'),
+(12, 51, 1, '2024-04-15 11:33:03', 'Completed'),
+(13, 51, 1, '2024-04-15 11:35:31', 'Completed'),
+(14, 51, 1, '2024-04-15 11:38:25', 'Completed'),
+(15, 51, 1, '2024-04-15 12:08:40', 'Completed');
 
 -- --------------------------------------------------------
 
@@ -218,7 +222,13 @@ CREATE TABLE `order_items` (
 INSERT INTO `order_items` (`order_item_id`, `order_id`, `product_id`, `quantity`, `price`) VALUES
 (22, 11, 14, 1, 56.00),
 (23, 11, 12, 2, 20.00),
-(24, 11, 3, 1, 70.00);
+(24, 11, 3, 1, 70.00),
+(25, 12, 15, 1, 68.09),
+(26, 13, 12, 1, 20.00),
+(27, 14, 6, 1, 68.09),
+(28, 14, 14, 5, 56.00),
+(29, 15, 6, 2, 68.09),
+(30, 15, 12, 5, 20.00);
 
 -- --------------------------------------------------------
 
@@ -297,9 +307,9 @@ CREATE TABLE `rewards` (
 
 INSERT INTO `rewards` (`reward_id`, `reward_name`, `description`, `point_value`, `reward_image`, `reward_qty`, `reward_type`) VALUES
 (2, 'test', 'test', 123, 'william-daigneault-oWrZoAVOBS0-unsplash.jpg', 1230, 0),
-(3, 'test', 'tite tes', 2, 'Nitro_Wallpaper_03_3840x2400.jpg', 2, 1),
+(3, 'test', 'tite tes', 2, 'Nitro_Wallpaper_03_3840x2400.jpg', 200, 1),
 (4, 'test', 'test\r\n', 89, 'Nitro_Wallpaper_07_3840x2400.jpg', 1000, 0),
-(5, 'test', 'test', 12, 'Screenshot 2023-05-10 093203.png', 3123, 1);
+(5, 'test', 'test', 12, 'Screenshot 2023-05-10 093203.png', 3122, 1);
 
 -- --------------------------------------------------------
 
@@ -310,10 +320,7 @@ INSERT INTO `rewards` (`reward_id`, `reward_name`, `description`, `point_value`,
 CREATE TABLE `reward_claims` (
   `claim_id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `branch_id` int(11) DEFAULT NULL,
-  `reward_id` int(11) DEFAULT NULL,
-  `points_redeemed` int(11) NOT NULL,
-  `claim_date` timestamp NOT NULL DEFAULT current_timestamp()
+  `reward_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -371,13 +378,23 @@ INSERT INTO `suppliers` (`supplier_id`, `supplier_name`, `contact_name`, `email`
 
 CREATE TABLE `transactions` (
   `transaction_id` int(11) NOT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `claim_id` int(11) NOT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `branch_id` int(11) DEFAULT NULL,
-  `reward_id` int(11) DEFAULT NULL,
   `transaction_type` enum('Purchase','Redeem') NOT NULL,
-  `points` int(11) NOT NULL,
+  `points` decimal(10,2) NOT NULL,
   `transaction_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`transaction_id`, `order_id`, `claim_id`, `user_id`, `transaction_type`, `points`, `transaction_date`) VALUES
+(1, 11, 0, 51, 'Purchase', 30.00, '2024-04-15 11:32:38'),
+(2, 12, 0, 51, 'Purchase', 10.00, '2024-04-15 11:33:07'),
+(3, 13, 0, 51, 'Purchase', 0.00, '2024-04-15 11:35:33'),
+(4, 14, 0, 51, 'Purchase', 69.00, '2024-04-15 11:38:39');
 
 -- --------------------------------------------------------
 
@@ -408,7 +425,7 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `role`, `email`, `phone_
 (18, 'Sev Constantino', '!sev123', 'Admin', 'admin.israel@gmail.com', '9871623712', NULL, 1),
 (19, 'Karl Catalan', '!karl123', 'Admin', 'admin.karl@gmail.com', '9126739110', NULL, 1),
 (20, 'John Doe', '!John123', 'Admin', 'admin.john@gmail.com', '9271247883', NULL, 1),
-(51, 'Miguel Manabat', 'manabat432', 'Customer', 'miguel.manabat21@gmail.com', '9371222110', 50.00, 1),
+(51, 'Miguel Manabat', 'manabat432', 'Customer', 'miguel.manabat21@gmail.com', '9371222110', 688.00, 1),
 (52, 'Angelica Ruiz', 'iamanangel123', 'Customer', 'angelicar@gmail.com', '9131492880', 50.00, 1),
 (53, 'Anne Abalos', 'annewithane333', 'Customer', 'anneabalos0110@gmail.com', '9943134920', NULL, 1),
 (54, 'Rianna Maniego', '3219.Lovely', 'Customer', 'riannamaniego24@gmail.com', '9927213211', NULL, 0),
@@ -567,13 +584,13 @@ ALTER TABLE `inventory`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -609,7 +626,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`

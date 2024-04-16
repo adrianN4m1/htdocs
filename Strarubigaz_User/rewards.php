@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="assets/css/Button-modal-ecommerce-modal-ecommerce.css">
     <link rel="stylesheet" href="assets/css/Dynamic-Table.css">
     <link rel="stylesheet" href="assets/css/shopping-ecommerce-products.css">
+    
 </head>
 
 <body>
@@ -43,21 +44,29 @@
     </section>
     <div class="container" style="padding-bottom: 12px;">
         <div class="row d-xxl-flex justify-content-xxl-center" style="margin: 0px;">
-            <div class="col-md-3" style="padding: 12px;padding-bottom: 24px;padding-top: 12px;margin: 12px;padding-right: 24px;background: #ffffff;">
-                <div class="d-xl-flex justify-content-xxl-center align-items-xxl-center" style="height: 200px;background: rgba(197,197,197,0.19);border-radius: 10px;"><img class="border rounded border-1" style="height: 100%;" src="assets/img/products/2.jpg"></div>
-                <div>
-                    <h6 style="font-weight: bold;color: var(--bs-gray-700);padding-top: 10px;">Backpack ni Satanas</h6>
-                </div>
-                <div class="d-flex justify-content-between">
-                    <div class="d-inline">
-                        <p class="d-inline" style="margin-bottom: 0px;"><i class="fab fa-first-order"></i>&nbsp;98.23</p>
-                    </div>
-                    <div class="d-inline"><span style="font-size: 9px;color: rgb(193,193,193);">Items available :&nbsp;</span><span>100</span></div>
-                </div>
-                <div class="row">
-                    <div class="col col-md5"><button class="btn btn-primary" type="button" style="padding-right: 10px;padding-left: 10px;background: var(--bs-warning);color: rgb(255,255,255);border-style: none;border-radius: 10px;width: 100%;margin-top: 10px;font-size: 12px;--bs-body-font-weight: normal;" data-bs-target="#redeem-item" data-bs-toggle="modal">Redeem Item</button></div>
-                </div>
-            </div>
+        <script>
+    // JavaScript code to handle the click event of the Redeem Item button
+    document.addEventListener('DOMContentLoaded', function() {
+        const redeemButtons = document.querySelectorAll('.redeem-btn');
+        redeemButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Update modal content with reward details
+                const modal = document.getElementById('redeem-item');
+                const rewardId = this.getAttribute('data-reward-id');
+                const rewardName = this.getAttribute('data-reward-name');
+                const pointValue = this.getAttribute('data-point-value');
+                const rewardQty = this.getAttribute('data-reward-qty');
+
+                // Update modal content
+                modal.querySelector('#reward-id').textContent = rewardId;
+                modal.querySelector('#reward-name').textContent = rewardName;
+                modal.querySelector('#point-value').textContent = pointValue;
+                modal.querySelector('#reward-qty').textContent = rewardQty;
+            });
+        });
+    });
+</script>
+            <?php include("php/reward/reward_display.php")?>
         </div>
     </div>
     <footer class="ms-auto bg-primary-gradient">
@@ -68,44 +77,7 @@
             </div>
         </div>
     </footer>
-    <div class="modal fade" role="dialog" tabindex="-1" id="redeem-item">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Redeem item</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div>
-                                    <p>Reward ID:&nbsp;<span>0x0943</span></p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div>
-                                    <p>Date:&nbsp;<span>10/23/2024</span></p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div>
-                                    <p>Existing Points :&nbsp;<span>98.23</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <h6 style="padding-bottom: 12px;text-align: center;margin-bottom: 12px;color: var(--bs-gray);">Order Summary</h6>
-                    <div style="overflow-y: visible;"></div>
-                    <div class="container">
-                        <h3 style="text-align: center;font-weight: bold;margin-bottom: 0px;">Sariwang Notebook</h3>
-                        <h5 class="text-black-50" style="text-align: center;font-weight: bold;">Total :&nbsp;<i class="fas fa-life-ring"></i>&nbsp;<span>12.98</span></h5>
-                    </div>
-                </div>
-                <div class="modal-footer"><button class="btn" type="button" style="border-radius: 12px;border-style: none;background: var(--bs-gray-200);">Redeem</button></div>
-            </div>
-        </div>
-    </div>
+    
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bold-and-bright.js"></script>
     <script src="assets/js/Button-modal-ecommerce-jquery.touchSwipe.min.js"></script>
