@@ -35,7 +35,7 @@
             <div class="row mb-4 mb-lg-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
                     <p class="fw-bold text-warning mb-2" style="color: rgb(255,193,7);">Current Points</p>
-                    <h1 class="fw-bold">102.98</h1>
+                    <h1 class="fw-bold"><?php include("getpts.php")?></h1>
                 </div>
             </div>
             <hr>

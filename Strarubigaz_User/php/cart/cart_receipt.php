@@ -99,8 +99,8 @@ if ($result->num_rows > 0) {
 
         // Insert transaction record
         $transaction_type = "Purchase";
-        $stmt = $conn->prepare("INSERT INTO transactions (user_id, transaction_type, points) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("isi", $user_id, $transaction_type, $points_earned);
+        $stmt = $conn->prepare("INSERT INTO transactions (order_id,user_id, transaction_type, points) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("iisi",$order_id, $user_id, $transaction_type, $points_earned);
         $stmt->execute();
         $transaction_id = $stmt->insert_id;
 
