@@ -122,20 +122,12 @@
                                                             <th>Date</th>
                                                             <th>Transaction ID</th>
                                                             <th>Customer name</th>
-                                                            <th>Branch</th>
                                                             <th>Rewards</th>
                                                             <th>Rewards price</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td style="font-size: 16;">10/10/10</td>
-                                                            <td style="font-size: 16;">0x123</td>
-                                                            <td style="font-size: 16;">Sev Constantino</td>
-                                                            <td style="font-size: 16;">Tandang Sora</td>
-                                                            <td style="font-size: 16;">Bag</td>
-                                                            <td style="font-size: 16;">-10.23</td>
-                                                        </tr>
+                                                    <?php include("php/reward/Redeem_display.php")?>
                                                     </tbody>
                                                     <tfoot>
                                                         <tr></tr>

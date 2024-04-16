@@ -89,11 +89,14 @@ if ($result->num_rows > 0) {
                                         </div>
                                     </div>
                                     <hr>
-                                    <div class="col-md-12">
-                                        <div class="table-responsive">
-                                            <!-- Your table content here -->
-                                        </div>
-                                    </div>
+                                    <h6 style="margin-bottom: 0px;">Order Summary</h6>
+                                    <div class="receipt-contents" style="height: 50vh;overflow-y: scroll;">
+                                        <div>
+                                            <hr>
+                                            <h6 class="text-end" style="font-weight: bold;">Price</h6>
+                                        </div>';
+                                        // include("php/transaction/display_loop.php");
+                                    echo '</div>
                                 </div>
                             </div>
                         </div>

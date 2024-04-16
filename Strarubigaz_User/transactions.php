@@ -64,6 +64,7 @@
     <script src="assets/js/bold-and-bright.js"></script>
     <script src="assets/js/Button-modal-ecommerce-jquery.touchSwipe.min.js"></script>
     <script src="assets/js/Dynamic-Table-dynamic-table.js"></script>
+
 </body>
 
 </html>

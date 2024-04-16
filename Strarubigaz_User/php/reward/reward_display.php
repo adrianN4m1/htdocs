@@ -69,7 +69,7 @@ if ($result->num_rows > 0) {
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Redeem item</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h4 class="modal-title">Redeem item</h4><button type="button" class="btn-close" aria-label="Close" onclick="redirectCloseModals()"></button>
                     </div>
                     <div class="modal-body">
                         <div class="container">
@@ -122,12 +122,14 @@ $(document).on('click', '.redeem-btn', function() {
             reward_id: reward_id
         },
         success: function(response) {
-            alert(response); // Show success or error message
-            // You can update the UI here if needed
         },
         error: function(xhr, status, error) {
             alert("An error occurred: " + error); // Show error message
         }
     });
 });
+function redirectCloseModals() {
+    // Redirect to the desired page
+    window.location.href = '/Strarubigaz_User/rewards.php?user_id=<?php echo isset($_GET['user_id']) ? $_GET['user_id'] : ''; ?>'; 
+}
 </script>

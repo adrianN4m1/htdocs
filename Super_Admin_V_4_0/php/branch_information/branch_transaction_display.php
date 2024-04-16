@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 }
 
 // Prepare and execute query to fetch transaction records with order details for users in the current branch
-$sql = "SELECT DISTINCT t.transaction_date, t.transaction_id, o.order_id, o.order_date, t.points, rc.reward_id, u.username
+$sql = "SELECT DISTINCT t.transaction_date, t.transaction_id, o.order_id, o.order_date, t.points, rc.reward_id, u.username, SUM(oi.quantity * oi.price) AS total_amount
         FROM transactions t
         LEFT JOIN orders o ON t.order_id = o.order_id
         LEFT JOIN reward_claims rc ON t.claim_id = rc.claim_id
@@ -25,7 +25,9 @@ $sql = "SELECT DISTINCT t.transaction_date, t.transaction_id, o.order_id, o.orde
         LEFT JOIN branch_customer bc ON t.user_id = bc.user_id
         LEFT JOIN users u ON t.user_id = u.user_id
         WHERE bc.branch_id = ? AND t.transaction_type='Purchase'
+        GROUP BY t.transaction_id
         ORDER BY t.transaction_date DESC";
+
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $branch_id);
@@ -40,7 +42,7 @@ if ($result->num_rows > 0) {
                 <td>' . $row['transaction_date'] . '</td>
                 <td>' . $row['username'] . '</td>
                 <td>' . number_format($row['points'], 2) . '</td>
-                <td>P' . number_format($row['points'], 2) . '</td>
+                <td>P' . number_format($row['total_amount'], 2) . '</td>
                 <td><a class="btn btn-info btn-icon-split" role="button"
                         style="background: var(--bs-table-striped-color);border-style: none;"
                         data-bs-target="#receipt-modal-' . $row['transaction_id'] . '"

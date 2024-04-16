@@ -59,7 +59,7 @@ if ($result->num_rows > 0) {
 </tr>
 </tbody>
 </table>
-</div><button class="btn btn-primary" data-bs-target="#receipt-modal" data-bs-toggle="modal" type="button" style="width: 100%;background: rgb(20,20,20);border-radius: 5px;border-style: none;border-top-style: none;box-shadow: 1px 1px 10px 1px var(--bs-gray);">Proceed to Checkout</button></div>
+</div>
 ';
 } else {
     echo "No order items found for the given order ID.";

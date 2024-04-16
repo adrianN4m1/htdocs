@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     if ($stmt->affected_rows > 0) {
-        echo "Item successfully added to the cart";
+        echo "<script>alert('Item successfully added to the cart'); window.location.href='/Strarubigaz_User/buy_list.php?user_id=" . $user_id . "';</script>";
     } else {
         echo "Failed to update the inventory quantity.";
     }

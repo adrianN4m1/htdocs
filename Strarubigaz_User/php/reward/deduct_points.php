@@ -45,7 +45,6 @@ if ($result_points->num_rows > 0) {
             $conn->query($sql_insert_transaction);
 
             $conn->commit();
-            echo "Points and reward quantity deducted successfully";
         } else {
             $conn->rollback();
             echo "Error updating points or reward quantity: " . $conn->error;

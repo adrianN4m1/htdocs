@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 }
 
 // Get user_id from URL parameter
-$user_id = isset($_GET['user_id']) ? $_GET['user_id'] : null;
+$user_id = isset($_POST['user_id']) ? $_POST['user_id'] : null;
 
 // Prepare and execute query to fetch the latest pending order ID for the user
 $stmt = $conn->prepare("SELECT order_id, branch_id, order_date FROM orders WHERE status = 'Pending' AND user_id = ?");
@@ -35,7 +35,14 @@ if ($result->num_rows > 0) {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        echo '<div class="modal-body">
+        echo '<div class="modal fade" role="dialog" tabindex="-1" id="receipt-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Checkout</h4><button type="button" class="btn-close" aria-label="Close" onclick="redirectCloseModal()">
+
+                </div>
+        <div class="modal-body">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
@@ -122,7 +129,11 @@ if ($result->num_rows > 0) {
         <div class="modal-footer">
         <p style="font-size: 20px;">Points Earned:&nbsp;<span style="font-weight: bold;">' . number_format($points_earned, 2) . '</span></p>
           <p style="font-size: 20px;">Total :&nbsp;<span style="font-weight: bold;">P' . number_format($total_price, 2) . '</span></p>
-        </div>';
+        </div>
+        </div>
+        </div>
+    </div>';
+        
     } else {
         echo "No order items found for the given order ID.";
     }

@@ -4,7 +4,7 @@ $username = "root";
 $password = "";
 $database = "strarubigazv2";
 
-// Get branch_id from the URL
+
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);
@@ -13,9 +13,24 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+$user_id = $_GET['user_id'];
+
+// Prepare and execute query to fetch branch ID based on user ID
+$sql_branch = "SELECT branch_id FROM branches WHERE user_id = ?";
+$stmt_branch = $conn->prepare($sql_branch);
+$stmt_branch->bind_param("i", $user_id);
+$stmt_branch->execute();
+$result_branch = $stmt_branch->get_result();
+if ($result_branch->num_rows > 0) {
+    // Fetch branch ID
+    $row_branch = $result_branch->fetch_assoc();
+    $branch_id = $row_branch['branch_id'];
+}
 
 // Prepare and execute query to fetch transaction records with order details for users in the current branch
-$sql = "SELECT DISTINCT t.transaction_date, t.transaction_id, o.order_id, o.order_date, t.points, rc.reward_id, u.username, bc.branch_id, r.reward_name
+$sql = "SELECT DISTINCT t.transaction_date, t.transaction_id, o.order_id, o.order_date, 
+               t.points, rc.reward_id, u.username,
+               SUM(oi.quantity * oi.price) AS total_amount
         FROM transactions t
         LEFT JOIN orders o ON t.order_id = o.order_id
         LEFT JOIN reward_claims rc ON t.claim_id = rc.claim_id
@@ -23,11 +38,13 @@ $sql = "SELECT DISTINCT t.transaction_date, t.transaction_id, o.order_id, o.orde
         LEFT JOIN products p ON oi.product_id = p.product_id
         LEFT JOIN branch_customer bc ON t.user_id = bc.user_id
         LEFT JOIN users u ON t.user_id = u.user_id
-        LEFT JOIN rewards r ON rc.reward_id = r.reward_id
-        WHERE t.transaction_type='Redeem'
+        WHERE bc.branch_id = ? AND t.transaction_type='Purchase'
+        GROUP BY t.transaction_id
         ORDER BY t.transaction_date DESC";
 
+
 $stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $branch_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -38,9 +55,15 @@ if ($result->num_rows > 0) {
                 <td>' . $row['transaction_id'] . '</td>
                 <td>' . $row['transaction_date'] . '</td>
                 <td>' . $row['username'] . '</td>
-                <td>' . $row['branch_id']. '</td>
-                <td>' . $row['reward_name']. '</td>
                 <td>' . number_format($row['points'], 2) . '</td>
+                <td>P' . number_format($row['total_amount'], 2) . '</td>
+                <td><a class="btn btn-info btn-icon-split" role="button"
+                        style="background: var(--bs-table-striped-color);border-style: none;"
+                        data-bs-target="#receipt-modal-' . $row['transaction_id'] . '"
+                        data-bs-toggle="modal"><span
+                            class="text-white-50 icon"><i
+                                class="fas fa-receipt"></i></span><span
+                            class="text-white text">Receipt</span></a></td>
             </tr>';
 
         // Generate the modal HTML for each transaction
