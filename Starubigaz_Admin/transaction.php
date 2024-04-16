@@ -86,14 +86,6 @@
                                             <td>P1000.00</td>
                                             <td><a class="btn btn-info btn-icon-split" role="button" style="background: var(--bs-table-striped-color);border-style: none;" data-bs-target="#receipt-modal" data-bs-toggle="modal"><span class="text-white-50 icon"><i class="fas fa-receipt"></i></span><span class="text-white text">Receipt</span></a></td>
                                         </tr>
-                                        <tr>
-                                            <td>0x1094</td>
-                                            <td>10/21/2024</td>
-                                            <td>Sev Constantino</td>
-                                            <td>78.98</td>
-                                            <td>P1000.00</td>
-                                            <td><a class="btn btn-info btn-icon-split" role="button" style="background: var(--bs-table-striped-color);border-style: none;" data-bs-target="#receipt-modal" data-bs-toggle="modal"><span class="text-white-50 icon"><i class="fas fa-receipt"></i></span><span class="text-white text">Receipt</span></a></td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
