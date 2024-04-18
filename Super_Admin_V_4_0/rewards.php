@@ -200,7 +200,7 @@
                                                 <table class="table my-0" id="dataTable">
                                                     <thead>
                                                         <tr>
-                                                            <th>Date</th>
+                                                            <th>Date/Time</th>
                                                             <th>Transaction ID</th>
                                                             <th>Customer name</th>
                                                             <th>Branch</th>

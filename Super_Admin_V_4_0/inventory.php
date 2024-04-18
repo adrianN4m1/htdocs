@@ -38,7 +38,7 @@
                     <li class="nav-item"></li>
                     <li class="nav-item"><a class="nav-link" href="branch_owners.php"><i
                                 class="fas fa-user-tie"></i><span>Branch Admins</span></a><a class="nav-link"
-                            href="rewards.phps"><i class="fas fa-award"></i><span>Rewards</span></a></li>
+                            href="rewards.php"><i class="fas fa-award"></i><span>Rewards</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
                         id="sidebarToggle" type="button"></button></div>

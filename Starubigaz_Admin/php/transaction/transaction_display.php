@@ -122,11 +122,11 @@ if ($result->num_rows > 0) {
                                     </div>
                                     
                                     <hr>
-                                    <h6 style="margin-bottom: 0px;">Order Summary</h6>
                                     <div class="receipt-contents" style="height: 50vh;overflow-y: scroll;">
-                                        <div>
-                                            <hr>
-                                            <h6 class="text-end" style="font-weight: bold;">Price</h6>
+                                        <div class="d-flex justify-content-between">
+                                            <div>
+                                                <h6 class="text-end" style="font-weight: bold;">Sub Total</h6>
+                                            </div>
                                         </div>';
         $order_items_query = "SELECT oid.quantity, pr.product_name, oid.price FROM order_items oid JOIN products pr ON oid.product_id = pr.product_id WHERE order_id = ?";
         $stmt_order_items = $conn->prepare($order_items_query);
@@ -138,8 +138,7 @@ if ($result->num_rows > 0) {
         while ($row_order_item = $result_order_items->fetch_assoc()) {
             echo '
         <div class="d-flex justify-content-between">
-            <p class="d-inline">' . $row_order_item['quantity'] . '</p>
-            <p class="d-inline">' . $row_order_item['product_name'] . '</p>
+            <p class="d-inline">' . $row_order_item['product_name'] . ' x' . $row_order_item['quantity'] . '</p>
             <p class="d-inline">P' . number_format($row_order_item['price'], 2) . '</p>
         </div>';
         }
