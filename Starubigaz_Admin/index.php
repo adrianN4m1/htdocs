@@ -129,16 +129,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>0s2</td>
-                                                        <td>Diesel</td>
-                                                        <td style="color: var(--bs-green);">high</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>0s3</td>
-                                                        <td>XSC</td>
-                                                        <td style="color: var(--bs-red);">low</td>
-                                                    </tr>
+                                                <?php include("php/index/index_stock_display.php")?>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr></tr>
@@ -151,7 +142,7 @@
                         </div>
                         <div class="col col-md-8">
                             <hr style="margin-bottom: 0px;">
-                            <div style="--bs-success: #1cc88a;--bs-success-rgb: 28,200,138;"><canvas data-bss-chart="{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Mega Blaze&quot;,&quot;Premium G&quot;,&quot;Unleaded G&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Stock Count&quot;,&quot;backgroundColor&quot;:&quot;#1cc88a&quot;,&quot;borderColor&quot;:&quot;#ffffff&quot;,&quot;data&quot;:[&quot;100&quot;,&quot;70&quot;,&quot;300&quot;,&quot;230&quot;,&quot;140&quot;,&quot;430&quot;,&quot;100&quot;,&quot;100&quot;,&quot;200&quot;,&quot;300&quot;,&quot;200&quot;,&quot;100&quot;]},{&quot;label&quot;:&quot;Limit&quot;,&quot;backgroundColor&quot;:&quot;#ff7171&quot;,&quot;borderColor&quot;:&quot;#ffffff&quot;,&quot;data&quot;:[&quot;50&quot;,&quot;20&quot;,&quot;81&quot;,&quot;100&quot;,&quot;70&quot;,&quot;300&quot;,&quot;50&quot;,&quot;50&quot;,&quot;100&quot;,&quot;150&quot;,&quot;100&quot;,&quot;40&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:true,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;bold&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;ticks&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}}],&quot;yAxes&quot;:[{&quot;ticks&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}}]}}}"></canvas></div>
+                            <div style="--bs-success: #1cc88a;--bs-success-rgb: 28,200,138;"><?php include("php/index/index_stock_graph.php")?></div>
                         </div>
                     </div>
                     <hr>

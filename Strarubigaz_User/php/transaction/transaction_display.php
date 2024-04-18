@@ -26,7 +26,7 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // Output data of each row
-    while ($row = $result->fetch_assoc()) {
+    while (($row = $result->fetch_assoc())) {
         $order_id = $row['order_id'];
         $claim_id = $row['claim_id'];
         $order_date = $row['transaction_date'];
@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
         echo '<tr>
                 <td>' . $order_date . '</td>
                 <td>' . $transaction_id . '</td>';
-        
+
         $total_price = 0;
         $stmt = $conn->prepare("SELECT SUM(quantity * price) AS total_price FROM order_items WHERE order_id = ?");
         $stmt->bind_param("i", $order_id);
@@ -43,31 +43,40 @@ if ($result->num_rows > 0) {
         $result_total_price = $stmt->get_result();
         if ($result_total_price->num_rows > 0) {
             $row_total_price = $result_total_price->fetch_assoc();
+            $total_price = $row_total_price['total_price'];
         }
         $stmt->close();
-        echo '<td>P' . number_format($row_total_price['total_price'], 2) . '</td>';
-
+        echo '<td>P' . number_format($total_price, 2) . '</td>';
+        $modal_id = "receipt-modal-" . ($order_id ? $order_id : $claim_id) . '-' . uniqid(); // Ensure uniqueness
         if ($row['reward_id']) {
             echo '<td style="color: var(--bs-red);">-' . number_format($point, 2) . '</td>';
+            echo '<td class="text-center">
+                <button class="btn" type="submit" style="border-style: none;" data-bs-target="#' . $modal_id . '" data-bs-toggle="modal" disabled>
+                    <i class="fas fa-receipt"></i>&nbsp;Receipt
+                </button>
+              </td>
+        </tr>';
         } else {
             echo '<td style="color: var(--bs-green);">+' . number_format($point, 2) . '</td>';
+            echo '<td class="text-center">
+                <button class="btn" type="submit" style="border-style: none;" data-bs-target="#' . $modal_id . '" data-bs-toggle="modal">
+                    <i class="fas fa-receipt"></i>&nbsp;Receipt
+                </button>
+              </td>
+        </tr>';
         }
 
         // Display receipt button with data attribute for the modal ID
-        $modal_id = "receipt-modal-" . ($order_id ? $order_id : $claim_id);
-        echo '<td class="text-center">
-                <button class="btn" type="button" style="border-style: none;" data-bs-target="#' . $modal_id . '" data-bs-toggle="modal">
-                    <i class="fas fa-receipt"></i>&nbsp;Receipt
-                </button>
-              </td>';
-        echo '</tr>';
+        
+        
+
 
         // Generate the modal HTML for each transaction
         echo '<div class="modal fade" role="dialog" tabindex="-1" id="' . $modal_id . '">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">Receipt - ' . ($order_id ? $order_id : $claim_id) . '</h4>
+                            <h4 class="modal-title">Receipt - ' . ($transaction_id) . '</h4>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -75,7 +84,7 @@ if ($result->num_rows > 0) {
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div>
-                                            <p>Order ID:&nbsp;<span>' . ($order_id ? $order_id : $claim_id) . '</span></p>
+                                            <p>Reference ID:&nbsp;<span>' . ($order_id ? $order_id : $claim_id) . '</span></p>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -95,8 +104,25 @@ if ($result->num_rows > 0) {
                                             <hr>
                                             <h6 class="text-end" style="font-weight: bold;">Price</h6>
                                         </div>';
-                                        // include("php/transaction/display_loop.php");
-                                    echo '</div>
+        $order_items_query = "SELECT oid.quantity, pr.product_name, oid.price FROM order_items oid JOIN products pr ON oid.product_id = pr.product_id WHERE order_id = ?";
+        $stmt_order_items = $conn->prepare($order_items_query);
+        $stmt_order_items->bind_param("i", $order_id);
+        $stmt_order_items->execute();
+        $result_order_items = $stmt_order_items->get_result();
+
+        // Output each order item
+        while ($row_order_item = $result_order_items->fetch_assoc()) {
+            echo '
+        <div class="d-flex justify-content-between">
+            <p class="d-inline">' . $row_order_item['quantity'] . '</p>
+            <p class="d-inline">' . $row_order_item['product_name'] . '</p>
+            <p class="d-inline">P' . number_format($row_order_item['price'], 2) . '</p>
+        </div>';
+        }
+
+        $stmt_order_items->close();
+
+        echo '</div>
                                 </div>
                             </div>
                         </div>
@@ -111,6 +137,5 @@ if ($result->num_rows > 0) {
 } else {
     echo "No transactions found.";
 }
-
 $conn->close();
 ?>

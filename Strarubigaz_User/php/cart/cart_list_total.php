@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
         <th>Item</th>
         <th>Quantity</th>
         <th>Price</th>
-        <th>Total</th>
+        <th>Sub Total</th>
     </tr>
 </thead>
 <tbody>';
