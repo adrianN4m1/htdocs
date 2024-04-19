@@ -104,7 +104,7 @@
                                     style="background: rgb(230,230,230);"><i class="fas fa-print"
                                         style="color: rgb(106,106,106);"></i></span><span class="d-xxl-flex text"
                                     style="color: rgb(106,106,106);">Print Reports</span></a>
-                                </div>
+                        </div>
                     </div>
                 </div>
                 <div class="container-fluid">
@@ -122,13 +122,12 @@
                                         <h6 class="text-primary fw-bold m-0" style="color: rgb(255,164,113);">
                                             Transaction</h6>
                                     </div>
-                                    <div>
-                                        <input id="startDate" class="form-control-sm" type="date"
-                                            style="color: var(--bs-gray-dark);font-weight: bold;font-family: Nunito, sans-serif;text-align: center;border-style: solid;border-color: var(--bs-card-border-color);">
-                                        <span>&nbsp; to &nbsp;</span>
-                                        <input id="endDate" class="form-control-sm" type="date"
-                                            style="color: var(--bs-gray-dark);font-weight: bold;font-family: Nunito, sans-serif;text-align: center;border-style: solid;border-color: var(--bs-card-border-color);">
-                                    </div>
+
+                                    <input id="startDate" class="form-control-sm" type="date"
+                                        style="color: var(--bs-gray-dark);font-weight: bold;font-family: Nunito, sans-serif;text-align: center;border-style: solid;border-color: var(--bs-card-border-color);">
+                                    <span>&nbsp; to &nbsp;</span>
+                                    <input id="endDate" class="form-control-sm" type="date"
+                                        style="color: var(--bs-gray-dark);font-weight: bold;font-family: Nunito, sans-serif;text-align: center;border-style: solid;border-color: var(--bs-card-border-color);">
                                 </div>
                                 <div class="card-body">
                                     <div style="--bs-success: #1cc88a;--bs-success-rgb: 28,200,138;">
@@ -142,8 +141,8 @@
                                         <div class="card-header py-3">
                                             <h6 class="m-0" style="color: var(--bs-blue);">Revenue and Transactions</h6>
                                         </div>
-                                        <div class="card-body" style="display: grid;">
-                                            <div style="display: inline-flex;">
+                                        <div id="result" class="card-body" style="display: grid;">
+                                            <!-- <div style="display: inline-flex;">
                                                 <p class="m-0"
                                                     style="font-weight: bold;color: rgb(28,200,138);font-size: 20px;">
                                                     Revenue :&nbsp;</p>
@@ -156,7 +155,10 @@
                                                     Transactions :&nbsp;</p>
                                                 <p class="text-dark d-xxl-flex align-items-xxl-center m-0"
                                                     style="font-size: 20px;">5,405</p>
-                                            </div>
+                                            </div> -->
+
+                                            <?php include ("php/index/index_sales_cost.php") ?>
+
                                         </div>
                                     </div>
                                 </div>
@@ -164,8 +166,7 @@
                                     <div class="card-body" style="padding-top: 5px;">
                                         <div
                                             style="padding-top: 10px;transform-style: preserve-3d;padding-bottom: 10px;">
-                                            <canvas
-                                                data-bss-chart="{&quot;type&quot;:&quot;pie&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Revenue&quot;,&quot;Transactions&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Revenue&quot;,&quot;backgroundColor&quot;:[&quot;rgb(28,200,138)&quot;,&quot;rgb(255,164,113)&quot;],&quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;1000&quot;,&quot;300&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:true,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;bold&quot;}}}"></canvas>
+                                            <canvas id="pieChart"></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -367,69 +368,135 @@
         <script src="assets/js/bs-init.js"></script>
         <script src="assets/js/theme.js"></script>
         <script>
-    var startDateInput = document.getElementById('startDate');
-    var endDateInput = document.getElementById('endDate');
-    var urlParams = new URLSearchParams(window.location.search);
-    var userId = urlParams.get('user_id');
-    var ctx = document.getElementById('displaychart').getContext('2d');
-    var myChart;
-        function handleDateChange() {
-        var startDate = startDateInput.value;
-        var endDate = endDateInput.value;
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "php/index/index_summary.php?user_id=" + userId + "&start_date=" + startDate + "&end_date=" + endDate, true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    var data = JSON.parse(xhr.responseText);
-                    var labels = data.data.map(function (item) {
-                        return item.date;
-                    });
-                    var grossProfitData = data.data.map(function (item) {
-                        return item['overall revenue of price in order_id'];
-                    });
-                    var netProfitData = data.data.map(function (item) {
-                        return item['overall revenue of price in order_id but bprice'];
-                    });
+            var startDateInput = document.getElementById('startDate');
+            var endDateInput = document.getElementById('endDate');
+            var urlParams = new URLSearchParams(window.location.search);
+            var userId = urlParams.get('user_id');
+            var ctx = document.getElementById('displaychart').getContext('2d');
+            var myChart;
 
-                    if (myChart) {
-                        myChart.data.labels = labels;
-                        myChart.data.datasets[0].data = grossProfitData;
-                        myChart.data.datasets[1].data = netProfitData;
-                        myChart.update();
-                    } else {
-                        myChart = new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: labels,
-                                datasets: [
-                                    {
-                                        label: 'Sales Price',
-                                        backgroundColor: '#1cc88a',
-                                        borderColor: '#ffffff',
-                                        data: grossProfitData
-                                    },
-                                    {
-                                        label: 'Cost Price',
-                                        backgroundColor: '#ffa471',
-                                        borderColor: '#ffffff',
-                                        data: netProfitData
+            function handleDateChange() {
+                var startDate = startDateInput.value;
+                var endDate = endDateInput.value;
+
+                // First XHR request
+                var xhr1 = new XMLHttpRequest();
+                xhr1.open("GET", "php/index/index_summary.php?user_id=" + userId + "&start_date=" + startDate + "&end_date=" + endDate, true);
+                xhr1.onreadystatechange = function () {
+                    if (xhr1.readyState === 4) {
+                        if (xhr1.status === 200) {
+                            var data = JSON.parse(xhr1.responseText);
+                            var labels = data.data.map(function (item) {
+                                return item.date;
+                            });
+                            var grossProfitData = data.data.map(function (item) {
+                                return item['overall revenue of price in order_id'];
+                            });
+                            var netProfitData = data.data.map(function (item) {
+                                return item['overall revenue of price in order_id but bprice'];
+                            });
+
+                            if (myChart) {
+                                myChart.data.labels = labels;
+                                myChart.data.datasets[0].data = grossProfitData;
+                                myChart.data.datasets[1].data = netProfitData;
+                                myChart.update();
+                            } else {
+                                myChart = new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: labels,
+                                        datasets: [
+                                            {
+                                                label: 'Sales Price',
+                                                backgroundColor: '#1cc88a',
+                                                borderColor: '#ffffff',
+                                                data: grossProfitData
+                                            },
+                                            {
+                                                label: 'Cost Price',
+                                                backgroundColor: '#ffa471',
+                                                borderColor: '#ffffff',
+                                                data: netProfitData
+                                            }
+                                        ]
                                     }
-                                ]
+                                });
                             }
-                        });
+
+                            // Second XHR request
+                            var xhr2 = new XMLHttpRequest();
+                            xhr2.open("GET", "php/index/index_sales_cost.php?user_id=" + userId + "&start_date=" + startDate + "&end_date=" + endDate, true);
+                            xhr2.onreadystatechange = function () {
+                                if (xhr2.readyState === 4) {
+                                    if (xhr2.status === 200) {
+                                        document.getElementById("result").innerHTML = xhr2.responseText;
+                                    } else {
+                                        console.error("Error fetching second data: " + xhr2.status);
+                                    }
+                                }
+                            };
+                            xhr2.send(); // Ensure the second XHR request is sent here
+                            // Third XHR request
+                            var xhr3 = new XMLHttpRequest();
+                            xhr3.open("GET", "php/index/index_display_pie.php?user_id=" + userId + "&start_date=" + startDate + "&end_date=" + endDate, true);
+                            xhr3.onreadystatechange = function () {
+                                if (xhr3.readyState === 4) {
+                                    if (xhr3.status === 200) {
+                                        var data = JSON.parse(xhr3.responseText);
+
+                                        // Extract active and inactive counts from the JSON response
+                                        var active = parseFloat(data['data'][0]['count_active']);
+                                        var inactive = parseFloat(data['data'][0]['count_inactive']);
+
+                                        // Create a pie chart using Chart.js
+                                        var ctx = document.getElementById('pieChart').getContext('2d');
+                                        var myChart = new Chart(ctx, {
+                                            type: 'pie',
+                                            data: {
+                                                labels: ['Active', 'Inactive'],
+                                                datasets: [{
+                                                    label: 'Active vs Inactive',
+                                                    data: [active, inactive],
+                                                    backgroundColor: [
+                                                        'rgb(28, 200, 138)',
+                                                        'rgb(255, 164, 113)'
+                                                    ]
+                                                }]
+                                            },
+                                            options: {
+                                                maintainAspectRatio: false,
+                                                legend: {
+                                                    display: true,
+                                                    labels: {
+                                                        fontStyle: 'normal'
+                                                    }
+                                                },
+                                                title: {
+                                                    display: true,
+                                                    text: 'Customer'
+                                                }
+                                            }
+                                        });
+                                    } else {
+                                        console.error("Error fetching data: " + xhr3.status);
+                                    }
+                                }
+                            };
+                            xhr3.send();
+                        } else {
+                            console.error("Error fetching data: " + xhr1.status);
+                        }
                     }
-                } else {
-                    console.error("Error fetching data: " + xhr.status);
-                }
+                };
+                xhr1.send(); // Ensure the first XHR request is sent here
             }
-        };
-        xhr.send();
-    }
-    handleDateChange();
-    startDateInput.addEventListener('change', handleDateChange);
-    endDateInput.addEventListener('change', handleDateChange);
-</script>
+
+            handleDateChange();
+            startDateInput.addEventListener('change', handleDateChange);
+            endDateInput.addEventListener('change', handleDateChange);
+        </script>
+
 
 </body>
 
