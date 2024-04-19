@@ -53,7 +53,9 @@ if ($result->num_rows > 0) {
         </tr>';
     }
     echo '<tr style="border-color: rgb(255,255,255);">
-    <td></td>
+
+    <td style="font-weight: bold;text-align: right;border-top: 2px solid var(--bs-table-color);"></td>
+    <td style="font-weight: bold;text-align: right;border-top: 2px solid var(--bs-table-color);"></td>
     <td style="font-weight: bold;text-align: right;border-top: 2px solid var(--bs-table-color);">Total :</td>
     <td style="font-weight: bold;text-align: right;border-top: 2px solid rgb(45,45,45);font-size: 23px;">'.number_format($total_price,2).'</td>
 </tr>

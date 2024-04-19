@@ -54,7 +54,7 @@
                     <?php include ("php/cart/cart_list_display.php") ?>
                 </div>
                 <div class="col-md-6">
-                    <div class="sticky-top" style="padding-top: 80px;">
+                    <div class="sticky-top" style="top: 80px;">
                         <h3 style="padding-top: 10px;margin-bottom: 50px;"><strong>Order Summary</strong></h3>
                         <div class="table-responsive">
                             <table class="table">
