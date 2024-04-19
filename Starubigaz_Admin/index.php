@@ -367,30 +367,21 @@
         <script src="assets/js/bs-init.js"></script>
         <script src="assets/js/theme.js"></script>
         <script>
-    // Get references to date inputs
     var startDateInput = document.getElementById('startDate');
     var endDateInput = document.getElementById('endDate');
     var urlParams = new URLSearchParams(window.location.search);
     var userId = urlParams.get('user_id');
-
-    // Initialize chart
     var ctx = document.getElementById('displaychart').getContext('2d');
     var myChart;
-
-    // Function to handle date input change
-    function handleDateChange() {
+        function handleDateChange() {
         var startDate = startDateInput.value;
         var endDate = endDateInput.value;
-
-        // Make an AJAX request to fetch data from your PHP file
         var xhr = new XMLHttpRequest();
         xhr.open("GET", "php/index/index_summary.php?user_id=" + userId + "&start_date=" + startDate + "&end_date=" + endDate, true);
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                     var data = JSON.parse(xhr.responseText);
-
-                    // Extracting data from the JSON response
                     var labels = data.data.map(function (item) {
                         return item.date;
                     });
@@ -401,7 +392,6 @@
                         return item['overall revenue of price in order_id but bprice'];
                     });
 
-                    // Update the chart or initialize it if it doesn't exist
                     if (myChart) {
                         myChart.data.labels = labels;
                         myChart.data.datasets[0].data = grossProfitData;
@@ -430,18 +420,13 @@
                         });
                     }
                 } else {
-                    // Handle errors
                     console.error("Error fetching data: " + xhr.status);
                 }
             }
         };
         xhr.send();
     }
-
-    // Call handleDateChange initially to render the chart with default dates
     handleDateChange();
-
-    // Listen for changes in date inputs
     startDateInput.addEventListener('change', handleDateChange);
     endDateInput.addEventListener('change', handleDateChange);
 </script>

@@ -13,6 +13,8 @@ if ($conn->connect_error) {
 }
 $start_date = $_GET['start_date'];
 $end_date = $_GET['end_date'];
+$ends_date = date('Y-m-d', strtotime($end_date . ' +1 day'));
+
 $user_id = $_GET['user_id'];
 
 // Modify your SQL query to filter transactions based on the date range
@@ -24,7 +26,7 @@ $sql = "SELECT DATE(t.transaction_date) AS date,
         INNER JOIN order_items oi ON o.order_id = oi.order_id
         INNER JOIN products p ON oi.product_id = p.product_id
         INNER JOIN branches b ON o.branch_id = b.branch_id
-        WHERE t.transaction_date BETWEEN '$start_date' AND '$end_date'
+        WHERE t.transaction_date BETWEEN '$start_date' AND '$ends_date'
         AND b.branch_id IN (SELECT branch_id FROM branch_customer WHERE b.user_id = $user_id)
         GROUP BY DATE(t.transaction_date)";
 
@@ -35,7 +37,7 @@ $data = array();
 // Fetch data and format it according to JSON structure
 while ($row = mysqli_fetch_assoc($result)) {
     $data[] = array(
-        'date' => date('m-d', strtotime($row['date'])),
+        'date' => date('F j', strtotime($row['date'])),
         'overall revenue of price in order_id' => $row['overall_revenue'],
         'overall revenue of price in order_id but bprice' => $row['overall_revenue_bprice']
     );
