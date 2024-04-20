@@ -139,405 +139,444 @@
                   </div>
                 </div>
               </div>
-</div>
-              <div class="col col-3">
-                <div>
-                  <div class="card mb-4">
-                    <div class="card-header py-3">
-                      <h6 class="m-0" style="color: var(--bs-blue)">
-                        Revenue and Transactions
-                      </h6>
-                    </div>
-                    <div class="card-body" style="display: grid">
-                      <div style="display: inline-flex">
-                        <p class="m-0" style="
-                            font-weight: bold;
-                            color: rgb(28, 200, 138);
-                            font-size: 20px;
-                          ">
-                          Revenue :&nbsp;
-                        </p>
-                        <p class="text-dark d-xxl-flex align-items-xxl-center m-0" style="font-size: 20px">
-                          P100.00
-                        </p>
-                      </div>
-                      <div style="display: inline-flex">
-                        <p class="m-0" style="
-                            font-weight: bold;
-                            color: rgb(255, 164, 113);
-                            font-size: 20px;
-                          ">
-                          Transactions :&nbsp;
-                        </p>
-                        <p class="text-dark d-xxl-flex align-items-xxl-center m-0" style="font-size: 20px">
-                          5,405
-                        </p>
-                      </div>
-                    </div>
+            </div>
+            <div class="col col-3">
+              <div>
+                <div class="card mb-4">
+                  <div class="card-header py-3">
+                    <h6 class="m-0" style="color: var(--bs-blue)">
+                      Revenue and Transactions
+                    </h6>
+                  </div>
+                  <div id="result" class="card-body" style="display: grid;">
+
+                    <?php include ("php/index/index_sales_cost.php") ?>
+
                   </div>
                 </div>
-                <div class="card shadow border-start-warning py-2">
-                  <div class="card-body" style="padding-top: 5px">
-                    <div style="
-                        padding-top: 10px;
-                        transform-style: preserve-3d;
-                        padding-bottom: 10px;
-                      ">
-                      <canvas
-                        data-bss-chart='{"type":"pie","data":{"labels":["Revenue","Transactions"],"datasets":[{"label":"Revenue","backgroundColor":["rgb(28,200,138)","rgb(255,164,113)"],"borderColor":["#ffffff","#ffffff"],"data":["50","50"]}]},"options":{"maintainAspectRatio":true,"legend":{"display":true,"labels":{"fontStyle":"normal"}},"title":{"fontStyle":"bold"}}}'></canvas>
-                    </div>
+              </div>
+              <div class="card shadow border-start-warning py-2">
+                <div class="card-body" style="padding-top: 5px">
+                  <div style="padding-top: 10px;transform-style: preserve-3d;padding-bottom: 10px;">
+                    <canvas id="pieChart"></canvas>
                   </div>
                 </div>
               </div>
             </div>
-            <hr />
-            <div class="row">
-              <div class="col">
-                <div class="card shadow">
-                  <div class="card-header py-3">
-                    <p class="text-primary m-0 fw-bold">Available Stocks</p>
-                  </div>
-                  <div class="card-body">
-                    <div style="overflow: scroll; overflow-x: hidden; height: 40vh">
-                      <div class="table-responsive table mt-2" id="dataTable-6" role="grid"
-                        aria-describedby="dataTable_info">
-                        <table class="table my-0" id="dataTable">
-                          <thead>
-                            <tr>
-                              <th>Barcode</th>
-                              <th>Product</th>
-                              <th>Status</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <?php include ("php/index/index_stock_display.php") ?>
-                          </tbody>
-                          <tfoot>
-                            <tr></tr>
-                          </tfoot>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col">
+              <div class="card shadow">
+                <div class="card-header py-3">
+                  <p class="text-primary m-0 fw-bold">Available Stocks</p>
                 </div>
-              </div>
-              <div class="col col-md-8">
-                <hr style="margin-bottom: 0px" />
-                <div style="--bs-success: #1cc88a; --bs-success-rgb: 28, 200, 138">
-                  <?php include ("php/index/index_stock_graph.php") ?>
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div class="row" style="margin-top: 28px">
-              <div class="col">
-                <div class="card shadow">
-                  <div class="card-header py-3">
-                    <div>
-                      <p class="text-primary d-inline m-0 fw-bold" style="display: inline">
-                        Top 5 Sold Products last month
-                      </p>
-                    </div>
-                  </div>
-                  <div class="card-body" style="padding-top: 3px">
-                    <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
+                <div class="card-body">
+                  <div style="overflow: scroll; overflow-x: hidden; height: 40vh">
+                    <div class="table-responsive table mt-2" id="dataTable-6" role="grid"
                       aria-describedby="dataTable_info">
                       <table class="table my-0" id="dataTable">
                         <thead>
-                          <tr style="
+                          <tr>
+                            <th>Barcode</th>
+                            <th>Product</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php include ("php/index/index_stock_display.php") ?>
+                        </tbody>
+                        <tfoot>
+                          <tr></tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col col-md-8">
+              <hr style="margin-bottom: 0px" />
+              <div style="--bs-success: #1cc88a; --bs-success-rgb: 28, 200, 138">
+                <?php include ("php/index/index_stock_graph.php") ?>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div class="row" style="margin-top: 28px">
+            <div class="col">
+              <div class="card shadow">
+                <div class="card-header py-3">
+                  <div>
+                    <p class="text-primary d-inline m-0 fw-bold" style="display: inline">
+                      Top 5 Sold Products last month
+                    </p>
+                  </div>
+                </div>
+                <div class="card-body" style="padding-top: 3px">
+                  <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
+                    aria-describedby="dataTable_info">
+                    <table class="table my-0" id="dataTable">
+                      <thead>
+                        <tr style="
                               text-align: center;
                               background: #00492f;
                               border-color: rgb(255, 255, 255);
                             ">
-                            <th></th>
-                            <th style="
+                          <th></th>
+                          <th style="
                                 border-color: rgb(255, 255, 255);
                                 color: rgb(255, 255, 255);
                               ">
-                              Barcode
-                            </th>
-                            <th style="
+                            Barcode
+                          </th>
+                          <th style="
                                 border-color: rgb(255, 255, 255);
                                 color: rgb(255, 255, 255);
                               ">
-                              Product
-                            </th>
-                            <th style="
+                            Product
+                          </th>
+                          <th style="
                                 border-color: rgb(255, 255, 255);
                                 color: rgb(255, 255, 255);
                               ">
-                              Sales
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr style="
+                            Sales
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr style="
                               background: var(--bs-green);
                               color: rgb(255, 255, 255);
                             ">
-                            <td style="
+                          <td style="
                                 font-size: 20px;
                                 font-weight: bold;
                                 text-align: center;
                               ">
-                              1
-                            </td>
-                            <td style="
+                            1
+                          </td>
+                          <td style="
                                 font-size: 20px;
                                 font-weight: bold;
                                 text-align: center;
                               ">
-                              0x12
-                            </td>
-                            <td style="
+                            0x12
+                          </td>
+                          <td style="
                                 font-size: 20px;
                                 font-weight: bold;
                                 text-align: center;
                               ">
-                              Megatron X
-                            </td>
-                            <td style="
+                            Megatron X
+                          </td>
+                          <td style="
                                 color: var(--bs-card-bg);
                                 font-size: 20px;
                                 font-weight: bold;
                                 text-align: center;
                               ">
-                              P120.12
-                            </td>
-                          </tr>
-                          <tr style="
+                            P120.12
+                          </td>
+                        </tr>
+                        <tr style="
                               background: rgba(28, 200, 138, 0.7);
                               text-align: center;
                             ">
-                            <td>2</td>
-                            <td>0x13</td>
-                            <td>Compus x46</td>
-                            <td style="color: var(--bs-table-color)">P20.9</td>
-                          </tr>
-                          <tr style="
+                          <td>2</td>
+                          <td>0x13</td>
+                          <td>Compus x46</td>
+                          <td style="color: var(--bs-table-color)">P20.9</td>
+                        </tr>
+                        <tr style="
                               background: rgba(28, 200, 138, 0.4);
                               text-align: center;
                             ">
-                            <td>3</td>
-                            <td>0x14</td>
-                            <td>Sopusar v12</td>
-                            <td style="color: var(--bs-table-color)">P12,2</td>
-                          </tr>
-                          <tr style="
+                          <td>3</td>
+                          <td>0x14</td>
+                          <td>Sopusar v12</td>
+                          <td style="color: var(--bs-table-color)">P12,2</td>
+                        </tr>
+                        <tr style="
                               background: rgba(28, 200, 138, 0.1);
                               text-align: center;
                             ">
-                            <td>4</td>
-                            <td>0x15</td>
-                            <td>Electricodes beta v1</td>
-                            <td style="color: var(--bs-table-color)">P5,3</td>
-                          </tr>
-                          <tr style="
+                          <td>4</td>
+                          <td>0x15</td>
+                          <td>Electricodes beta v1</td>
+                          <td style="color: var(--bs-table-color)">P5,3</td>
+                        </tr>
+                        <tr style="
                               background: rgba(28, 200, 138, 0.1);
                               text-align: center;
                             ">
-                            <td>5</td>
-                            <td>0x16</td>
-                            <td>NoS v345</td>
-                            <td style="color: var(--bs-table-color)">P1.98</td>
-                          </tr>
-                        </tbody>
-                        <tfoot>
-                          <tr></tr>
-                        </tfoot>
-                      </table>
-                    </div>
+                          <td>5</td>
+                          <td>0x16</td>
+                          <td>NoS v345</td>
+                          <td style="color: var(--bs-table-color)">P1.98</td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr></tr>
+                      </tfoot>
+                    </table>
                   </div>
                 </div>
               </div>
-              <div class="col" style="padding-bottom: 30px">
-                <div class="card shadow">
-                  <div class="card-header py-3">
-                    <p class="text-primary m-0 fw-bold">
-                      Top 5 Customers last month
-                    </p>
-                  </div>
-                  <div class="card-body" style="padding-top: 3px">
-                    <div class="table-responsive table mt-2" id="dataTable-3" role="grid"
-                      aria-describedby="dataTable_info">
-                      <table class="table my-0" id="dataTable">
-                        <thead>
-                          <tr style="text-align: center; background: #a77800">
-                            <th></th>
-                            <th style="color: rgb(255, 255, 255)">ID</th>
-                            <th style="color: rgb(255, 255, 255)">Name</th>
-                            <th style="color: rgb(255, 255, 255)">Points</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr style="
+            </div>
+            <div class="col" style="padding-bottom: 30px">
+              <div class="card shadow">
+                <div class="card-header py-3">
+                  <p class="text-primary m-0 fw-bold">
+                    Top 5 Customers last month
+                  </p>
+                </div>
+                <div class="card-body" style="padding-top: 3px">
+                  <div class="table-responsive table mt-2" id="dataTable-3" role="grid"
+                    aria-describedby="dataTable_info">
+                    <table class="table my-0" id="dataTable">
+                      <thead>
+                        <tr style="text-align: center; background: #a77800">
+                          <th></th>
+                          <th style="color: rgb(255, 255, 255)">ID</th>
+                          <th style="color: rgb(255, 255, 255)">Name</th>
+                          <th style="color: rgb(255, 255, 255)">Points</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr style="
                               background: var(--bs-yellow);
                               color: rgb(255, 255, 255);
                             ">
-                            <td style="
+                          <td style="
                                 font-size: 20px;
                                 font-weight: bold;
                                 text-align: center;
                               ">
-                              1
-                            </td>
-                            <td style="
+                            1
+                          </td>
+                          <td style="
                                 font-size: 20px;
                                 font-weight: bold;
                                 text-align: center;
                               ">
-                              0x12
-                            </td>
-                            <td style="
+                            0x12
+                          </td>
+                          <td style="
                                 font-size: 20px;
                                 font-weight: bold;
                                 text-align: center;
                               ">
-                              Israel Breta
-                            </td>
-                            <td style="
+                            Israel Breta
+                          </td>
+                          <td style="
                                 color: var(--bs-card-bg);
                                 font-size: 20px;
                                 font-weight: bold;
                                 text-align: center;
                               ">
-                              120.12
-                            </td>
-                          </tr>
-                          <tr style="
+                            120.12
+                          </td>
+                        </tr>
+                        <tr style="
                               background: rgba(246, 194, 62, 0.6);
                               text-align: center;
                             ">
-                            <td>2</td>
-                            <td>0x13</td>
-                            <td>Sev Constantino</td>
-                            <td style="color: var(--bs-table-color)">20.9</td>
-                          </tr>
-                          <tr style="
+                          <td>2</td>
+                          <td>0x13</td>
+                          <td>Sev Constantino</td>
+                          <td style="color: var(--bs-table-color)">20.9</td>
+                        </tr>
+                        <tr style="
                               background: rgba(246, 194, 62, 0.4);
                               text-align: center;
                             ">
-                            <td>3</td>
-                            <td>0x14</td>
-                            <td>Adrian Mones</td>
-                            <td style="color: var(--bs-table-color)">12,2</td>
-                          </tr>
-                          <tr style="
+                          <td>3</td>
+                          <td>0x14</td>
+                          <td>Adrian Mones</td>
+                          <td style="color: var(--bs-table-color)">12,2</td>
+                        </tr>
+                        <tr style="
                               background: rgba(246, 194, 62, 0.1);
                               text-align: center;
                             ">
-                            <td>4</td>
-                            <td>0x15</td>
-                            <td>Karl Adriane Catalan</td>
-                            <td style="color: var(--bs-table-color)">5,3</td>
-                          </tr>
-                          <tr style="
+                          <td>4</td>
+                          <td>0x15</td>
+                          <td>Karl Adriane Catalan</td>
+                          <td style="color: var(--bs-table-color)">5,3</td>
+                        </tr>
+                        <tr style="
                               background: rgba(246, 194, 62, 0.1);
                               text-align: center;
                             ">
-                            <td>5</td>
-                            <td>0x16</td>
-                            <td>Kristian Adriane Grande</td>
-                            <td style="color: var(--bs-table-color)">1.98</td>
-                          </tr>
-                        </tbody>
-                        <tfoot>
-                          <tr></tr>
-                        </tfoot>
-                      </table>
-                    </div>
+                          <td>5</td>
+                          <td>0x16</td>
+                          <td>Kristian Adriane Grande</td>
+                          <td style="color: var(--bs-table-color)">1.98</td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <tr></tr>
+                      </tfoot>
+                    </table>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <footer class="bg-white sticky-footer">
-          <div class="container my-auto">
-            <div class="text-center my-auto copyright">
-              <span>Copyright © Starubikals 2024</span>
-            </div>
-          </div>
-          <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-        </footer>
       </div>
-      <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+      <footer class="bg-white sticky-footer">
+        <div class="container my-auto">
+          <div class="text-center my-auto copyright">
+            <span>Copyright © Starubikals 2024</span>
+          </div>
+        </div>
+        <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+      </footer>
     </div>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/chart.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/theme.js"></script>
-    <script>
-      var startDateInput = document.getElementById('startDate');
-      var endDateInput = document.getElementById('endDate');
-      var branchSelect = document.getElementById('branchSelect'); // Assuming you have a select dropdown for selecting branches
-      var ctx = document.getElementById('displaychart').getContext('2d');
-      var myChart;
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+  </div>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/js/chart.min.js"></script>
+  <script src="assets/js/bs-init.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script>
+    var startDateInput = document.getElementById('startDate');
+    var endDateInput = document.getElementById('endDate');
+    var branchSelect = document.getElementById('branchSelect'); // Assuming you have a select dropdown for selecting branches
+    var ctx = document.getElementById('displaychart').getContext('2d');
+    var myChart;
 
-      function handleDateChange() {
-        var startDate = startDateInput.value;
-        var endDate = endDateInput.value;
-        var branchId = branchSelect.value; // Get the selected branch ID
+    function handleDateChange() {
+      var startDate = startDateInput.value;
+      var endDate = endDateInput.value;
+      var branchId = branchSelect.value; // Get the selected branch ID
 
-        // XHR request
-        var xhr1 = new XMLHttpRequest();
-        xhr1.open("GET", "php/index/index_summary.php?start_date=" + startDate + "&end_date=" + endDate + "&branch_id=" + branchId, true);
-        xhr1.onreadystatechange = function () {
-          if (xhr1.readyState === 4) {
-            if (xhr1.status === 200) {
-              var data = JSON.parse(xhr1.responseText);
-              var labels = data.data.map(function (item) {
-                return item.date;
-              });
-              var grossProfitData = data.data.map(function (item) {
-                return item['overall revenue of price in order_id'];
-              });
-              var netProfitData = data.data.map(function (item) {
-                return item['overall revenue of price in order_id but bprice'];
-              });
+      // XHR request
+      var xhr1 = new XMLHttpRequest();
+      xhr1.open("GET", "php/index/index_summary.php?start_date=" + startDate + "&end_date=" + endDate + "&branch_id=" + branchId, true);
+      xhr1.onreadystatechange = function () {
+        if (xhr1.readyState === 4) {
+          if (xhr1.status === 200) {
+            var data = JSON.parse(xhr1.responseText);
+            var labels = data.data.map(function (item) {
+              return item.date;
+            });
+            var grossProfitData = data.data.map(function (item) {
+              return item['overall revenue of price in order_id'];
+            });
+            var netProfitData = data.data.map(function (item) {
+              return item['overall revenue of price in order_id but bprice'];
+            });
 
-              if (myChart) {
-                myChart.data.labels = labels;
-                myChart.data.datasets[0].data = grossProfitData;
-                myChart.data.datasets[1].data = netProfitData;
-                myChart.update();
-              } else {
-                myChart = new Chart(ctx, {
-                  type: 'bar',
-                  data: {
-                    labels: labels,
-                    datasets: [
-                      {
-                        label: 'Sales Price',
-                        backgroundColor: '#1cc88a',
-                        borderColor: '#ffffff',
-                        data: grossProfitData
-                      },
-                      {
-                        label: 'Cost Price',
-                        backgroundColor: '#ffa471',
-                        borderColor: '#ffffff',
-                        data: netProfitData
-                      }
-                    ]
-                  }
-                });
-              }
-
-              // Second XHR request
+            if (myChart) {
+              myChart.data.labels = labels;
+              myChart.data.datasets[0].data = grossProfitData;
+              myChart.data.datasets[1].data = netProfitData;
+              myChart.update();
             } else {
-              console.error("Error fetching data: " + xhr1.status);
+              myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: labels,
+                  datasets: [
+                    {
+                      label: 'Sales Price',
+                      backgroundColor: '#1cc88a',
+                      borderColor: '#ffffff',
+                      data: grossProfitData
+                    },
+                    {
+                      label: 'Cost Price',
+                      backgroundColor: '#ffa471',
+                      borderColor: '#ffffff',
+                      data: netProfitData
+                    }
+                  ]
+                }
+              });
             }
-          }
-        };
-        xhr1.send(); // Ensure the XHR request is sent here
-      }
+            var xhr2 = new XMLHttpRequest();
+            xhr2.open("GET", "php/index/index_sales_cost.php?start_date=" + startDate + "&end_date=" + endDate + "&branch_id=" + branchId, true);
+            xhr2.onreadystatechange = function () {
+              if (xhr2.readyState === 4) {
+                if (xhr2.status === 200) {
+                  document.getElementById("result").innerHTML = xhr2.responseText;
+                } else {
+                  console.error("Error fetching second data: " + xhr2.status);
+                }
+              }
+            };
+            xhr2.send(); // Ensure the second XHR request is sent here
+            // Third XHR request
+            var xhr3 = new XMLHttpRequest();
+            xhr3.open("GET", "php/index/index_display_pie.php?start_date=" + startDate + "&end_date=" + endDate + "&branch_id=" + branchId, true);
+            xhr3.onreadystatechange = function () {
+              if (xhr3.readyState === 4) {
+                if (xhr3.status === 200) {
+                  var data = JSON.parse(xhr3.responseText);
 
-      handleDateChange();
-      startDateInput.addEventListener('change', handleDateChange);
-      endDateInput.addEventListener('change', handleDateChange);
-      branchSelect.addEventListener('change', handleDateChange); // Add event listener for branch selection
-    </script>
+                  // Extract active and inactive counts from the JSON response
+                  var active = parseFloat(data['data'][0]['count_active']);
+                  var inactive = parseFloat(data['data'][0]['count_inactive']);
+
+                  // Get the canvas context
+                  var ctx = document.getElementById('pieChart').getContext('2d');
+
+                  // Destroy the previous chart instance if it exists
+                  if (typeof myChartpie !== 'undefined' && myChartpie !== null) {
+                    myChartpie.destroy();
+                  }
+
+                  // Create a new pie chart using Chart.js
+                  myChartpie = new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                      labels: ['Active', 'Inactive'],
+                      datasets: [{
+                        label: 'Active vs Inactive',
+                        data: [active, inactive],
+                        backgroundColor: [
+                          'rgb(28, 200, 138)',
+                          'rgb(255, 164, 113)'
+                        ]
+                      }]
+                    },
+                    options: {
+                      maintainAspectRatio: false,
+                      legend: {
+                        display: true,
+                        labels: {
+                          fontStyle: 'normal'
+                        }
+                      },
+                      title: {
+                        display: true,
+                        text: 'Customer'
+                      }
+                    }
+                  });
+                } else {
+                  console.error("Error fetching data: " + xhr3.status);
+                }
+              }
+            };
+            xhr3.send();
+
+          } else {
+            console.error("Error fetching data: " + xhr1.status);
+          }
+        }
+      };
+      xhr1.send(); // Ensure the XHR request is sent here
+    }
+
+    handleDateChange();
+    startDateInput.addEventListener('change', handleDateChange);
+    endDateInput.addEventListener('change', handleDateChange);
+    branchSelect.addEventListener('change', handleDateChange); // Add event listener for branch selection
+  </script>
 
 
 </body>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -17,7 +17,7 @@ $end_date = $_GET['end_date'];
 $ends_date = date('Y-m-d', strtotime($end_date . ' +1 day'));
 
 // Check if branch_id is provided in the URL parameters
-if(isset($_GET['branch_id']) && !empty($_GET['branch_id'])) {
+if (isset($_GET['branch_id']) && !empty($_GET['branch_id'])) {
     $branch_id = $_GET['branch_id'];
     // SQL query with branch filter
     if (!empty($start_date) && !empty($end_date)) {
@@ -59,14 +59,17 @@ if(isset($_GET['branch_id']) && !empty($_GET['branch_id'])) {
                 GROUP BY DATE(t.transaction_date)";
     } else {
         // SQL query without branch and date filter
+        $start_date = date('Y-m-d', strtotime('monday this week'));
+        $ends_date = date('Y-m-d', strtotime('sunday this week'));
         $sql = "SELECT DATE(t.transaction_date) AS date, 
-                       SUM(oi.quantity * oi.price) AS overall_revenue,
-                       SUM(oi.quantity * p.base_price) AS overall_revenue_bprice
-                FROM transactions t
-                INNER JOIN orders o ON t.order_id = o.order_id
-                INNER JOIN order_items oi ON o.order_id = oi.order_id
-                INNER JOIN products p ON oi.product_id = p.product_id
-                GROUP BY DATE(t.transaction_date)";
+        SUM(oi.quantity * oi.price) AS overall_revenue,
+        SUM(oi.quantity * p.base_price) AS overall_revenue_bprice
+        FROM transactions t
+        INNER JOIN orders o ON t.order_id = o.order_id
+        INNER JOIN order_items oi ON o.order_id = oi.order_id
+        INNER JOIN products p ON oi.product_id = p.product_id
+        WHERE t.transaction_date BETWEEN '$start_date' AND '$ends_date'
+        GROUP BY DATE(t.transaction_date)";
     }
 }
 
@@ -88,9 +91,11 @@ while ($row = mysqli_fetch_assoc($result)) {
 mysqli_close($conn);
 
 // Encode data as JSON
-$json_data = json_encode(array(
-    'data' => $data
-));
+$json_data = json_encode(
+    array(
+        'data' => $data
+    )
+);
 
 // Output JSON
 header('Content-Type: application/json');

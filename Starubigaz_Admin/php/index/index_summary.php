@@ -17,7 +17,14 @@ $ends_date = date('Y-m-d', strtotime($end_date . ' +1 day'));
 
 $user_id = $_GET['user_id'];
 
-// Modify your SQL query to filter transactions based on the date range
+// Check if start and end dates are provided, otherwise set them to the current week
+if (empty($start_date) || empty($end_date)) {
+    // Calculate the start and end dates of the current week
+    $start_date = date('Y-m-d', strtotime('monday this week'));
+    $ends_date = date('Y-m-d', strtotime('sunday this week'));
+}
+
+// Your SQL query with the dynamic start and end dates
 $sql = "SELECT DATE(t.transaction_date) AS date, 
                SUM(oi.quantity * oi.price) AS overall_revenue,
                SUM(oi.quantity * p.base_price) AS overall_revenue_bprice
@@ -29,6 +36,7 @@ $sql = "SELECT DATE(t.transaction_date) AS date,
         WHERE t.transaction_date BETWEEN '$start_date' AND '$ends_date'
         AND b.branch_id IN (SELECT branch_id FROM branch_customer WHERE b.user_id = $user_id)
         GROUP BY DATE(t.transaction_date)";
+
 
 $result = mysqli_query($conn, $sql);
 
