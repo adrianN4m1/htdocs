@@ -135,6 +135,7 @@
                                     </div>
                                 </div>
                             </div>
+</div>
                             <div class="col col-3">
                                 <div>
                                     <div class="card mb-4">
@@ -142,20 +143,6 @@
                                             <h6 class="m-0" style="color: var(--bs-blue);">Revenue and Transactions</h6>
                                         </div>
                                         <div id="result" class="card-body" style="display: grid;">
-                                            <!-- <div style="display: inline-flex;">
-                                                <p class="m-0"
-                                                    style="font-weight: bold;color: rgb(28,200,138);font-size: 20px;">
-                                                    Revenue :&nbsp;</p>
-                                                <p class="text-dark d-xxl-flex align-items-xxl-center m-0"
-                                                    style="font-size: 20px;">P100.00</p>
-                                            </div>
-                                            <div style="display: inline-flex;">
-                                                <p class="m-0"
-                                                    style="font-weight: bold;color: rgb(255,164,113);font-size: 20px;">
-                                                    Transactions :&nbsp;</p>
-                                                <p class="text-dark d-xxl-flex align-items-xxl-center m-0"
-                                                    style="font-size: 20px;">5,405</p>
-                                            </div> -->
 
                                             <?php include ("php/index/index_sales_cost.php") ?>
 

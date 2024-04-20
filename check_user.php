@@ -22,8 +22,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = sanitize($_POST["password"]);
 
     // Fetch user from database
-    $sql = "SELECT * FROM users WHERE email='$username' AND password='$password' AND user_type = 1";
-    $result = $conn->query($sql);
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email=? AND password=? AND user_type = 1");    $stmt->bind_param("ss", $username, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows == 1) {
         // User found, fetch user details
