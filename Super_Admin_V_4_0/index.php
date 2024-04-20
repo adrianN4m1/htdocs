@@ -99,14 +99,14 @@
               <?php include 'php/index/get_branchid.php'; ?>
             </div>
             <div class="col-md-6 float-end d-xxl-flex justify-content-xxl-end">
-              <a class="btn btn-success d-xxl-flex justify-content-xxl-end btn-icon-split" role="button" style="
-                    background: rgba(255, 255, 255, 0.42);
-                    border-style: solid;
-                    border-color: rgb(230, 230, 230);
-                  " href="error_pages/error_print.html"><span class="text-light icon"
-                  style="background: rgb(230, 230, 230)"><i class="fas fa-print"
-                    style="color: rgb(106, 106, 106)"></i></span><span class="d-xxl-flex text"
-                  style="color: rgb(106, 106, 106)">Print Reports</span></a>
+              <a class="btn btn-success d-xxl-flex justify-content-xxl-end btn-icon-split" role="button"
+                style="background: rgba(255, 255, 255, 0.42); border-style: solid; border-color: rgb(230, 230, 230);"
+                href="generate_pdf.php">
+                <span class="text-light icon" style="background: rgb(230, 230, 230)">
+                  <i class="fas fa-print" style="color: rgb(106, 106, 106)"></i>
+                </span>
+                <span class="d-xxl-flex text" style="color: rgb(106, 106, 106)">Print Reports</span>
+              </a>
             </div>
           </div>
         </div>
