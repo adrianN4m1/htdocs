@@ -135,201 +135,50 @@
                                     </div>
                                 </div>
                             </div>
-</div>
-                            <div class="col col-3">
-                                <div>
-                                    <div class="card mb-4">
-                                        <div class="card-header py-3">
-                                            <h6 class="m-0" style="color: var(--bs-blue);">Revenue and Transactions</h6>
-                                        </div>
-                                        <div id="result" class="card-body" style="display: grid;">
+                        </div>
+                        <div class="col col-3">
+                            <div>
+                                <div class="card mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0" style="color: var(--bs-blue);">Revenue and Transactions</h6>
+                                    </div>
+                                    <div id="result" class="card-body" style="display: grid;">
 
-                                            <?php include ("php/index/index_sales_cost.php") ?>
+                                        <?php include ("php/index/index_sales_cost.php") ?>
 
-                                        </div>
                                     </div>
                                 </div>
-                                <div class="card shadow border-start-warning py-2">
-                                    <div class="card-body" style="padding-top: 5px;">
-                                        <div
-                                            style="padding-top: 10px;transform-style: preserve-3d;padding-bottom: 10px;">
-                                            <canvas id="pieChart"></canvas>
-                                        </div>
+                            </div>
+                            <div class="card shadow border-start-warning py-2">
+                                <div class="card-body" style="padding-top: 5px;">
+                                    <div style="padding-top: 10px;transform-style: preserve-3d;padding-bottom: 10px;">
+                                        <canvas id="pieChart"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col">
-                                <div class="card shadow">
-                                    <div class="card-header py-3">
-                                        <p class="text-primary m-0 fw-bold">Available Stocks</p>
-                                    </div>
-                                    <div class="card-body">
-                                        <div style="overflow: scroll;overflow-x: hidden;height: 40vh;">
-                                            <div class="table-responsive table mt-2" id="dataTable-6" role="grid"
-                                                aria-describedby="dataTable_info">
-                                                <table class="table my-0" id="dataTable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Barcode</th>
-                                                            <th>Product</th>
-                                                            <th>Status</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php include ("php/index/index_stock_display.php") ?>
-                                                    </tbody>
-                                                    <tfoot>
-                                                        <tr></tr>
-                                                    </tfoot>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            <div class="card shadow">
+                                <div class="card-header py-3">
+                                    <p class="text-primary m-0 fw-bold">Available Stocks</p>
                                 </div>
-                            </div>
-                            <div class="col col-md-8">
-                                <hr style="margin-bottom: 0px;">
-                                <div style="--bs-success: #1cc88a;--bs-success-rgb: 28,200,138;">
-                                    <?php include ("php/index/index_stock_graph.php") ?>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row" style="margin-top: 28px;">
-                            <div class="col">
-                                <div class="card shadow">
-                                    <div class="card-header py-3">
-                                        <div>
-                                            <p class="text-primary d-inline m-0 fw-bold" style="display: inline;">Top 5
-                                                Sold Products last month</p>
-                                        </div>
-                                    </div>
-                                    <div class="card-body" style="padding-top: 3px;">
-                                        <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
+                                <div class="card-body">
+                                    <div style="overflow: scroll;overflow-x: hidden;height: 40vh;">
+                                        <div class="table-responsive table mt-2" id="dataTable-6" role="grid"
                                             aria-describedby="dataTable_info">
                                             <table class="table my-0" id="dataTable">
                                                 <thead>
-                                                    <tr
-                                                        style="text-align: center;background: #00492f;border-color: rgb(255,255,255);">
-                                                        <th></th>
-                                                        <th
-                                                            style="border-color: rgb(255,255,255);color: rgb(255,255,255);">
-                                                            Barcode</th>
-                                                        <th
-                                                            style="border-color: rgb(255,255,255);color: rgb(255,255,255);">
-                                                            Product</th>
-                                                        <th
-                                                            style="border-color: rgb(255,255,255);color: rgb(255,255,255);">
-                                                            Sales</th>
+                                                    <tr>
+                                                        <th>Barcode</th>
+                                                        <th>Product</th>
+                                                        <th>Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr style="background: var(--bs-green);color: rgb(255,255,255);">
-                                                        <td
-                                                            style="font-size: 20px;font-weight: bold;text-align: center;">
-                                                            1</td>
-                                                        <td
-                                                            style="font-size: 20px;font-weight: bold;text-align: center;">
-                                                            0x12</td>
-                                                        <td
-                                                            style="font-size: 20px;font-weight: bold;text-align: center;">
-                                                            Megatron X</td>
-                                                        <td
-                                                            style="color: var(--bs-card-bg);font-size: 20px;font-weight: bold;text-align: center;">
-                                                            P120.12</td>
-                                                    </tr>
-                                                    <tr style="background: rgba(28,200,138,0.7);text-align: center;">
-                                                        <td>2</td>
-                                                        <td>0x13</td>
-                                                        <td>Compus x46</td>
-                                                        <td style="color: var(--bs-table-color);">P20.9</td>
-                                                    </tr>
-                                                    <tr style="background: rgba(28,200,138,0.4);text-align: center;">
-                                                        <td>3</td>
-                                                        <td>0x14</td>
-                                                        <td>Sopusar v12</td>
-                                                        <td style="color: var(--bs-table-color);">P12,2</td>
-                                                    </tr>
-                                                    <tr style="background: rgba(28,200,138,0.1);text-align: center;">
-                                                        <td>4</td>
-                                                        <td>0x15</td>
-                                                        <td>Electricodes beta v1</td>
-                                                        <td style="color: var(--bs-table-color);">P5,3</td>
-                                                    </tr>
-                                                    <tr style="background: rgba(28,200,138,0.1);text-align: center;">
-                                                        <td>5</td>
-                                                        <td>0x16</td>
-                                                        <td>NoS v345</td>
-                                                        <td style="color: var(--bs-table-color);">P1.98</td>
-                                                    </tr>
-                                                </tbody>
-                                                <tfoot>
-                                                    <tr></tr>
-                                                </tfoot>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col" style="padding-bottom: 30px;">
-                                <div class="card shadow">
-                                    <div class="card-header py-3">
-                                        <p class="text-primary m-0 fw-bold">Top 5 Customers last month</p>
-                                    </div>
-                                    <div class="card-body" style="padding-top: 3px;">
-                                        <div class="table-responsive table mt-2" id="dataTable-3" role="grid"
-                                            aria-describedby="dataTable_info">
-                                            <table class="table my-0" id="dataTable">
-                                                <thead>
-                                                    <tr style="text-align: center;background: #a77800;">
-                                                        <th></th>
-                                                        <th style="color: rgb(255,255,255);">ID</th>
-                                                        <th style="color: rgb(255,255,255);">Name</th>
-                                                        <th style="color: rgb(255,255,255);">Points</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr style="background: var(--bs-yellow);color: rgb(255,255,255);">
-                                                        <td
-                                                            style="font-size: 20px;font-weight: bold;text-align: center;">
-                                                            1</td>
-                                                        <td
-                                                            style="font-size: 20px;font-weight: bold;text-align: center;">
-                                                            0x12</td>
-                                                        <td
-                                                            style="font-size: 20px;font-weight: bold;text-align: center;">
-                                                            Israel Breta</td>
-                                                        <td
-                                                            style="color: var(--bs-card-bg);font-size: 20px;font-weight: bold;text-align: center;">
-                                                            120.12</td>
-                                                    </tr>
-                                                    <tr style="background: rgba(246,194,62,0.6);text-align: center;">
-                                                        <td>2</td>
-                                                        <td>0x13</td>
-                                                        <td>Sev Constantino</td>
-                                                        <td style="color: var(--bs-table-color);">20.9</td>
-                                                    </tr>
-                                                    <tr style="background: rgba(246,194,62,0.4);text-align: center;">
-                                                        <td>3</td>
-                                                        <td>0x14</td>
-                                                        <td>Adrian Mones</td>
-                                                        <td style="color: var(--bs-table-color);">12,2</td>
-                                                    </tr>
-                                                    <tr style="background: rgba(246,194,62,0.1);text-align: center;">
-                                                        <td>4</td>
-                                                        <td>0x15</td>
-                                                        <td>Karl Adriane Catalan</td>
-                                                        <td style="color: var(--bs-table-color);">5,3</td>
-                                                    </tr>
-                                                    <tr style="background: rgba(246,194,62,0.1);text-align: center;">
-                                                        <td>5</td>
-                                                        <td>0x16</td>
-                                                        <td>Kristian Adriane Grande</td>
-                                                        <td style="color: var(--bs-table-color);">1.98</td>
-                                                    </tr>
+                                                    <?php include ("php/index/index_stock_display.php") ?>
                                                 </tbody>
                                                 <tfoot>
                                                     <tr></tr>
@@ -340,6 +189,98 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col col-md-8">
+                            <hr style="margin-bottom: 0px;">
+                            <div style="--bs-success: #1cc88a;--bs-success-rgb: 28,200,138;">
+                                <?php include ("php/index/index_stock_graph.php") ?>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row" style="margin-top: 28px">
+                        <div class="col">
+                            <div class="card shadow">
+                                <div class="card-header py-3">
+                                    <div>
+                                        <p class="text-primary d-inline m-0 fw-bold" style="display: inline">
+                                            Top 5 Sold Products on the Month of
+                                            <?php echo date('F', strtotime('last month')); ?>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card-body" style="padding-top: 3px">
+                                    <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
+                                        aria-describedby="dataTable_info">
+                                        <table class="table my-0" id="dataTable">
+                                            <thead>
+                                                <tr style="
+                              text-align: center;
+                              background: #00492f;
+                              border-color: rgb(255, 255, 255);
+                            ">
+                                                    <th></th>
+                                                    <th style="
+                                border-color: rgb(255, 255, 255);
+                                color: rgb(255, 255, 255);
+                              ">
+                                                        Barcode
+                                                    </th>
+                                                    <th style="
+                                border-color: rgb(255, 255, 255);
+                                color: rgb(255, 255, 255);
+                              ">
+                                                        Product
+                                                    </th>
+                                                    <th style="
+                                border-color: rgb(255, 255, 255);
+                                color: rgb(255, 255, 255);
+                              ">
+                                                        Sales
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php include ("php/index/index_top_inv.php") ?>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr></tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col" style="padding-bottom: 30px">
+                            <div class="card shadow">
+                                <div class="card-header py-3">
+                                    <p class="text-primary m-0 fw-bold">
+                                        Top 5 Customer on the Month of <?php echo date('F', strtotime('last month')); ?>
+                                    </p>
+                                </div>
+                                <div class="card-body" style="padding-top: 3px">
+                                    <div class="table-responsive table mt-2" id="dataTable-3" role="grid"
+                                        aria-describedby="dataTable_info">
+                                        <table class="table my-0" id="dataTable">
+                                            <thead>
+                                                <tr style="text-align: center; background: #a77800">
+                                                    <th></th>
+                                                    <th style="color: rgb(255, 255, 255)">ID</th>
+                                                    <th style="color: rgb(255, 255, 255)">Name</th>
+                                                    <th style="color: rgb(255, 255, 255)">Points</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php include ("php/index/index_top_cst.php") ?>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr></tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <footer class="bg-white sticky-footer">

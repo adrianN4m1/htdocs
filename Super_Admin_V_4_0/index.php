@@ -148,7 +148,7 @@
                       Revenue and Transactions
                     </h6>
                   </div>
-                  <div id="result" class="card-body" style="display: grid;">
+                  <div id="newResult" class="card-body" style="display: grid;">
 
                     <?php include ("php/index/index_sales_cost.php") ?>
 
@@ -209,7 +209,7 @@
                 <div class="card-header py-3">
                   <div>
                     <p class="text-primary d-inline m-0 fw-bold" style="display: inline">
-                      Top 5 Sold Products last month
+                      Top 5 Sold Products on the Month of <?php echo date('F', strtotime('last month')); ?>
                     </p>
                   </div>
                 </div>
@@ -245,76 +245,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr style="
-                              background: var(--bs-green);
-                              color: rgb(255, 255, 255);
-                            ">
-                          <td style="
-                                font-size: 20px;
-                                font-weight: bold;
-                                text-align: center;
-                              ">
-                            1
-                          </td>
-                          <td style="
-                                font-size: 20px;
-                                font-weight: bold;
-                                text-align: center;
-                              ">
-                            0x12
-                          </td>
-                          <td style="
-                                font-size: 20px;
-                                font-weight: bold;
-                                text-align: center;
-                              ">
-                            Megatron X
-                          </td>
-                          <td style="
-                                color: var(--bs-card-bg);
-                                font-size: 20px;
-                                font-weight: bold;
-                                text-align: center;
-                              ">
-                            P120.12
-                          </td>
-                        </tr>
-                        <tr style="
-                              background: rgba(28, 200, 138, 0.7);
-                              text-align: center;
-                            ">
-                          <td>2</td>
-                          <td>0x13</td>
-                          <td>Compus x46</td>
-                          <td style="color: var(--bs-table-color)">P20.9</td>
-                        </tr>
-                        <tr style="
-                              background: rgba(28, 200, 138, 0.4);
-                              text-align: center;
-                            ">
-                          <td>3</td>
-                          <td>0x14</td>
-                          <td>Sopusar v12</td>
-                          <td style="color: var(--bs-table-color)">P12,2</td>
-                        </tr>
-                        <tr style="
-                              background: rgba(28, 200, 138, 0.1);
-                              text-align: center;
-                            ">
-                          <td>4</td>
-                          <td>0x15</td>
-                          <td>Electricodes beta v1</td>
-                          <td style="color: var(--bs-table-color)">P5,3</td>
-                        </tr>
-                        <tr style="
-                              background: rgba(28, 200, 138, 0.1);
-                              text-align: center;
-                            ">
-                          <td>5</td>
-                          <td>0x16</td>
-                          <td>NoS v345</td>
-                          <td style="color: var(--bs-table-color)">P1.98</td>
-                        </tr>
+                        <?php include ("php/index/index_top_inv.php") ?>
                       </tbody>
                       <tfoot>
                         <tr></tr>
@@ -328,7 +259,7 @@
               <div class="card shadow">
                 <div class="card-header py-3">
                   <p class="text-primary m-0 fw-bold">
-                    Top 5 Customers last month
+                    Top 5 Customer on the Month of <?php echo date('F', strtotime('last month')); ?>
                   </p>
                 </div>
                 <div class="card-body" style="padding-top: 3px">
@@ -343,77 +274,8 @@
                           <th style="color: rgb(255, 255, 255)">Points</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr style="
-                              background: var(--bs-yellow);
-                              color: rgb(255, 255, 255);
-                            ">
-                          <td style="
-                                font-size: 20px;
-                                font-weight: bold;
-                                text-align: center;
-                              ">
-                            1
-                          </td>
-                          <td style="
-                                font-size: 20px;
-                                font-weight: bold;
-                                text-align: center;
-                              ">
-                            0x12
-                          </td>
-                          <td style="
-                                font-size: 20px;
-                                font-weight: bold;
-                                text-align: center;
-                              ">
-                            Israel Breta
-                          </td>
-                          <td style="
-                                color: var(--bs-card-bg);
-                                font-size: 20px;
-                                font-weight: bold;
-                                text-align: center;
-                              ">
-                            120.12
-                          </td>
-                        </tr>
-                        <tr style="
-                              background: rgba(246, 194, 62, 0.6);
-                              text-align: center;
-                            ">
-                          <td>2</td>
-                          <td>0x13</td>
-                          <td>Sev Constantino</td>
-                          <td style="color: var(--bs-table-color)">20.9</td>
-                        </tr>
-                        <tr style="
-                              background: rgba(246, 194, 62, 0.4);
-                              text-align: center;
-                            ">
-                          <td>3</td>
-                          <td>0x14</td>
-                          <td>Adrian Mones</td>
-                          <td style="color: var(--bs-table-color)">12,2</td>
-                        </tr>
-                        <tr style="
-                              background: rgba(246, 194, 62, 0.1);
-                              text-align: center;
-                            ">
-                          <td>4</td>
-                          <td>0x15</td>
-                          <td>Karl Adriane Catalan</td>
-                          <td style="color: var(--bs-table-color)">5,3</td>
-                        </tr>
-                        <tr style="
-                              background: rgba(246, 194, 62, 0.1);
-                              text-align: center;
-                            ">
-                          <td>5</td>
-                          <td>0x16</td>
-                          <td>Kristian Adriane Grande</td>
-                          <td style="color: var(--bs-table-color)">1.98</td>
-                        </tr>
+                      <tbody id="branchresult">
+                        <?php include ("php/index/index_top_cst.php") ?>
                       </tbody>
                       <tfoot>
                         <tr></tr>
@@ -447,13 +309,20 @@
     var branchSelect = document.getElementById('branchSelect'); // Assuming you have a select dropdown for selecting branches
     var ctx = document.getElementById('displaychart').getContext('2d');
     var myChart;
+    var myChartpie;
 
     function handleDateChange() {
       var startDate = startDateInput.value;
       var endDate = endDateInput.value;
       var branchId = branchSelect.value; // Get the selected branch ID
 
-      // XHR request
+      fetchSummaryData(startDate, endDate, branchId);
+      fetchSalesCostData(startDate, endDate, branchId);
+      fetchPieChartData(startDate, endDate, branchId);
+      fetchTopCustomerData(branchId);
+    }
+
+    function fetchSummaryData(startDate, endDate, branchId) {
       var xhr1 = new XMLHttpRequest();
       xhr1.open("GET", "php/index/index_summary.php?start_date=" + startDate + "&end_date=" + endDate + "&branch_id=" + branchId, true);
       xhr1.onreadystatechange = function () {
@@ -480,103 +349,125 @@
                 type: 'bar',
                 data: {
                   labels: labels,
-                  datasets: [
-                    {
-                      label: 'Sales Price',
-                      backgroundColor: '#1cc88a',
-                      borderColor: '#ffffff',
-                      data: grossProfitData
-                    },
-                    {
-                      label: 'Cost Price',
-                      backgroundColor: '#ffa471',
-                      borderColor: '#ffffff',
-                      data: netProfitData
-                    }
+                  datasets: [{
+                    label: 'Sales Price',
+                    backgroundColor: '#1cc88a',
+                    borderColor: '#ffffff',
+                    data: grossProfitData
+                  },
+                  {
+                    label: 'Cost Price',
+                    backgroundColor: '#ffa471',
+                    borderColor: '#ffffff',
+                    data: netProfitData
+                  }
                   ]
                 }
               });
             }
-            var xhr2 = new XMLHttpRequest();
-            xhr2.open("GET", "php/index/index_sales_cost.php?start_date=" + startDate + "&end_date=" + endDate + "&branch_id=" + branchId, true);
-            xhr2.onreadystatechange = function () {
-              if (xhr2.readyState === 4) {
-                if (xhr2.status === 200) {
-                  document.getElementById("result").innerHTML = xhr2.responseText;
-                } else {
-                  console.error("Error fetching second data: " + xhr2.status);
-                }
-              }
-            };
-            xhr2.send(); // Ensure the second XHR request is sent here
-            // Third XHR request
-            var xhr3 = new XMLHttpRequest();
-            xhr3.open("GET", "php/index/index_display_pie.php?start_date=" + startDate + "&end_date=" + endDate + "&branch_id=" + branchId, true);
-            xhr3.onreadystatechange = function () {
-              if (xhr3.readyState === 4) {
-                if (xhr3.status === 200) {
-                  var data = JSON.parse(xhr3.responseText);
-
-                  // Extract active and inactive counts from the JSON response
-                  var active = parseFloat(data['data'][0]['count_active']);
-                  var inactive = parseFloat(data['data'][0]['count_inactive']);
-
-                  // Get the canvas context
-                  var ctx = document.getElementById('pieChart').getContext('2d');
-
-                  // Destroy the previous chart instance if it exists
-                  if (typeof myChartpie !== 'undefined' && myChartpie !== null) {
-                    myChartpie.destroy();
-                  }
-
-                  // Create a new pie chart using Chart.js
-                  myChartpie = new Chart(ctx, {
-                    type: 'pie',
-                    data: {
-                      labels: ['Active', 'Inactive'],
-                      datasets: [{
-                        label: 'Active vs Inactive',
-                        data: [active, inactive],
-                        backgroundColor: [
-                          'rgb(28, 200, 138)',
-                          'rgb(255, 164, 113)'
-                        ]
-                      }]
-                    },
-                    options: {
-                      maintainAspectRatio: false,
-                      legend: {
-                        display: true,
-                        labels: {
-                          fontStyle: 'normal'
-                        }
-                      },
-                      title: {
-                        display: true,
-                        text: 'Customer'
-                      }
-                    }
-                  });
-                } else {
-                  console.error("Error fetching data: " + xhr3.status);
-                }
-              }
-            };
-            xhr3.send();
-
           } else {
-            console.error("Error fetching data: " + xhr1.status);
+            console.error("Error fetching summary data: " + xhr1.status);
           }
         }
       };
-      xhr1.send(); // Ensure the XHR request is sent here
+      xhr1.send();
+    }
+
+    function fetchSalesCostData(startDate, endDate, branchId) {
+      var xhr2 = new XMLHttpRequest();
+      xhr2.open("GET", "php/index/index_sales_cost.php?start_date=" + startDate + "&end_date=" + endDate + "&branch_id=" + branchId, true);
+      xhr2.onreadystatechange = function () {
+        if (xhr2.readyState === 4) {
+          if (xhr2.status === 200) {
+            document.getElementById("newResult").innerHTML = xhr2.responseText;
+          } else {
+            console.error("Error fetching sales cost data: " + xhr2.status);
+          }
+        }
+      };
+      xhr2.send();
+    }
+
+    function fetchPieChartData(startDate, endDate, branchId) {
+      var xhr3 = new XMLHttpRequest();
+      xhr3.open("GET", "php/index/index_display_pie.php?start_date=" + startDate + "&end_date=" + endDate + "&branch_id=" + branchId, true);
+      xhr3.onreadystatechange = function () {
+        if (xhr3.readyState === 4) {
+          if (xhr3.status === 200) {
+            var data = JSON.parse(xhr3.responseText);
+
+            // Extract active and inactive counts from the JSON response
+            var active = parseFloat(data['data'][0]['count_active']);
+            var inactive = parseFloat(data['data'][0]['count_inactive']);
+
+            // Get the canvas context
+            var ctx = document.getElementById('pieChart').getContext('2d');
+
+            // Destroy the previous chart instance if it exists
+            if (typeof myChartpie !== 'undefined' && myChartpie !== null) {
+              myChartpie.destroy();
+            }
+
+            // Create a new pie chart using Chart.js
+            myChartpie = new Chart(ctx, {
+              type: 'pie',
+              data: {
+                labels: ['Active', 'Inactive'],
+                datasets: [{
+                  label: 'Active vs Inactive',
+                  data: [active, inactive],
+                  backgroundColor: [
+                    'rgb(28, 200, 138)',
+                    'rgb(255, 164, 113)'
+                  ]
+                }]
+              },
+              options: {
+                maintainAspectRatio: false,
+                legend: {
+                  display: true,
+                  labels: {
+                    fontStyle: 'normal'
+                  }
+                },
+                title: {
+                  display: true,
+                  text: 'Customer'
+                }
+              }
+            });
+          } else {
+            console.error("Error fetching pie chart data: " + xhr3.status);
+          }
+        }
+      };
+      xhr3.send();
+    }
+
+    function fetchTopCustomerData(branchId) {
+      var xhr4 = new XMLHttpRequest();
+      xhr4.open("GET", "php/index/index_top_cst.php?branch_id=" + branchId, true);
+      xhr4.onreadystatechange = function () {
+        if (xhr4.readyState === 4) {
+          if (xhr4.status === 200) {
+            document.getElementById("branchresult").innerHTML = xhr4.responseText;
+          } else {
+            console.error("Error fetching top customer data: " + xhr4.status);
+          }
+        }
+      };
+      xhr4.send();
     }
 
     handleDateChange();
     startDateInput.addEventListener('change', handleDateChange);
     endDateInput.addEventListener('change', handleDateChange);
     branchSelect.addEventListener('change', handleDateChange); // Add event listener for branch selection
+
+    // Assuming you have jQuery included in your project
+
   </script>
+
 
 
 </body>
