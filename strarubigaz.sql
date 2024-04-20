@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2024 at 08:09 AM
+-- Generation Time: Apr 20, 2024 at 07:17 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -126,7 +126,8 @@ INSERT INTO `branch_customer` (`Bcust_ID`, `branch_id`, `user_id`, `Bcst_type`) 
 (32, 2, 91, 0),
 (33, 2, 92, 1),
 (34, 2, 93, 1),
-(35, 2, 94, 1);
+(35, 2, 94, 1),
+(36, 2, 95, 1);
 
 -- --------------------------------------------------------
 
@@ -162,19 +163,21 @@ CREATE TABLE `inventory` (
 INSERT INTO `inventory` (`inventory_id`, `product_id`, `quantity`, `Inv_Type`) VALUES
 (1, 1, 1000, 0),
 (2, 2, 1, 0),
-(3, 3, 5987, 1),
+(3, 3, 496, 1),
 (4, 4, 99999999, 0),
 (5, 5, 24, 0),
-(6, 6, 64, 1),
+(6, 6, 64, 0),
 (7, 7, 10000, 0),
 (8, 8, 555, 0),
 (9, 9, 999, 0),
 (10, 10, 110, 1),
 (11, 11, 2020, 0),
-(12, 12, 450, 1),
-(13, 13, 696, 1),
-(14, 14, 6559, 1),
-(15, 15, 999, 1);
+(12, 12, 435, 0),
+(13, 13, 693, 1),
+(14, 14, 69, 0),
+(15, 15, 978, 1),
+(16, 16, 200, 1),
+(17, 17, 87, 1);
 
 -- --------------------------------------------------------
 
@@ -199,7 +202,39 @@ INSERT INTO `orders` (`order_id`, `user_id`, `branch_id`, `order_date`, `status`
 (12, 51, 1, '2024-04-15 11:33:03', 'Completed'),
 (13, 51, 1, '2024-04-15 11:35:31', 'Completed'),
 (14, 51, 1, '2024-04-15 11:38:25', 'Completed'),
-(15, 51, 1, '2024-04-15 12:08:40', 'Completed');
+(15, 51, 1, '2024-04-15 12:08:40', 'Completed'),
+(16, 51, 1, '2024-04-16 06:26:38', 'Completed'),
+(17, 92, 2, '2024-04-16 06:44:44', 'Completed'),
+(18, 51, 1, '2024-04-16 08:38:58', 'Completed'),
+(19, 51, 1, '2024-04-16 08:39:26', 'Completed'),
+(20, 51, 1, '2024-04-16 08:39:46', 'Completed'),
+(21, 51, 1, '2024-04-16 08:40:54', 'Completed'),
+(22, 51, 1, '2024-04-16 08:41:52', 'Completed'),
+(23, 51, 1, '2024-04-16 08:42:40', 'Completed'),
+(24, 51, 1, '2024-04-16 08:44:40', 'Completed'),
+(25, 51, 1, '2024-04-16 08:45:10', 'Completed'),
+(26, 51, 1, '2024-04-16 08:48:10', 'Completed'),
+(27, 51, 1, '2024-04-16 08:48:28', 'Completed'),
+(28, 51, 1, '2024-04-16 08:53:33', 'Completed'),
+(29, 51, 1, '2024-04-16 08:57:21', 'Completed'),
+(30, 51, 1, '2024-04-16 08:59:51', 'Completed'),
+(31, 51, 1, '2024-04-16 09:04:45', 'Completed'),
+(32, 51, 1, '2024-04-16 09:05:39', 'Completed'),
+(33, 51, 1, '2024-04-16 09:18:08', 'Completed'),
+(34, 51, 1, '2024-04-16 09:20:33', 'Completed'),
+(35, 51, 1, '2024-04-16 09:25:23', 'Completed'),
+(36, 51, 1, '2024-04-16 09:33:22', 'Completed'),
+(37, 51, 1, '2024-04-16 09:34:57', 'Completed'),
+(38, 51, 1, '2024-04-16 09:36:23', 'Completed'),
+(39, 51, 1, '2024-04-16 09:40:04', 'Completed'),
+(40, 51, 1, '2024-04-16 09:49:31', 'Completed'),
+(41, 51, 1, '2024-04-16 09:56:42', 'Completed'),
+(42, 51, 1, '2024-04-16 10:08:07', 'Completed'),
+(43, 51, 1, '2024-04-16 10:31:04', 'Completed'),
+(44, 51, 1, '2024-04-16 10:37:24', 'Completed'),
+(45, 51, 1, '2024-04-17 10:47:30', 'Completed'),
+(46, 51, 1, '2024-04-18 11:45:45', 'Completed'),
+(47, 51, 1, '2024-04-20 05:10:27', 'Completed');
 
 -- --------------------------------------------------------
 
@@ -228,7 +263,46 @@ INSERT INTO `order_items` (`order_item_id`, `order_id`, `product_id`, `quantity`
 (27, 14, 6, 1, 68.09),
 (28, 14, 14, 5, 56.00),
 (29, 15, 6, 2, 68.09),
-(30, 15, 12, 5, 20.00);
+(30, 15, 12, 5, 20.00),
+(31, 16, 3, 3, 70.00),
+(32, 17, 15, 5, 68.09),
+(33, 18, 15, 1, 68.09),
+(34, 19, 15, 1, 68.09),
+(35, 20, 15, 1, 68.09),
+(36, 21, 15, 2, 68.09),
+(37, 22, 14, 1, 56.00),
+(38, 23, 15, 1, 68.09),
+(39, 24, 15, 1, 68.09),
+(40, 25, 13, 1, 62.00),
+(41, 26, 15, 1, 68.09),
+(42, 27, 15, 1, 68.09),
+(43, 28, 3, 1, 70.00),
+(44, 29, 3, 1, 70.00),
+(45, 30, 3, 1, 70.00),
+(46, 31, 15, 1, 68.09),
+(47, 32, 3, 1, 70.00),
+(48, 33, 15, 1, 68.09),
+(49, 34, 3, 1, 70.00),
+(50, 35, 3, 1, 70.00),
+(51, 36, 15, 1, 68.09),
+(52, 37, 15, 1, 68.09),
+(53, 38, 15, 1, 68.09),
+(54, 39, 3, 1, 70.00),
+(55, 40, 12, 12, 20.00),
+(56, 40, 14, 11, 56.00),
+(64, 41, 3, 1, 70.00),
+(66, 42, 3, 1, 70.00),
+(67, 43, 3, 1, 70.00),
+(68, 44, 15, 1, 68.09),
+(69, 44, 15, 1, 68.09),
+(70, 44, 13, 1, 62.00),
+(71, 44, 3, 1, 70.00),
+(72, 44, 12, 2, 20.00),
+(74, 45, 3, 1, 70.00),
+(75, 45, 12, 1, 20.00),
+(76, 46, 13, 1, 62.00),
+(77, 46, 3, 1, 70.00),
+(78, 47, 3, 1, 70.00);
 
 -- --------------------------------------------------------
 
@@ -266,7 +340,9 @@ INSERT INTO `products` (`product_id`, `product_name`, `Prod_type`, `price`, `sup
 (12, 'Kiwi', 'DOg', 20.00, 202400135, '0000-00-00', 500.00, 'Screenshot 2023-07-27 204515.png'),
 (13, 'ANG ATE', 'asd', 62.00, 202400121, '2025-05-13', 22.00, 'Screenshot 2023-11-02 224602.png'),
 (14, 'KARL', 'asdas', 56.00, 202400121, '2024-12-12', 56.00, '423105885_2147249585623914_3143380331863502220_n.jpg'),
-(15, '', 'Diesel', 68.09, 202400121, '0000-00-00', 40.90, '96276354_2705802066212650_504183324659417088_n.jpg');
+(15, '', 'Diesel', 68.09, 202400121, '0000-00-00', 40.90, '96276354_2705802066212650_504183324659417088_n.jpg'),
+(16, 'Hitler', 'niggeR', 1.00, 202400127, '0000-00-00', 0.10, 'Screenshot 2024-02-24 140048.png'),
+(17, 'XIEV', 'TAO`', 898.90, 202400135, '2028-10-10', 800.00, 'Screenshot 2023-07-05 185624.png');
 
 -- --------------------------------------------------------
 
@@ -307,9 +383,9 @@ CREATE TABLE `rewards` (
 
 INSERT INTO `rewards` (`reward_id`, `reward_name`, `description`, `point_value`, `reward_image`, `reward_qty`, `reward_type`) VALUES
 (2, 'test', 'test', 123, 'william-daigneault-oWrZoAVOBS0-unsplash.jpg', 1230, 0),
-(3, 'test', 'tite tes', 2, 'Nitro_Wallpaper_03_3840x2400.jpg', 200, 1),
+(3, 'test', 'tite tes', 2, 'Nitro_Wallpaper_03_3840x2400.jpg', 195, 1),
 (4, 'test', 'test\r\n', 89, 'Nitro_Wallpaper_07_3840x2400.jpg', 1000, 0),
-(5, 'test', 'test', 12, 'Screenshot 2023-05-10 093203.png', 3122, 1);
+(5, 'test', 'test', 12, 'Screenshot 2023-05-10 093203.png', 3108, 1);
 
 -- --------------------------------------------------------
 
@@ -322,6 +398,31 @@ CREATE TABLE `reward_claims` (
   `user_id` int(11) DEFAULT NULL,
   `reward_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reward_claims`
+--
+
+INSERT INTO `reward_claims` (`claim_id`, `user_id`, `reward_id`) VALUES
+(1, 51, 5),
+(2, 51, 5),
+(3, 92, 5),
+(4, 51, 3),
+(5, 51, 5),
+(6, 51, 5),
+(7, 51, 3),
+(8, 51, 5),
+(9, 51, 5),
+(10, 51, 5),
+(11, 51, 5),
+(12, 51, 5),
+(13, 51, 3),
+(14, 51, 5),
+(15, 51, 3),
+(16, 51, 5),
+(17, 51, 5),
+(18, 51, 3),
+(19, 51, 5);
 
 -- --------------------------------------------------------
 
@@ -379,7 +480,7 @@ INSERT INTO `suppliers` (`supplier_id`, `supplier_name`, `contact_name`, `email`
 CREATE TABLE `transactions` (
   `transaction_id` int(11) NOT NULL,
   `order_id` int(11) DEFAULT NULL,
-  `claim_id` int(11) NOT NULL,
+  `claim_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `transaction_type` enum('Purchase','Redeem') NOT NULL,
   `points` decimal(10,2) NOT NULL,
@@ -391,10 +492,61 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`transaction_id`, `order_id`, `claim_id`, `user_id`, `transaction_type`, `points`, `transaction_date`) VALUES
-(1, 11, 0, 51, 'Purchase', 30.00, '2024-04-15 11:32:38'),
-(2, 12, 0, 51, 'Purchase', 10.00, '2024-04-15 11:33:07'),
-(3, 13, 0, 51, 'Purchase', 0.00, '2024-04-15 11:35:33'),
-(4, 14, 0, 51, 'Purchase', 69.00, '2024-04-15 11:38:39');
+(1, 11, NULL, 51, 'Purchase', 30.00, '2024-04-15 11:32:38'),
+(2, 12, NULL, 51, 'Purchase', 10.00, '2024-04-15 11:33:07'),
+(3, 13, NULL, 51, 'Purchase', 0.00, '2024-04-15 11:35:33'),
+(4, 14, NULL, 51, 'Purchase', 69.00, '2024-04-15 11:38:39'),
+(7, NULL, 1, 51, 'Redeem', 12.00, '2024-04-16 06:12:37'),
+(8, 16, NULL, 51, 'Purchase', 42.00, '2024-04-16 06:26:41'),
+(9, NULL, 2, 51, 'Redeem', 12.00, '2024-04-16 06:26:51'),
+(10, NULL, 3, 92, 'Redeem', 12.00, '2024-04-16 06:44:30'),
+(11, 17, NULL, 92, 'Purchase', 68.00, '2024-04-16 06:44:47'),
+(12, NULL, 4, 51, 'Redeem', 2.00, '2024-04-16 07:59:56'),
+(13, 18, NULL, 51, 'Purchase', 13.00, '2024-04-16 08:39:16'),
+(14, 19, NULL, 51, 'Purchase', 13.00, '2024-04-16 08:39:35'),
+(15, 20, NULL, 51, 'Purchase', 13.00, '2024-04-16 08:39:54'),
+(16, 21, NULL, 51, 'Purchase', 27.00, '2024-04-16 08:41:00'),
+(17, 22, NULL, 51, 'Purchase', 11.00, '2024-04-16 08:42:05'),
+(18, 23, NULL, 51, 'Purchase', 13.00, '2024-04-16 08:42:47'),
+(19, 24, NULL, 51, 'Purchase', 13.00, '2024-04-16 08:44:45'),
+(20, 25, NULL, 51, 'Purchase', 12.00, '2024-04-16 08:46:10'),
+(21, 26, NULL, 51, 'Purchase', 13.00, '2024-04-16 08:48:15'),
+(22, 27, NULL, 51, 'Purchase', 13.00, '2024-04-16 08:48:34'),
+(23, 28, NULL, 51, 'Purchase', 14.00, '2024-04-16 08:53:45'),
+(24, 29, NULL, 51, 'Purchase', 14.00, '2024-04-16 08:57:25'),
+(25, 30, NULL, 51, 'Purchase', 14.00, '2024-04-16 08:59:56'),
+(26, 31, NULL, 51, 'Purchase', 13.00, '2024-04-16 09:04:50'),
+(27, 32, NULL, 51, 'Purchase', 14.00, '2024-04-16 09:05:44'),
+(28, 33, NULL, 51, 'Purchase', 13.00, '2024-04-16 09:18:13'),
+(29, 34, NULL, 51, 'Purchase', 14.00, '2024-04-16 09:20:37'),
+(30, 35, NULL, 51, 'Purchase', 14.00, '2024-04-16 09:29:21'),
+(31, 36, NULL, 51, 'Purchase', 13.00, '2024-04-16 09:33:34'),
+(32, 37, NULL, 51, 'Purchase', 13.00, '2024-04-16 09:35:02'),
+(33, 38, NULL, 51, 'Purchase', 13.00, '2024-04-16 09:38:46'),
+(34, 39, NULL, 51, 'Purchase', 14.00, '2024-04-16 09:43:02'),
+(35, 40, NULL, 51, 'Purchase', 171.00, '2024-04-16 09:50:26'),
+(36, 41, NULL, 51, 'Purchase', 14.00, '2024-04-16 10:07:41'),
+(37, 42, NULL, 51, 'Purchase', 14.00, '2024-04-16 10:30:37'),
+(38, 43, NULL, 51, 'Purchase', 14.00, '2024-04-16 10:31:08'),
+(39, NULL, 5, 51, 'Redeem', 12.00, '2024-04-16 10:31:38'),
+(40, NULL, 6, 51, 'Redeem', 12.00, '2024-04-16 10:32:22'),
+(41, NULL, 7, 51, 'Redeem', 2.00, '2024-04-16 10:34:44'),
+(42, NULL, 8, 51, 'Redeem', 12.00, '2024-04-16 10:35:12'),
+(43, NULL, 9, 51, 'Redeem', 12.00, '2024-04-16 10:35:53'),
+(44, NULL, 10, 51, 'Redeem', 12.00, '2024-04-16 10:36:01'),
+(45, NULL, 11, 51, 'Redeem', 12.00, '2024-04-16 10:36:25'),
+(46, NULL, 12, 51, 'Redeem', 12.00, '2024-04-16 10:36:42'),
+(47, NULL, 13, 51, 'Redeem', 2.00, '2024-04-16 10:36:47'),
+(48, NULL, 14, 51, 'Redeem', 12.00, '2024-04-16 10:36:54'),
+(49, NULL, 15, 51, 'Redeem', 2.00, '2024-04-16 10:36:57'),
+(50, NULL, 16, 51, 'Redeem', 12.00, '2024-04-16 10:37:02'),
+(51, 44, NULL, 51, 'Purchase', 61.00, '2024-04-17 07:46:16'),
+(52, NULL, 17, 51, 'Redeem', 12.00, '2024-04-17 07:46:48'),
+(53, 45, NULL, 51, 'Purchase', 18.00, '2024-04-17 11:22:14'),
+(54, NULL, 18, 51, 'Redeem', 2.00, '2024-04-17 11:22:56'),
+(55, NULL, 19, 51, 'Redeem', 12.00, '2024-04-17 11:23:03'),
+(56, 46, NULL, 51, 'Purchase', 26.00, '2024-04-18 11:53:22'),
+(57, 47, NULL, 51, 'Purchase', 14.00, '2024-04-20 05:10:30');
 
 -- --------------------------------------------------------
 
@@ -418,14 +570,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `role`, `email`, `phone_number`, `user_reward_pts`, `user_type`) VALUES
-(1, 'username', 'password', '', 'email', 'phone_number', NULL, 0),
-(2, 'BJ Angeles', '!admin123', 'Super Admin', 'Sadmin@gmail.com', '9391386488', NULL, 1),
+(1, 'username', '123', 'Super Admin', 'Sadmin@gmail.com', 'phone_number', NULL, 1),
+(2, 'BJ Angeles', '!admin123', 'Admin', 'Sadmin@gmail.com', '9391386488', NULL, 1),
 (16, 'Adrian Mones', '!adrian123', 'Admin', 'admin.adrian@gmail.com', '9391386488', NULL, 1),
 (17, 'Israel Breta', '!israel123', 'Admin', 'admin.israel@gmail.com', '9997126384', NULL, 1),
 (18, 'Sev Constantino', '!sev123', 'Admin', 'admin.israel@gmail.com', '9871623712', NULL, 1),
 (19, 'Karl Catalan', '!karl123', 'Admin', 'admin.karl@gmail.com', '9126739110', NULL, 1),
 (20, 'John Doe', '!John123', 'Admin', 'admin.john@gmail.com', '9271247883', NULL, 1),
-(51, 'Miguel Manabat', 'manabat432', 'Customer', 'miguel.manabat21@gmail.com', '9371222110', 688.00, 1),
+(51, 'Miguel Manabat', 'manabat432', 'Customer', 'miguel.manabat21@gmail.com', '9371222110', 1209.52, 1),
 (52, 'Angelica Ruiz', 'iamanangel123', 'Customer', 'angelicar@gmail.com', '9131492880', 50.00, 1),
 (53, 'Anne Abalos', 'annewithane333', 'Customer', 'anneabalos0110@gmail.com', '9943134920', NULL, 1),
 (54, 'Rianna Maniego', '3219.Lovely', 'Customer', 'riannamaniego24@gmail.com', '9927213211', NULL, 0),
@@ -466,9 +618,10 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `role`, `email`, `phone_
 (89, 'test test', '123', 'Customer', 'test@gmail.com', '127931', NULL, 0),
 (90, 'test test', '123', 'Customer', 'test@gmail.com', '0981273', NULL, 0),
 (91, 'asd test', '123', 'Customer', 'rlph12mones@gmail.com', '09982393', NULL, 0),
-(92, 'test test', '123', 'Customer', 'test@gmail.com', '099283293', 50.00, 1),
+(92, 'test test', '123', 'Customer', 'test@gmail.com', '099283293', 106.09, 1),
 (93, 'mamama test', '123', 'Customer', 'mama@gmail.com', '9234892', NULL, 1),
-(94, 'Last Test', '123', 'Customer', 'last@gmail.com', '082738273', 50.00, 1);
+(94, 'Last Test', '123', 'Customer', 'last@gmail.com', '082738273', 50.00, 1),
+(95, 'Raryner mones', '123', 'Customer', 'ralph12mones@gmail.com', '9090293893', 50.00, 1);
 
 --
 -- Indexes for dumped tables
@@ -566,7 +719,7 @@ ALTER TABLE `branches`
 -- AUTO_INCREMENT for table `branch_customer`
 --
 ALTER TABLE `branch_customer`
-  MODIFY `Bcust_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `Bcust_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `expenses`
@@ -578,25 +731,25 @@ ALTER TABLE `expenses`
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `inventory_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `inventory_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `product_purchases`
@@ -614,7 +767,7 @@ ALTER TABLE `rewards`
 -- AUTO_INCREMENT for table `reward_claims`
 --
 ALTER TABLE `reward_claims`
-  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -626,13 +779,13 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
