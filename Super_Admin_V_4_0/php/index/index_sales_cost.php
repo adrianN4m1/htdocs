@@ -148,15 +148,12 @@ if (isset($_GET['start_date']) && isset($_GET['end_date']) && isset($_GET['branc
     <p><?php echo $placeholder_message; ?></p>
 <?php else: ?>
     <div style="display: inline-flex;">
-        <p class="m-0" style="font-weight: bold;color: rgb(28,200,138);font-size: 20px;">Total Sales :</p>
-        <p class="text-dark d-xxl-flex align-items-xxl-center m-0" style="font-size: 20px;">
-            P<?php echo number_format($total_sales, 2); ?></p>
+        <p class="m-0" style="font-weight: bold;color: rgb(28,200,138);font-size: 20px;">Total Sales : <span> ₱ <?php echo number_format($total_sales, 2); ?></span> </p>
     </div>
 
     <div style="display: inline-flex;">
         <p class="m-0" style="font-weight: bold;color: rgb(255,164,113);font-size: 20px;">Total transactions :
+            <span><?php echo number_format($total_transactions); ?></span>
         </p>
-        <p class="text-dark d-xxl-flex align-items-xxl-center m-0" style="font-size: 20px;">
-            <?php echo number_format($total_transactions); ?></p>
     </div>
 <?php endif; ?>

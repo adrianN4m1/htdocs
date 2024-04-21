@@ -23,8 +23,8 @@
             <div class="collapse navbar-collapse" id="navcol-1" style="margin-right: 0px;">
             <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" href="index.php?user_id=<?php include('parameters.php')?>">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="buy_list.php?user_id=<?php include('parameters.php')?>">Buy</a></li>
-                    <li class="nav-item"><a class="nav-link" href="rewards.php?user_id=<?php include('parameters.php')?>">Rewards</a></li>
+                    <li class="nav-item"><a class="nav-link" href="buy_list.php?user_id=<?php include('parameters.php')?>">Buy</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="rewards.php?user_id=<?php include('parameters.php')?>">Rewards</a></li>
                     <li class="nav-item"><a class="nav-link" href="transactions.php?user_id=<?php include('parameters.php')?>">Transactions</a></li>
                     <li class="nav-item"><a class="nav-link" href="contacts.php?user_id=<?php include('parameters.php')?>">Settings</a></li>
                 </ul>

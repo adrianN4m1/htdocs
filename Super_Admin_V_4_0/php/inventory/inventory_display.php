@@ -21,7 +21,8 @@ $sql2 = "SELECT
             prod.prod_image,
             supp.supplier_name,
             prod.expiration_date,
-            inv.quantity
+            inv.quantity,
+            inv.inv_limit
         FROM
             inventory inv
         JOIN
@@ -36,15 +37,20 @@ $sql2 = "SELECT
 $result = $conn->query($sql2);
 
 if ($result->num_rows > 0) {
-    // Output data of each row
+    
     while ($row = $result->fetch_assoc()) {
+        $dateE=$row["expiration_date"];
+        $expirationDateObj = DateTime::createFromFormat('Y-m-d', $dateE );
+        $expirationDate = $expirationDateObj->format('Y-m-d');
+        $quantity = $row["quantity"];
+    $quantityColor = ($quantity < 100) ? 'red' : 'var(--bs-grey)';
+    $warningIcon = ($quantity < 100) ? '<i class="fas fa-exclamation-triangle" style="color: red;"></i>' : '';
         echo '<div class="col-md-3" style="padding-bottom: 24px;">
                 <div style="border-radius: 4px;padding: 4px;background: var(--bs-white);border: 1px none rgb(217,217,217);box-shadow: 0px 0px 12px var(--bs-gray-400);padding-left: 0px;padding-right: 0px;padding-bottom: 0px;overflow: hidden;">
                     <div class="d-xl-flex justify-content-xxl-center align-items-xxl-center" style="height: 200px;border-radius: 12px;margin-top: 12px;"><img class="border rounded border-1" style="height: 100%;" src="php/inventory/images/' . $row["prod_image"] . '"></div>
                     <div style="padding-left: 8px;">
                         <h5 style="font-weight: bold;color: var(--bs-gray-700);padding-top: 10px;margin-bottom: 0px;">' . $row["product_name"] . '</h5>
-                        <p style="margin-bottom: 0px;font-weight: bold;">Stock: <span style="color: var(--bs-danger);">' . $row["quantity"] . '</span></p>
-                    </div>
+                        <p style="margin-bottom: 0px;font-weight: bold;">Stock: <span style="color: ' . $quantityColor . ';">' . $row["quantity"] . '</span>' . $warningIcon . '</p>                    </div>
                     <div class="row">
                         <div class="col col-md5"><a class="btn btn-primary" role="button" style="padding-right: 10px;padding-left: 10px;background: var(--bs-btn-hover-bg);color: rgb(255,255,255);border-style: none;border-radius: 12px;width: 100%;margin-top: 10px;font-size: 16px;--bs-body-font-weight: normal;margin-bottom: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-top-left-radius: 4px;border-top-right-radius: 4px;box-shadow: 0px 0px 8px var(--bs-gray);padding-bottom: 10px;opacity: 0.80;" href="rewards_information.html" data-bs-target="#display-items-' . $row["inventory_id"] . '" data-bs-toggle="modal">Check Item</a></div>
                     </div>
@@ -123,13 +129,19 @@ if ($result->num_rows > 0) {
                                         <td>Expiration</td>
                                         <td><input type="text"
                                                 id="expiration" name="expiration" style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                placeholder="' . $row["expiration_date"] . '" onblur=(this.type="text") onfocus=(this.type="date") value=""></td>
+                                                placeholder="' . $expirationDate . '" onblur=(this.type="text") onfocus=(this.type="date") value=""></td>
                                     </tr>
                                     <tr>
                                         <td>In Stock</td>
                                         <td><input type="text"
                                                 id="stocks" name="stocks" style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
                                                 placeholder="' . $row["quantity"] . '" value=""></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Stock Limit</td>
+                                        <td><input type="text"
+                                                id="inv_limit" name="inv_limit" style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
+                                                placeholder="' . $row["inv_limit"] . '" value=""></td>
                                     </tr>
                                 </tbody>
                             </table>

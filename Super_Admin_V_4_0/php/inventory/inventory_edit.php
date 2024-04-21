@@ -20,66 +20,61 @@ if (isset($_POST["Edit_save"])) {
     $bprice = $_POST['bprice'];
     $expiration = $_POST['expiration'];
     $stocks = $_POST['stocks'];
+    $inv_limit = $_POST['inv_limit'];
 
-    // Update products table if relevant fields are not null
-    if (!empty($prodname)) {
-        $sql = "UPDATE products SET product_name='$prodname' WHERE product_id=(SELECT product_id FROM inventory WHERE inventory_id='$inv_id')";
-        $conn->query($sql);
-    }
-    if (!empty($prodtype)) {
-        $sql = "UPDATE products SET Prod_type='$prodtype' WHERE product_id=(SELECT product_id FROM inventory WHERE inventory_id='$inv_id')";
-        $conn->query($sql);
-    }
-    if (!empty($price)) {
-        $sql = "UPDATE products SET price='$price' WHERE product_id=(SELECT product_id FROM inventory WHERE inventory_id='$inv_id')";
-        $conn->query($sql);
-    }
-    if (!empty($bprice)) {
-        $sql = "UPDATE products SET base_price='$bprice' WHERE product_id=(SELECT product_id FROM inventory WHERE inventory_id='$inv_id')";
-        $conn->query($sql);
-    }
-    if (!empty($expiration)) {
-        $sql = "UPDATE products SET expiration_date='$expiration' WHERE product_id=(SELECT product_id FROM inventory WHERE inventory_id='$inv_id')";
-        $conn->query($sql);
-    }
-
-    // Update inventory table if relevant fields are not null
-    if (!empty($stocks)) {
-        $sql = "UPDATE inventory SET quantity='$stocks' WHERE inventory_id='$inv_id'";
-        $conn->query($sql);
-    }
-    // Update product image if a new image is uploaded
-    if ($prodimg != '') {
-
-        $update_filename = $prodimg;
-        if (file_exists("images/" . $_FILES['prodimg']['name'])) {
-            $file_name = $_FILES['prodimg']['name'];
-
-            echo '<script>alert("Image already Exist!"); window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";</script>';
-            exit();
-
+    // Update products table if relevant fields are not empty
+    if (!empty($prodname) || !empty($prodtype) || !empty($price) || !empty($bprice) || !empty($expiration)) {
+        $sql = "UPDATE products p
+                INNER JOIN inventory i ON p.product_id = i.product_id
+                SET ";
+        $updates = [];
+        if (!empty($prodname)) $updates[] = "p.product_name = '$prodname'";
+        if (!empty($prodtype)) $updates[] = "p.Prod_type = '$prodtype'";
+        if (!empty($price)) $updates[] = "p.price = '$price'";
+        if (!empty($bprice)) $updates[] = "p.base_price = '$bprice'";
+        if (!empty($expiration)) {
+            $expirationDate = date('Y-m-d', strtotime($expiration));
+            $updates[] = "p.expiration_date = '$expirationDate'";
         }
-        $sqlimage = "UPDATE products SET prod_image='$update_filename' WHERE product_id=(SELECT product_id FROM inventory WHERE inventory_id='$inv_id')";
-    $conn->query($sqlimage);
-    if (mysqli_query($conn, $sqlimage)) {
-        if ($_FILES['prodimg']['name'] != '') {
-            $targetDirectory = "images/";
-            $targetFile = $targetDirectory . basename($_FILES["prodimg"]["name"]);
-            move_uploaded_file($_FILES["prodimg"]["tmp_name"], $targetFile);
+        $sql .= implode(", ", $updates) . " WHERE i.inventory_id = '$inv_id'";
+        $conn->query($sql);
+    }
+
+    // Update inventory table if relevant fields are not empty
+    if (!empty($stocks) || !empty($inv_limit)) {
+        $sql = "UPDATE inventory SET ";
+        $updates = [];
+        if (!empty($stocks)) $updates[] = "quantity = '$stocks'";
+        if (!empty($inv_limit)) $updates[] = "inv_limit = '$inv_limit'";
+        $sql .= implode(", ", $updates) . " WHERE inventory_id = '$inv_id'";
+        $conn->query($sql);
+    }
+
+    // Update product image if a new image is uploaded
+    if (!empty($prodimg)) {
+        // Handle file upload
+        $targetDirectory = "images/";
+        $targetFile = $targetDirectory . basename($_FILES["prodimg"]["name"]);
+        if (file_exists($targetFile)) {
+            echo '<script>alert("Image already exists!"); window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";</script>';
+            exit();
+        }
+        if (move_uploaded_file($_FILES["prodimg"]["tmp_name"], $targetFile)) {
+            $sql = "UPDATE products p
+                    INNER JOIN inventory i ON p.product_id = i.product_id
+                    SET p.prod_image = '$prodimg'
+                    WHERE i.inventory_id = '$inv_id'";
+            $conn->query($sql);
             if (file_exists("images/".$old_prodimg)) {
                 unlink("images/".$old_prodimg);
             }
+        } else {
+            echo '<script>alert("Error uploading image!"); window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";</script>';
+            exit();
         }
-        echo '<script>alert("Succesful Edit!");window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";</script>';
-
-    }
-    } else {
-
-        $update_filename = $old_prodimg;
-        echo '<script>alert("Succesful Edit!");window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";</script>';
     }
 
-    
+    echo '<script>alert("Successful Edit!");window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";</script>';
 }
 
 $conn->close();

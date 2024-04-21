@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // SQL query to retrieve data
-$sql = "SELECT p.product_name, inv.quantity 
+$sql = "SELECT p.product_name, inv.quantity, inv.inv_limit
         FROM inventory inv 
         JOIN products p ON inv.product_id = p.product_id
         WHERE inv.Inv_Type = 1
@@ -31,10 +31,7 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $product_names[] = $row["product_name"];
         $stock_counts[] = $row["quantity"];
-        // Assuming you have a separate table for limits or a way to determine the limit for each product
-        // You can fetch the limit data similarly from your database
-        // For demonstration, I'll set a default limit of 100 for each product
-        $limits[] = 100;
+        $limits[] = $row["inv_limit"];
     }
 } else {
     echo "0 results";

@@ -17,8 +17,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $price = $_POST['price'];
     $basePrice = $_POST['price_base'];
     $supplierId = $_POST['supplier_id'];
-    $expirationDate = $_POST['expiration_date'];
+    $expiration = $_POST['expiration'];
+    
+    // Parse expiration date using DateTime::createFromFormat
+    $expirationDateObj = DateTime::createFromFormat('Y-m-d', $expiration);
+    if (!$expirationDateObj) {
+        // Invalid date format
+        die("Invalid expiration date format.");
+    }
+    $expirationDate = $expirationDateObj->format('Y-m-d');
+
     $invStock = $_POST['inv_stock'];
+    $invLimit = $_POST['inv_limit'];
     $prodImage = $_FILES['prod_image']['name']; // Get image file name
     
     // Insert data into products table
@@ -36,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Insert data into inventory table
         $invType = 1; // Assuming Inv_Type is always 1
-        $sqlInventory = "INSERT INTO inventory (product_id, quantity, Inv_Type) VALUES ($lastProductId, $invStock, $invType)";
+        $sqlInventory = "INSERT INTO inventory (product_id, quantity, Inv_Type, inv_limit) VALUES ($lastProductId, $invStock, $invType,$invLimit)";
         
         if (mysqli_query($conn, $sqlInventory)) {
             // Redirect to success page or display success message

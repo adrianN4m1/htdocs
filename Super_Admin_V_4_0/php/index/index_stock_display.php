@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // SQL query to retrieve data
-$sql = "SELECT inv.inventory_id, p.product_name, inv.quantity 
+$sql = "SELECT inv.inventory_id, p.product_name, inv.quantity, inv.inv_limit
         FROM inventory inv 
         JOIN products p ON inv.product_id = p.product_id
         WHERE inv_type = 1
@@ -24,8 +24,9 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $limitI = $row["inv_limit"];
         $quantity = $row["quantity"];
-        $color = ($quantity < 100) ? 'var(--bs-red)' : 'var(--bs-green)';
+        $color = ($quantity < $limitI) ? 'var(--bs-red)' : 'var(--bs-green)';
         echo "<tr>
                 <td>" . $row["inventory_id"] . "</td>
                 <td>" . $row["product_name"] . "</td>

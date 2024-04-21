@@ -225,8 +225,7 @@
                         data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div style="padding-bottom: 0px;margin-bottom: 13px;"><input type="text" id="username-1"
-                            placeholder="ID" name="username"
+                    <div style="padding-bottom: 0px;margin-bottom: 13px;"><input type="text" id="username-1" name="username"
                             style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;" disabled="">
                         <hr>
                     </div>
@@ -234,7 +233,7 @@
                     <div style="padding-bottom: 0px;margin-bottom: 14px;"></div>
                     <div style="padding-bottom: 0px;margin-bottom: 14px;">
                         <p style="margin-bottom: -3px;font-size: 10px;">Branch Name</p><input type="text"
-                            id="username-10" placeholder="Tandang Sora Branch" name="mobile_number"
+                            id="username-10"  name="mobile_number"
                             style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                     </div>
                     <div style="padding-bottom: 0px;margin-bottom: 14px;"></div>
@@ -264,7 +263,7 @@
                                 <div style="padding-bottom: 0px;margin-bottom: 13px;">
                                     <p class="text-start"
                                         style="color: var(--bs-gray);font-size: 12px;margin-bottom: 0px;">
-                                        User ID</p><input type="text" id="username-2" placeholder="ID" name="username"
+                                        User ID</p><input type="text" id="username-2"  name="username"
                                         style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;"
                                         disabled="">
                                     <p class="text-end" style="color: var(--bs-blue);font-size: 12px;">Auto-generated
@@ -288,14 +287,14 @@
                             <div class="col">
                                 <div style="padding-bottom: 0px;margin-bottom: 14px;">
                                     <p style="margin-bottom: -3px;font-size: 10px;">Given name</p><input type="text"
-                                        id="username" placeholder="" name="username"
+                                        id="username"  name="username"
                                         style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                                 </div>
                             </div>
                             <div class="col">
                                 <div style="padding-bottom: 0px;margin-bottom: 14px;">
                                     <p style="margin-bottom: -3px;font-size: 10px;">Last name</p><input type="text"
-                                        id="lastname" placeholder="" name="lastname"
+                                        id="lastname"  name="lastname"
                                         style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                                 </div>
                             </div>
@@ -304,7 +303,7 @@
                             <div class="col">
                                 <div style="padding-bottom: 0px;margin-bottom: 14px;">
                                     <p style="margin-bottom: -3px;font-size: 10px;">Mobile number</p><input type="text"
-                                        id="mobile_number" placeholder="" name="mobile_number"
+                                        id="mobile_number"  name="mobile_number"
                                         style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                                 </div>
                             </div>
@@ -313,7 +312,7 @@
                             <div class="col">
                                 <div style="padding-bottom: 0px;margin-bottom: 14px;">
                                     <p style="margin-bottom: -3px;font-size: 10px;">Email</p><input id="email"
-                                        type="email" placeholder="" name="email"
+                                        type="email"  name="email"
                                         style="width: 100%;color: var(--bs-gray);">
                                 </div>
                             </div>
@@ -339,7 +338,7 @@
                         <div class="col">
                             <div style="padding-bottom: 0px;margin-bottom: 13px;">
                                 <p class="text-start" style="color: var(--bs-gray);font-size: 12px;margin-bottom: 0px;">
-                                    User ID</p><input type="text" id="username-7" placeholder="ID" name="username"
+                                    User ID</p><input type="text" id="username-7"  name="username"
                                     style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;" disabled="">
                                 <p class="text-end" style="color: var(--bs-blue);font-size: 12px;">Auto-generated text
                                 </p>
@@ -348,7 +347,7 @@
                         <div class="col">
                             <div style="padding-bottom: 0px;margin-bottom: 13px;">
                                 <p class="text-start" style="color: var(--bs-gray);font-size: 12px;margin-bottom: 0px;">
-                                    Branch</p><input type="text" id="username-8" placeholder="Tandang Sora"
+                                    Branch</p><input type="text" id="username-8" 
                                     name="username"
                                     style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;" disabled="">
                                 <p class="text-end" style="color: var(--bs-blue);font-size: 12px;">Auto-generated text
@@ -360,14 +359,14 @@
                         <div class="col">
                             <div style="padding-bottom: 0px;margin-bottom: 14px;">
                                 <p style="margin-bottom: -3px;font-size: 10px;">Given name</p><input type="text"
-                                    id="username-9" placeholder="Sev" name="mobile_number"
+                                    id="username-9" name="mobile_number"
                                     style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                             </div>
                         </div>
                         <div class="col">
                             <div style="padding-bottom: 0px;margin-bottom: 14px;">
                                 <p style="margin-bottom: -3px;font-size: 10px;">Last name</p><input type="text"
-                                    id="username-11" placeholder="Constantino" name="mobile_number"
+                                    id="username-11" name="mobile_number"
                                     style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                             </div>
                         </div>
@@ -376,7 +375,7 @@
                         <div class="col">
                             <div style="padding-bottom: 0px;margin-bottom: 14px;">
                                 <p style="margin-bottom: -3px;font-size: 10px;">Mobile number</p><input type="text"
-                                    id="username-12" placeholder="09876543210" name="mobile_number"
+                                    id="username-12"  name="mobile_number"
                                     style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                             </div>
                         </div>

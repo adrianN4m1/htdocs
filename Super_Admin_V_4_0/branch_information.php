@@ -329,7 +329,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                    <button id="cancel" class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
                     <button id="archive-confirm-btn 3" class="btn btn-primary" type="button"
                         style="background: var(--bs-red);">
                         Archive
@@ -362,6 +362,7 @@
                             xhr.send('userid=' + userId);
 
                         }
+                       
                     </script>
                 </div>
             </div>

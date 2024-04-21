@@ -131,17 +131,17 @@
                     <h4 class="modal-title">Add new Item</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div style="padding-bottom: 0px;margin-bottom: 13px;"><input type="text" id="username" placeholder="Barcode" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;" disabled="">
+                    <div style="padding-bottom: 0px;margin-bottom: 13px;"><input type="text" id="username" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;" disabled="">
                         <p class="text-end" style="margin-bottom: -3px;font-size: 10px;color: var(--bs-blue);">Auto-generated text</p>
                         <hr>
                     </div>
                     <div style="padding-bottom: 0px;margin-bottom: 14px;">
                         <div class="row" style="padding-bottom: 12px;">
                             <div class="col col-md-7">
-                                <p style="margin-bottom: -3px;font-size: 10px;">Product name</p><input type="text" id="username-2" placeholder="Megatron X" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
+                                <p style="margin-bottom: -3px;font-size: 10px;">Product name</p><input type="text" id="username-2" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                             </div>
                             <div class="col">
-                                <p style="margin-bottom: -3px;font-size: 10px;">Type</p><input type="text" id="username-7" placeholder="Gasoline" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
+                                <p style="margin-bottom: -3px;font-size: 10px;">Type</p><input type="text" id="username-7" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                             </div>
                         </div>
                         <div class="row" style="padding-bottom: 12px;">
@@ -156,16 +156,16 @@
                         <div class="row" style="padding-bottom: 12px;">
                             <div class="col col-md-6">
                                 <p style="margin-bottom: -3px;font-size: 10px;">Price</p>
-                                <div><span style="margin-right: 3px;">P</span><input type="text" id="username-4" placeholder="60.02" name="username" style="--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;"></div>
+                                <div><span style="margin-right: 3px;">P</span><input type="text" id="username-4"  name="username" style="--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;"></div>
                             </div>
                             <div class="col">
-                                <p style="margin-bottom: -3px;font-size: 10px;">Stocks</p><input type="text" id="username-5" placeholder="100" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
+                                <p style="margin-bottom: -3px;font-size: 10px;">Stocks</p><input type="text" id="username-5" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                             </div>
                         </div>
                         <div class="row" style="padding-bottom: 12px;">
                             <div class="col col-md-6">
                                 <p style="margin-bottom: -3px;font-size: 10px;">Base Price</p>
-                                <div><span style="margin-right: 3px;">P</span><input type="text" id="username-10" placeholder="60.02" name="username" style="--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;"></div>
+                                <div><span style="margin-right: 3px;">P</span><input type="text" id="username-10"  name="username" style="--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;"></div>
                             </div>
                         </div>
                     </div>
@@ -193,17 +193,17 @@
                     <h4 class="modal-title">Edit Item</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div style="padding-bottom: 0px;margin-bottom: 13px;"><input type="text" id="username-11" placeholder="Barcode" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;" disabled="">
+                    <div style="padding-bottom: 0px;margin-bottom: 13px;"><input type="text" id="username-11" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;" disabled="">
                         <p class="text-end" style="margin-bottom: -3px;font-size: 10px;color: var(--bs-blue);">Auto-generated text</p>
                         <hr>
                     </div>
                     <div style="padding-bottom: 0px;margin-bottom: 14px;">
                         <div class="row" style="padding-bottom: 12px;">
                             <div class="col col-md-7">
-                                <p style="margin-bottom: -3px;font-size: 10px;">Product name</p><input type="text" id="username-12" placeholder="Megatron X" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
+                                <p style="margin-bottom: -3px;font-size: 10px;">Product name</p><input type="text" id="username-12" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                             </div>
                             <div class="col">
-                                <p style="margin-bottom: -3px;font-size: 10px;">Type</p><input type="text" id="username-13" placeholder="Gasoline" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
+                                <p style="margin-bottom: -3px;font-size: 10px;">Type</p><input type="text" id="username-13"  name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                             </div>
                         </div>
                         <div class="row" style="padding-bottom: 12px;">
@@ -218,16 +218,16 @@
                         <div class="row" style="padding-bottom: 12px;">
                             <div class="col col-md-6">
                                 <p style="margin-bottom: -3px;font-size: 10px;">Price</p>
-                                <div><span style="margin-right: 3px;">P</span><input type="text" id="username-14" placeholder="60.02" name="username" style="--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;"></div>
+                                <div><span style="margin-right: 3px;">P</span><input type="text" id="username-14"  name="username" style="--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;"></div>
                             </div>
                             <div class="col">
-                                <p style="margin-bottom: -3px;font-size: 10px;">Stocks</p><input type="text" id="username-15" placeholder="100" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
+                                <p style="margin-bottom: -3px;font-size: 10px;">Stocks</p><input type="text" id="username-15" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                             </div>
                         </div>
                         <div class="row" style="padding-bottom: 12px;">
                             <div class="col col-md-6">
                                 <p style="margin-bottom: -3px;font-size: 10px;">Base Price</p>
-                                <div><span style="margin-right: 3px;">P</span><input type="text" id="username-16" placeholder="60.02" name="username" style="--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;"></div>
+                                <div><span style="margin-right: 3px;">P</span><input type="text" id="username-16" name="username" style="--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;"></div>
                             </div>
                         </div>
                     </div>

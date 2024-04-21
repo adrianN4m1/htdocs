@@ -170,14 +170,14 @@
                     </div>
                     <div class="modal-body">
                         <div class="modal-body">
-                            <div style="padding-bottom: 0px;margin-bottom: 13px;"><input type="text" id="username" placeholder="ID" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;" disabled="">
+                            <div style="padding-bottom: 0px;margin-bottom: 13px;"><input type="text" id="username" name="username" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;" disabled="">
                                 <p class="text-end" style="margin-bottom: -3px;font-size: 10px;color: var(--bs-blue);">Auto-generated text</p>
                                 <hr>
                             </div>
                             <div style="padding-bottom: 0px;margin-bottom: 14px;"></div>
                             <div style="padding-bottom: 0px;margin-bottom: 14px;"></div>
                             <div style="padding-bottom: 0px;margin-bottom: 14px;">
-                                <p style="margin-bottom: -3px;font-size: 10px;">Branch Name</p><input type="text" id="username-4" placeholder="Tandang Sora Branch" name="mobile_number" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
+                                <p style="margin-bottom: -3px;font-size: 10px;">Branch Name</p><input type="text" id="username-4" name="mobile_number" style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                             </div>
                             <div style="padding-bottom: 0px;margin-bottom: 14px;"></div>
                             <div style="padding-bottom: 0px;margin-bottom: 14px;">

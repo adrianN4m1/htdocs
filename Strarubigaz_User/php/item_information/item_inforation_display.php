@@ -27,6 +27,8 @@ if ($product_id) {
     // Check if there is a product
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
+        $quantity = $row["quantity"];
+
         echo '
         <div class="row">
             <div class="col-md-6 text-center"><img src="/Super_Admin_V_4_0/php/inventory/images/' . $row["prod_image"] . '" style="width: 300px;border-radius: 10px;"></div>
@@ -39,25 +41,32 @@ if ($product_id) {
                 </div>
                 <div class="row">
                     <div class="col">
-                        <p style="display: inline;">In Stock:&nbsp;<span style="font-weight: bold;">' . $row["quantity"] . '</span></p>
+                        <p style="display: inline;">In Stock:&nbsp;<span style="font-weight: bold;">' . $quantity . '</span></p>
                         <hr>
                         <p style="display: inline;">Price:&nbsp;<span style="font-weight: bold;">' . $row["price"] . '</span></p>
                     </div>
                 </div>
-                <div class="row" style="padding-top: 12px;padding-bottom: 12px;">
+                <div class="row" style="padding-top: 12px;padding-bottom: 12px;">';
+
+        // Check if quantity is 0
+        if ($quantity == 0) {
+            echo '<p style="color: red;">Item is not available</p>';
+        } else {
+            echo '
                 <form action="php/item_information/add_cart.php" method="POST">
-                <input type="hidden" name="user_id" value='.$user_id.'>
-                <input type="hidden" name="product_id" value='.$product_id.'>
-                <div class="col d-xxl-flex align-items-xxl-center">
-                <button class="btn btn-primary" type="submit"
-                style="border-radius: 2px;background: var(--bs-gray-dark);border-style: none;"><i
-                    class="fas fa-shopping-bag"></i>&nbsp; Add to Cart</button>
-                </div>
-                <div class="col" style="text-align: center;"></div>
-                <p class="d-xxl-flex align-items-xxl-center">Items :&nbsp;
-                    <input class="form-control-sm" type="number" min="1" id="quantity" name="quantity" placeholder="1" value="1" style="border-radius: 4px;border-width: 1px;border-color: var(--bs-gray-dark);font-size: 15px;text-align: center;width: 80px;">
-                </p>            
-            </form>
+                    <input type="hidden" name="user_id" value='.$user_id.'>
+                    <input type="hidden" name="product_id" value='.$product_id.'>
+                    <div class="col d-xxl-flex align-items-xxl-center">
+                        <button class="btn btn-primary" type="submit" style="border-radius: 2px;background: var(--bs-gray-dark);border-style: none;"><i class="fas fa-shopping-bag"></i>&nbsp; Add to Cart</button>
+                    </div>
+                    <div class="col" style="text-align: center;"></div>
+                    <p class="d-xxl-flex align-items-xxl-center">Items :&nbsp;
+                        <input class="form-control-sm" type="number" min="1" max="'. $quantity .'" id="quantity" name="quantity" placeholder="1" value="1" style="border-radius: 4px;border-width: 1px;border-color: var(--bs-gray-dark);font-size: 15px;text-align: center;width: 80px;">
+                    </p>            
+                </form>';
+        }
+        
+        echo '
                 </div>
             </div>
         </div>
