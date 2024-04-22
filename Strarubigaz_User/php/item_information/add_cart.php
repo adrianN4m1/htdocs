@@ -53,6 +53,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Get the ID of the newly inserted order
         $order_id = $conn->insert_id;
     }
+    // Insert the order item into the order_items table
+    $stmt = $conn->prepare("UPDATE inventory SET quantity = quantity - ? WHERE product_id = ?");
+    $stmt->bind_param("is", $quantity,$product_id);
+    $stmt->execute();
+
+
+    if ($stmt->affected_rows > 0) {
+        echo "<script>alert('Item successfully added to the cart'); window.location.href='/Strarubigaz_User/buy_list.php?user_id=" . $user_id . "';</script>";
+    } else {
+        echo "Failed to update the inventory quantity.";
+    }
+
+
 
     // Insert the order item into the order_items table
     $stmt = $conn->prepare("INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)");

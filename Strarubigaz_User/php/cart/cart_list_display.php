@@ -22,7 +22,7 @@ if ($result->num_rows > 0) {
 }
 
 // Prepare and execute the SQL query to fetch order items and product details
-$stmt = $conn->prepare("SELECT oi.order_item_id, oi.quantity, oi.price, p.product_name, p.prod_image FROM order_items oi JOIN products p ON oi.product_id = p.product_id WHERE oi.order_id = ?");
+$stmt = $conn->prepare("SELECT oi.order_item_id, oi.quantity, oi.price, p.product_id ,p.product_name, p.prod_image FROM order_items oi JOIN products p ON oi.product_id = p.product_id WHERE oi.order_id = ?");
 $stmt->bind_param("i", $order_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -34,6 +34,7 @@ if ($result->num_rows > 0) {
         $price = $row['price'];
         $product_name = $row['product_name'];
         $prod_image = $row['prod_image'];
+        $prod_ids = $row['product_id'];
 
         echo '
         
@@ -50,6 +51,8 @@ if ($result->num_rows > 0) {
                                 <p class="d-inline" style="font-size: 20px;font-weight: bold;margin-top: 20px;"><i class="fab fa-galactic-republic"></i>&nbsp;' . $price * $quantity . '</p>
                                 <form action="php/cart/remove_item.php" method="post" style="display: inline;">
                                 <input type="hidden" name="order_item_id" value='.$order_item_id.'>
+                                <input type="hidden" name="prod_ids" value='.$prod_ids.'>
+                                <input type="hidden" name="quantity" value='.$quantity.'>
                                 <button type="submit" style="color: var(--bs-red);font-size: 12px;text-decoration: underline;background: none;border: none;padding: 0;cursor: pointer;">remove</button>
                             </form>                            
                             </div>

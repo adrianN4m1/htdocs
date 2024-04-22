@@ -9,8 +9,14 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if (isset($_POST['order_item_id'])) {
+if (isset($_POST['order_item_id']) && isset($_POST['prod_ids'])&& isset($_POST['quantity'])) {
     $order_item_id = $_POST['order_item_id'];
+    $prod_ids = $_POST['prod_ids'];
+    $quantity = $_POST['quantity'];
+    // Prepare and execute the SQL query to remove the item from the order_items table
+    $stmtt = $conn->prepare("UPDATE inventory SET quantity = quantity + ? WHERE product_id = ?");
+    $stmtt->bind_param("is", $quantity, $prod_ids);
+    $stmtt->execute();
 
     // Prepare and execute the SQL query to remove the item from the order_items table
     $stmt = $conn->prepare("DELETE FROM order_items WHERE order_item_id = ?");
