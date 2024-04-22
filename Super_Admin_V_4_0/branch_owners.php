@@ -329,7 +329,6 @@
                             xhr.onreadystatechange = function () {
                                 if (xhr.readyState === 4 && xhr.status === 200) {
                                     // Handle the response from the server
-                                    alert(xhr.responseText);
                                     window.location.href = 'http://localhost/Super_Admin_V_4_0/branch_owners.php';
 
                                 }

@@ -21,7 +21,6 @@ if (isset($_POST['adminid'])) {
         // Update user_id in branches table to NULL
         $update_branch_query = "UPDATE branches SET user_id = NULL WHERE user_id = $admin_userid";
         if ($conn->query($update_branch_query) === TRUE) {
-            echo "User archived successfully.";
         } else {
             echo "Error updating branch record: " . $conn->error;
         }
