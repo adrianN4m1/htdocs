@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2024 at 07:17 PM
+-- Generation Time: Apr 22, 2024 at 08:51 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,9 +43,9 @@ INSERT INTO `branches` (`branch_id`, `branch_name`, `full_address`, `user_id`, `
 (1, 'Main Branch', '140 Loyola St., Pasig City, Metro Manila', 2, 1),
 (2, 'Quezon City', '34 Quezon Avenue, Quezon City, Metro Manila', 16, 1),
 (3, 'Pasay City', '420 A. Apolinario, Pasay City, Metro Manila', 17, 1),
-(4, 'Biñan', 'CALAX - Greenfield Parkway Exit', 18, 1),
+(4, 'Biñan', 'CALAX - Greenfield Parkway Exit', NULL, 0),
 (5, 'San Pedro', '20 Pacita Avenue, San Pedro City, Laguna', 20, 1),
-(6, 'test', 'test', 19, 1),
+(6, 'test', 'test', NULL, 0),
 (7, 'test', 'test', NULL, 0),
 (8, 'adu', 'asda', NULL, 0),
 (9, 'kjhk', 'jh', NULL, 0),
@@ -72,7 +72,8 @@ INSERT INTO `branches` (`branch_id`, `branch_name`, `full_address`, `user_id`, `
 (30, 'd', '', NULL, 0),
 (31, 'b', '', NULL, 0),
 (32, 'adu', '', NULL, 0),
-(33, 'test', '', NULL, 1);
+(33, 'test', '', NULL, 1),
+(34, 'makati', 'Cuenca street', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -96,22 +97,22 @@ INSERT INTO `branch_customer` (`Bcust_ID`, `branch_id`, `user_id`, `Bcst_type`) 
 (2, 1, 52, 1),
 (3, 1, 53, 1),
 (4, 1, 54, 0),
-(5, 2, 55, 1),
-(6, 2, 56, 1),
+(5, 2, 55, 0),
+(6, 2, 56, 0),
 (7, 2, 57, 1),
 (8, 2, 58, 1),
 (9, 3, 59, 1),
 (10, 3, 60, 1),
 (11, 3, 61, 1),
 (12, 3, 62, 1),
-(13, 4, 63, 1),
-(14, 4, 64, 1),
-(15, 4, 65, 1),
-(16, 4, 66, 1),
-(17, 5, 67, 1),
-(18, 5, 68, 1),
-(19, 5, 69, 1),
-(20, 5, 70, 1),
+(13, 4, 63, 0),
+(14, 4, 64, 0),
+(15, 4, 65, 0),
+(16, 4, 66, 0),
+(17, 5, 67, 0),
+(18, 5, 68, 0),
+(19, 5, 69, 0),
+(20, 5, 70, 0),
 (21, 5, 71, 0),
 (22, 1, 72, 0),
 (23, 2, 74, 0),
@@ -124,10 +125,11 @@ INSERT INTO `branch_customer` (`Bcust_ID`, `branch_id`, `user_id`, `Bcst_type`) 
 (30, 2, 89, 0),
 (31, 2, 90, 0),
 (32, 2, 91, 0),
-(33, 2, 92, 1),
-(34, 2, 93, 1),
-(35, 2, 94, 1),
-(36, 2, 95, 1);
+(33, 2, 92, 0),
+(34, 2, 93, 0),
+(35, 2, 94, 0),
+(36, 2, 95, 0),
+(37, 34, 96, 0);
 
 -- --------------------------------------------------------
 
@@ -153,31 +155,40 @@ CREATE TABLE `inventory` (
   `inventory_id` int(11) NOT NULL,
   `product_id` int(11) DEFAULT NULL,
   `quantity` int(11) NOT NULL,
-  `Inv_Type` int(11) NOT NULL
+  `Inv_Type` int(11) NOT NULL,
+  `inv_limit` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `inventory`
 --
 
-INSERT INTO `inventory` (`inventory_id`, `product_id`, `quantity`, `Inv_Type`) VALUES
-(1, 1, 1000, 0),
-(2, 2, 1, 0),
-(3, 3, 496, 1),
-(4, 4, 99999999, 0),
-(5, 5, 24, 0),
-(6, 6, 64, 0),
-(7, 7, 10000, 0),
-(8, 8, 555, 0),
-(9, 9, 999, 0),
-(10, 10, 110, 1),
-(11, 11, 2020, 0),
-(12, 12, 435, 0),
-(13, 13, 693, 1),
-(14, 14, 69, 0),
-(15, 15, 978, 1),
-(16, 16, 200, 1),
-(17, 17, 87, 1);
+INSERT INTO `inventory` (`inventory_id`, `product_id`, `quantity`, `Inv_Type`, `inv_limit`) VALUES
+(1, 1, 1000, 0, NULL),
+(2, 2, 1, 0, NULL),
+(3, 3, 70, 1, 90),
+(4, 4, 99999999, 0, NULL),
+(5, 5, 24, 0, NULL),
+(6, 6, 64, 0, NULL),
+(7, 7, 10000, 0, NULL),
+(8, 8, 555, 0, NULL),
+(9, 9, 999, 0, NULL),
+(10, 10, 51, 1, 120),
+(11, 11, 2020, 0, NULL),
+(12, 12, 435, 0, NULL),
+(13, 13, 156, 1, 120),
+(14, 14, 69, 0, 100),
+(15, 15, 52, 1, 90),
+(16, 16, 287, 1, 75),
+(17, 17, 98, 1, 120),
+(18, 19, 500, 0, 70),
+(19, 20, 100, 0, 20),
+(20, 21, 1000, 0, 200),
+(21, 22, 100, 0, 20),
+(22, 23, 100, 0, 50),
+(23, 24, 100, 1, 40),
+(24, 25, 92, 1, 65),
+(25, 26, 60, 1, 30);
 
 -- --------------------------------------------------------
 
@@ -234,7 +245,10 @@ INSERT INTO `orders` (`order_id`, `user_id`, `branch_id`, `order_date`, `status`
 (44, 51, 1, '2024-04-16 10:37:24', 'Completed'),
 (45, 51, 1, '2024-04-17 10:47:30', 'Completed'),
 (46, 51, 1, '2024-04-18 11:45:45', 'Completed'),
-(47, 51, 1, '2024-04-20 05:10:27', 'Completed');
+(47, 51, 1, '2024-04-20 05:10:27', 'Completed'),
+(48, 51, 1, '2024-04-21 07:23:49', 'Completed'),
+(49, 51, 1, '2024-04-21 12:45:07', 'Completed'),
+(50, 51, 1, '2024-04-22 02:55:08', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -302,7 +316,11 @@ INSERT INTO `order_items` (`order_item_id`, `order_id`, `product_id`, `quantity`
 (75, 45, 12, 1, 20.00),
 (76, 46, 13, 1, 62.00),
 (77, 46, 3, 1, 70.00),
-(78, 47, 3, 1, 70.00);
+(78, 47, 3, 1, 70.00),
+(79, 48, 13, 6, 62.00),
+(80, 48, 3, 100000000, 70.00),
+(81, 48, 10, 2147483647, 69.00),
+(82, 49, 16, 200, 1.00);
 
 -- --------------------------------------------------------
 
@@ -328,7 +346,7 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`product_id`, `product_name`, `Prod_type`, `price`, `supplier_id`, `expiration_date`, `base_price`, `prod_image`) VALUES
 (1, 'DAD', 'Diesel', 1550.00, 202400112, '0000-00-00', 40.90, '416008438_2697363370425187_4118653189230528044_n.jpg'),
 (2, 'Karldereta', 'Diesel', 68.09, 202400112, '0000-00-00', 40.90, '423105885_2147249585623914_3143380331863502220_n.jpg'),
-(3, 'isma', 'tao', 70.00, 202400112, '2025-10-30', 50.90, '430409393_943180997469614_7509784515726083412_n.jpg'),
+(3, 'isma', 'tao', 70.00, 202400112, '2024-04-30', 50.90, '430409393_943180997469614_7509784515726083412_n.jpg'),
 (4, 'LORD ISRAEL', 'Diesel', 68.09, 202400112, '0000-00-00', 40.90, '96276354_2705802066212650_504183324659417088_n.jpg'),
 (5, 'dad', 'Diesel', 68.09, 202400112, '0000-00-00', 40.90, '423541780_1085905049343969_6808135332460782536_n.jpg'),
 (6, 'dad', 'Diesel', 68.09, 202400112, '2024-01-01', 40.90, '416008438_2697363370425187_4118653189230528044_n.jpg'),
@@ -340,9 +358,18 @@ INSERT INTO `products` (`product_id`, `product_name`, `Prod_type`, `price`, `sup
 (12, 'Kiwi', 'DOg', 20.00, 202400135, '0000-00-00', 500.00, 'Screenshot 2023-07-27 204515.png'),
 (13, 'ANG ATE', 'asd', 62.00, 202400121, '2025-05-13', 22.00, 'Screenshot 2023-11-02 224602.png'),
 (14, 'KARL', 'asdas', 56.00, 202400121, '2024-12-12', 56.00, '423105885_2147249585623914_3143380331863502220_n.jpg'),
-(15, '', 'Diesel', 68.09, 202400121, '0000-00-00', 40.90, '96276354_2705802066212650_504183324659417088_n.jpg'),
-(16, 'Hitler', 'niggeR', 1.00, 202400127, '0000-00-00', 0.10, 'Screenshot 2024-02-24 140048.png'),
-(17, 'XIEV', 'TAO`', 898.90, 202400135, '2028-10-10', 800.00, 'Screenshot 2023-07-05 185624.png');
+(15, 'KARL', 'Diesel', 68.09, 202400121, '2024-04-30', 40.90, '96276354_2705802066212650_504183324659417088_n.jpg'),
+(16, 'Hitler', 'niggeR', 1.00, 202400127, '2024-05-04', 0.10, 'Screenshot 2024-02-24 140048.png'),
+(17, 'XIEV', 'TAO`', 898.90, 202400135, '2033-12-01', 800.00, 'Screenshot 2023-07-05 185624.png'),
+(18, 'test', 'Mango', 2020.00, 202400121, '0000-00-00', 2000.00, 'patient_01.png'),
+(19, 'test', 'mango', 2000.00, 202400122, '0000-00-00', 1970.00, 'patient_01.png'),
+(20, 'test', 'test', 100.00, 202400121, '0000-00-00', 80.00, '429901790_348053054897562_5899497244798681550_n.jpg'),
+(21, 'tesrt', 'asda', 200.00, 202400121, '1970-01-01', 190.00, '429901790_348053054897562_5899497244798681550_n.jpg'),
+(22, 'asd', 'sad', 200.00, 202400121, '1970-01-01', 190.00, '429901790_348053054897562_5899497244798681550_n.jpg'),
+(23, 'aksjd', '02930', 100.00, 202400121, '2024-05-08', 90.00, '429901790_348053054897562_5899497244798681550_n.jpg'),
+(24, 'Oreo', 'Dog', 320.00, 202400121, '2028-11-07', 300.00, 'Screenshot 2024-04-22 123552.png'),
+(25, 'Boogie', 'Dog', 720.00, 202400121, '2024-04-30', 700.00, 'Screenshot 2024-04-22 123344.png'),
+(26, 'Bongget', 'Dog', 200.00, 202400121, '2028-03-01', 150.00, 'Screenshot 2024-04-22 123313.png');
 
 -- --------------------------------------------------------
 
@@ -383,9 +410,9 @@ CREATE TABLE `rewards` (
 
 INSERT INTO `rewards` (`reward_id`, `reward_name`, `description`, `point_value`, `reward_image`, `reward_qty`, `reward_type`) VALUES
 (2, 'test', 'test', 123, 'william-daigneault-oWrZoAVOBS0-unsplash.jpg', 1230, 0),
-(3, 'test', 'tite tes', 2, 'Nitro_Wallpaper_03_3840x2400.jpg', 195, 1),
+(3, 'test', 'tite tes', 2, 'Nitro_Wallpaper_03_3840x2400.jpg', 189, 1),
 (4, 'test', 'test\r\n', 89, 'Nitro_Wallpaper_07_3840x2400.jpg', 1000, 0),
-(5, 'test', 'test', 12, 'Screenshot 2023-05-10 093203.png', 3108, 1);
+(5, 'test', 'test', 12, 'Screenshot 2023-05-10 093203.png', 3097, 1);
 
 -- --------------------------------------------------------
 
@@ -422,7 +449,24 @@ INSERT INTO `reward_claims` (`claim_id`, `user_id`, `reward_id`) VALUES
 (16, 51, 5),
 (17, 51, 5),
 (18, 51, 3),
-(19, 51, 5);
+(19, 51, 5),
+(20, 51, 5),
+(21, 51, 5),
+(22, 51, 5),
+(23, 51, 5),
+(24, 51, 5),
+(25, 51, 5),
+(26, 51, 5),
+(27, 51, 5),
+(28, 51, 5),
+(29, 51, 5),
+(30, 51, 3),
+(31, 51, 3),
+(32, 51, 3),
+(33, 51, 3),
+(34, 51, 3),
+(35, 51, 3),
+(36, 51, 5);
 
 -- --------------------------------------------------------
 
@@ -546,7 +590,26 @@ INSERT INTO `transactions` (`transaction_id`, `order_id`, `claim_id`, `user_id`,
 (54, NULL, 18, 51, 'Redeem', 2.00, '2024-04-17 11:22:56'),
 (55, NULL, 19, 51, 'Redeem', 12.00, '2024-04-17 11:23:03'),
 (56, 46, NULL, 51, 'Purchase', 26.00, '2024-04-18 11:53:22'),
-(57, 47, NULL, 51, 'Purchase', 14.00, '2024-04-20 05:10:30');
+(57, 47, NULL, 51, 'Purchase', 14.00, '2024-04-20 05:10:30'),
+(58, 48, NULL, 51, 'Purchase', 31.00, '2024-04-21 07:24:55'),
+(59, NULL, 20, 51, 'Redeem', 12.00, '2024-04-21 07:26:44'),
+(60, NULL, 21, 51, 'Redeem', 12.00, '2024-04-21 07:26:50'),
+(61, NULL, 22, 51, 'Redeem', 12.00, '2024-04-21 07:26:52'),
+(62, NULL, 23, 51, 'Redeem', 12.00, '2024-04-21 07:26:55'),
+(63, NULL, 24, 51, 'Redeem', 12.00, '2024-04-21 07:26:58'),
+(64, NULL, 25, 51, 'Redeem', 12.00, '2024-04-21 07:27:00'),
+(65, NULL, 26, 51, 'Redeem', 12.00, '2024-04-21 07:27:01'),
+(66, NULL, 27, 51, 'Redeem', 12.00, '2024-04-21 07:27:03'),
+(67, NULL, 28, 51, 'Redeem', 12.00, '2024-04-21 07:27:04'),
+(68, NULL, 29, 51, 'Redeem', 12.00, '2024-04-21 07:27:11'),
+(69, NULL, 30, 51, 'Redeem', 2.00, '2024-04-21 07:27:15'),
+(70, NULL, 31, 51, 'Redeem', 2.00, '2024-04-21 07:27:23'),
+(71, NULL, 32, 51, 'Redeem', 2.00, '2024-04-21 07:27:25'),
+(72, NULL, 33, 51, 'Redeem', 2.00, '2024-04-21 07:27:27'),
+(73, NULL, 34, 51, 'Redeem', 2.00, '2024-04-21 07:27:31'),
+(74, NULL, 35, 51, 'Redeem', 2.00, '2024-04-21 07:27:42'),
+(75, NULL, 36, 51, 'Redeem', 12.00, '2024-04-21 12:39:01'),
+(76, 49, NULL, 51, 'Purchase', 40.00, '2024-04-21 12:45:14');
 
 -- --------------------------------------------------------
 
@@ -570,33 +633,33 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `role`, `email`, `phone_number`, `user_reward_pts`, `user_type`) VALUES
-(1, 'username', '123', 'Super Admin', 'Sadmin@gmail.com', 'phone_number', NULL, 1),
+(1, 'Ralph Mones', 'raga12mones', 'Super Admin', 'ralph12mones@gmail.com', '09391386488', NULL, 1),
 (2, 'BJ Angeles', '!admin123', 'Admin', 'Sadmin@gmail.com', '9391386488', NULL, 1),
-(16, 'Adrian Mones', '!adrian123', 'Admin', 'admin.adrian@gmail.com', '9391386488', NULL, 1),
+(16, 'Kiwi Mones', '!adrian123', 'Admin', 'admin.adrian@gmail.com', '09391386488', NULL, 1),
 (17, 'Israel Breta', '!israel123', 'Admin', 'admin.israel@gmail.com', '9997126384', NULL, 1),
-(18, 'Sev Constantino', '!sev123', 'Admin', 'admin.israel@gmail.com', '9871623712', NULL, 1),
-(19, 'Karl Catalan', '!karl123', 'Admin', 'admin.karl@gmail.com', '9126739110', NULL, 1),
+(18, 'Sev Constantino', '!sev123', 'Admin', 'admin.israel@gmail.com', '9871623712', NULL, 0),
+(19, 'Karl Catalan', '!karl123', 'Admin', 'admin.karl@gmail.com', '9126739110', NULL, 0),
 (20, 'John Doe', '!John123', 'Admin', 'admin.john@gmail.com', '9271247883', NULL, 1),
-(51, 'Miguel Manabat', 'manabat432', 'Customer', 'miguel.manabat21@gmail.com', '9371222110', 1209.52, 1),
+(51, 'Miguel Manabat', 'asdf', 'Customer', 'miguel.manabat21@gmail.com', '09371222110', 1136.52, 1),
 (52, 'Angelica Ruiz', 'iamanangel123', 'Customer', 'angelicar@gmail.com', '9131492880', 50.00, 1),
 (53, 'Anne Abalos', 'annewithane333', 'Customer', 'anneabalos0110@gmail.com', '9943134920', NULL, 1),
 (54, 'Rianna Maniego', '3219.Lovely', 'Customer', 'riannamaniego24@gmail.com', '9927213211', NULL, 0),
-(55, 'Lorenzo Corpuz', 'ilovemiatacarS12', 'Customer', 'lorenzo.cpz@gmail.com', '9234726182', NULL, 1),
-(56, 'Lawrence Diaz', 'Rence8989', 'Customer', 'lawrence.lawrence@gmail.com', '9182734912', NULL, 1),
+(55, 'Lorenzo Corpuz', 'ilovemiatacarS12', 'Customer', 'lorenzo.cpz@gmail.com', '9234726182', NULL, 0),
+(56, 'Lawrence Diaz', 'Rence8989', 'Customer', 'lawrence.lawrence@gmail.com', '9182734912', NULL, 0),
 (57, 'Drew Reyes', 'drewr4621', 'Customer', 'drew_reyes411@gmail.com', '9271623481', NULL, 1),
 (58, 'Sam Yu', 'sam1special00', 'Customer', 'samyuarefine@gmail.com', '9275492714', NULL, 1),
 (59, 'Carol Reed', 'TWDcarol65', 'Customer', 'carol.deer@gmail.com', '9277548293', NULL, 1),
 (60, 'Victor Clemente', 'VictorVC7', 'Customer', 'victorclemente720@gmail.com', '9204726166', NULL, 1),
 (61, 'Samuel Manuel', 'Samueleunam88', 'Customer', 'samuelm42@gmail.com', '9155358230', NULL, 1),
 (62, 'Christine Reyes', 'CHR.apple123', 'Customer', 'chrstnrys102@gmail.com', '9370021952', NULL, 1),
-(63, 'Paul Pinto', '120621pprun', 'Customer', 'paulpin2@gmail.com', '9775182621', NULL, 1),
-(64, 'Jake Flores', 'ilikesnakesZZ00', 'Customer', 'jake_flores20@gmail.com', '9195434622', NULL, 1),
-(65, 'Aliyah Sotto', 'ahnanihh3242', 'Customer', 'aliyahsotto09@gmail.com', '9196447207', NULL, 1),
-(66, 'Maverick Vegas', 'Mbydck72', 'Customer', 'mavedck72@gmail.com', '9726528226', NULL, 1),
-(67, 'Matthew Hermi', 'manofronin720', 'Customer', 'matthew.hermi@gmail.com', '9277254596', NULL, 1),
-(68, 'Ethan Garcia', 'caesar92', 'Customer', 'ethanethang@gmail.com', '9278927552', NULL, 1),
-(69, 'Juana Capiz', 'allithinkaboutisu123', 'Customer', 'jcapiz435@gmail.com', '9198750982', NULL, 1),
-(70, 'Maloi Rellosa', 'chicken.feet72', 'Customer', 'maloifree@gmail.com', '9727798002', NULL, 1),
+(63, 'Paul Pinto', '120621pprun', 'Customer', 'paulpin2@gmail.com', '9775182621', NULL, 0),
+(64, 'Jake Flores', 'ilikesnakesZZ00', 'Customer', 'jake_flores20@gmail.com', '9195434622', NULL, 0),
+(65, 'Aliyah Sotto', 'ahnanihh3242', 'Customer', 'aliyahsotto09@gmail.com', '9196447207', NULL, 0),
+(66, 'Maverick Vegas', 'Mbydck72', 'Customer', 'mavedck72@gmail.com', '9726528226', NULL, 0),
+(67, 'Matthew Hermi', 'manofronin720', 'Customer', 'matthew.hermi@gmail.com', '9277254596', NULL, 0),
+(68, 'Ethan Garcia', 'caesar92', 'Customer', 'ethanethang@gmail.com', '9278927552', NULL, 0),
+(69, 'Juana Capiz', 'allithinkaboutisu123', 'Customer', 'jcapiz435@gmail.com', '9198750982', NULL, 0),
+(70, 'Maloi Rellosa', 'chicken.feet72', 'Customer', 'maloifree@gmail.com', '9727798002', NULL, 0),
 (71, 'test test', '123', 'Customer', 'test@gmail.com', 'test', NULL, 0),
 (72, 'test test', '123', 'Customer', 'test@gmail.com', 'test', NULL, 0),
 (73, 'root', '123', 'Admin', 'Sadmin@gmail.com', '09391386488', NULL, 0),
@@ -618,10 +681,12 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `role`, `email`, `phone_
 (89, 'test test', '123', 'Customer', 'test@gmail.com', '127931', NULL, 0),
 (90, 'test test', '123', 'Customer', 'test@gmail.com', '0981273', NULL, 0),
 (91, 'asd test', '123', 'Customer', 'rlph12mones@gmail.com', '09982393', NULL, 0),
-(92, 'test test', '123', 'Customer', 'test@gmail.com', '099283293', 106.09, 1),
-(93, 'mamama test', '123', 'Customer', 'mama@gmail.com', '9234892', NULL, 1),
-(94, 'Last Test', '123', 'Customer', 'last@gmail.com', '082738273', 50.00, 1),
-(95, 'Raryner mones', '123', 'Customer', 'ralph12mones@gmail.com', '9090293893', 50.00, 1);
+(92, 'test test', '123', 'Customer', 'test@gmail.com', '099283293', 106.09, 0),
+(93, 'mamama test', '123', 'Customer', 'mama@gmail.com', '9234892', NULL, 0),
+(94, 'Last Test', '123', 'Customer', 'last@gmail.com', '082738273', 50.00, 0),
+(95, 'Raryner mones', '123', 'Customer', 'ralph12mones@gmail.com', '9090293893', 50.00, 0),
+(96, 'Sev Constantino', '123', 'Customer', 'Sevyo@gggg', '09223232323', 50.00, 0),
+(97, 'Ralph Adrian Mones', '123', 'Admin', 'ralph12mone@GMAIL.COM', '09391386488', NULL, 0);
 
 --
 -- Indexes for dumped tables
@@ -713,13 +778,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `branches`
 --
 ALTER TABLE `branches`
-  MODIFY `branch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `branch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `branch_customer`
 --
 ALTER TABLE `branch_customer`
-  MODIFY `Bcust_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `Bcust_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `expenses`
@@ -731,25 +796,25 @@ ALTER TABLE `expenses`
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `inventory_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `inventory_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `order_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `product_purchases`
@@ -767,7 +832,7 @@ ALTER TABLE `rewards`
 -- AUTO_INCREMENT for table `reward_claims`
 --
 ALTER TABLE `reward_claims`
-  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `claim_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -779,13 +844,13 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

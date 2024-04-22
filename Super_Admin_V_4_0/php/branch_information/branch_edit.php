@@ -22,10 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_branch_name = $_POST['branch_name'];
     $new_full_address = $_POST['full_address'];
 
-    $urlTemp = $previousUrl;
-
-    // echo "$previousUrl";
-    $modifiedUrl = $urlTemp;
     $urlLinkMain = "http://localhost/Super_Admin_V_4_0/branch_information.php";
     $modifiedUrl = "$urlLinkMain?branch_id=$branch_id&branch_name=$new_branch_name&full_address=$new_full_address"; 
 

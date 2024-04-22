@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $point_value = intval($_POST['reward_point']);
     $reward_img = $_FILES["reward_image"]["name"];
     $reward_qty = intval($_POST['reward_stock']);
+    $reward_type = 1;
 
     // File upload handling
     $targetDirectory = "images/";
@@ -48,9 +49,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (move_uploaded_file($_FILES["reward_image"]["tmp_name"], $targetFile)) {
 
             // Insert data into database
-            $sql = "INSERT INTO rewards (reward_name, description, point_value, reward_image, reward_qty) VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO rewards (reward_name, description, point_value, reward_image, reward_qty, reward_type) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssisi", $reward_name, $description, $point_value, $reward_img, $reward_qty);
+            $stmt->bind_param("ssisii", $reward_name, $description, $point_value, $reward_img, $reward_qty,$reward_type);
 
             if ($stmt->execute()) {
                 echo '<script>alert("Reward: ' . $reward_name . ' Registered!"); window.location.href = "' . $_SERVER['HTTP_REFERER'] . '";</script>';
