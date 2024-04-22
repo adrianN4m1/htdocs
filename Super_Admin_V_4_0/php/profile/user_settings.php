@@ -12,8 +12,8 @@ if ($conn->connect_error) {
 }
 
 // Fetch user details based on user ID from URL
-$user_id = isset($_GET['user_id']) ? $_GET['user_id'] : null;
-if ($user_id) {
+$user_id = 1;
+if (!empty($user_id)) {
     $sql = "SELECT * FROM users WHERE user_id = $user_id";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
@@ -44,7 +44,7 @@ if ($user_id) {
                         $updateSql = "UPDATE users SET username = '$newFirstName $newLastName', email = '$newEmail', phone_number = '$newPhoneNumber', password = '$newPassword' WHERE user_id = $user_id";
                         // Execute the query
                         if ($conn->query($updateSql) === TRUE) {
-                            echo "<script>alert('Account Updated'); window.location.href='/Strarubigaz_User/settings.php?user_id=" . $user_id . "';</script>";
+                            echo "<script>alert('Account Updated'); window.location.href='/Super_Admin_V_4_0/profile.php';</script>";
         
                         }  else {
                             echo "Error updating user details: " . $conn->error;
@@ -61,7 +61,7 @@ if ($user_id) {
                 $updateSql = "UPDATE users SET username = '$newFirstName $newLastName', email = '$newEmail', phone_number = '$newPhoneNumber'WHERE user_id = $user_id";
                 // Execute the query
                 if ($conn->query($updateSql) === TRUE) {
-                    echo "<script>alert('Account Updated'); window.location.href='/Strarubigaz_User/settings.php?user_id=" . $user_id . "';</script>";
+                    echo "<script>alert('Account Updated'); window.location.href='/Super_Admin_V_4_0/profile.php';</script>";
 
                 }  else {
                     echo "Error updating user details: " . $conn->error;
@@ -72,6 +72,113 @@ if ($user_id) {
             
         }
 ?>
+<!-- <form class="form-control" method="post">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-body text-center shadow">
+                    <div class="mb-3">
+                        <p style="margin-bottom: 2px;">User Level</p>
+                        <h1 class="fw-bolder" style="color: var(--bs-green);">Super-Admin</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow mb-3">
+                <div class="card-header py-3">
+                    <p class="text-primary m-0 fw-bold">User Information</p>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label" for="username"><strong>First name</strong></label>
+                                    <input class="form-control" type="text" id="first-name" name="first-name" placeholder="<?php echo $firstName; ?>" value="<?php echo $firstName; ?>">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label" for="email"><strong>Last name</strong></label>
+                                    <input class="form-control" type="text" id="last-name" name="last-name" placeholder="<?php echo $lastName; ?>" value="<?php echo $lastName; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label" for="first_name"><strong>Contact number</strong></label>
+                                    <input class="form-control" type="text" id="mobile-number" name="mobile-number" placeholder="<?php echo $phoneNumber; ?>" value="<?php echo $phoneNumber; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3"></div>
+                    </form>
+                </div>
+            </div>
+            <div class="card shadow mb-3">
+                <div class="card-header py-3">
+                    <p class="text-primary m-0 fw-bold">Branch Assigned</p>
+                </div>
+                <div class="card-body">
+                    <h3 class="fw-semibold text-center text-warning">Tandang Sorry</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow mb-3">
+                <div class="card-header py-3">
+                    <p class="text-primary m-0 fw-bold">User Credentials</p>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label" for="username"><strong>Email</strong></label>
+                                    <input class="form-control" type="text" id="email" name="email" placeholder="<?php echo $email; ?>"value="<?php echo $email; ?>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label" for="oldpassword"><strong>Old Password</strong></label>
+                                    <input class="form-control" type="password" id="oldpassword" name="oldpassword">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label" for="password"><strong>New Password</strong></label>
+                                    <input class="form-control" type="password" id="password" name="password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label" for="c-password"><strong>Confirm Password</strong></label>
+                                    <input class="form-control" type="password" id="c-password" name="c-password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-xxl-flex justify-content-xxl-end mb-3">
+                            <button type="submit" class="btn btn-success btn-icon-split">
+                                <span class="text-white-50 icon"><i class="fas fa-check"></i></span>
+                                <span class="text-white text">Save Changes</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</form> -->
 <form class="p-3 p-xl-4" method="post">
 <div class="row" style="border: 1px solid var(--bs-gray-400);border-radius: 8px;">
     <div class="col-md-6" style="border-radius: 8px;border: 1px none var(--bs-gray-400);">
@@ -139,12 +246,11 @@ if ($user_id) {
     <div class="col-md-6"></div>
 </div>
 </form>
+
 <?php
     } else {
         echo "User not found.";
     }
-} else {
-    echo "User ID not provided.";
 }
 $conn->close();
 ?>
