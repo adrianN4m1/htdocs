@@ -13,7 +13,6 @@ if ($conn->connect_error) {
 }
 
 $iduser = isset($_GET['user_id']) ? $_GET['user_id'] : null;
-
 // Fetch user's reward points
 $sql_user_points = "SELECT user_reward_pts FROM users WHERE user_id = $iduser";
 $result_user_points = $conn->query($sql_user_points);
@@ -65,7 +64,7 @@ if ($result->num_rows > 0) {
             </div>';
             
     }
-    echo '<div class="modal fade" role="dialog" tabindex="-1" id="redeem-item">
+    echo '<div class="modal fade" role="dialog" tabindex="-1" id="redeem-item" onclick="redirectCloseModals()">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -94,7 +93,6 @@ if ($result->num_rows > 0) {
                         <div style="overflow-y: visible;"></div>
                         <div class="container">
                             <h3 style="text-align: center;font-weight: bold;margin-bottom: 0px;"><span id="reward-name"></span></h3>
-                            <h5 class="text-black-50" style="text-align: center;font-weight: bold;">Total :&nbsp;<i class="fas fa-life-ring"></i>&nbsp;<span>12.98</span></h5>
                         </div>
                     </div>
                 </div>
