@@ -105,7 +105,7 @@
                                             <div class="col-md-6">
                                                 <div class="text-md-end dataTables_filter" id="dataTable_filter-2">
                                                     <label class="form-label" style="width: 100%;"><input type="search"
-                                                            class="form-control form-control-sm" id="searchInput" onkeyup="searchTable()"
+                                                            class="form-control form-control-sm" id="searchInput" onkeyup="searchTable();"
                                                             aria-controls="dataTable" placeholder="Search"
                                                             style="width: 100%;"></label>
                                                 </div>
@@ -185,11 +185,11 @@
                                         style="padding: 0px;padding-right: 20px;padding-left: 20px;padding-top: 20px;">
                                         <div class="col-md-6">
                                             <div class="text-md-end dataTables_filter" id="dataTable_filter-3"><label
-                                                    class="form-label" style="width: 100%;"><input type="search"
-                                                        class="form-control form-control-sm" aria-controls="dataTable"
-                                                        placeholder="Search" style="width: 100%;"></label></div>
+                                                    class="form-label" style="width: 100%;"><input type="search" id="searchInput" onkeyup="searchTable();"
+                                                        class="form-control form-control-sm" aria-controls="dataTable" 
+                                                        placeholder="Search" style="width: 100%;"></label>
+                                            </div> 
                                         </div>
-                                        <div class="col d-xxl-flex justify-content-xxl-end"></div>
                                     </div>
                                     <div class="card-body">
                                         <div style="height: 40vh;overflow-y: scroll;">

@@ -88,12 +88,6 @@ if ($result->num_rows > 0) {
             // Update total price
             $total_price += $row['price'] * $row['quantity'];
 
-            $product_id = $row['product_id'];
-            $quantity = $row['quantity'];
-            // Update inventory
-            $stmt = $conn->prepare("UPDATE inventory SET quantity = quantity - ? WHERE product_id = ?");
-            $stmt->bind_param("ii", $quantity, $product_id);
-            $stmt->execute();
         }
 
         // Calculate points earned based on total price

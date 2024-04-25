@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch data from users table
-$sql = "SELECT users.*, branches.branch_name FROM users LEFT JOIN branches ON users.user_id = branches.user_id WHERE role = 'Admin' AND users.user_type = 1";
+$sql = "SELECT users.*, branches.branch_name FROM users LEFT JOIN branches ON users.user_id = branches.user_id WHERE role = 'Admin' AND users.user_type = 1 ORDER BY users.user_id";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
