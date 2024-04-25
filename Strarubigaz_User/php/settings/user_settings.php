@@ -124,7 +124,7 @@ if ($user_id) {
                                 </div>
                                 <hr>
                                 <div class="mb-3">
-                                    <p style="margin-bottom: 0px;">Re-enter Password&nbsp;&nbsp;</p><input class="form-control" id="c-password" name="c-password" type="password" name="re-password">
+                                    <p style="margin-bottom: 0px;">Confirm New Password&nbsp;&nbsp;</p><input class="form-control" id="c-password" name="c-password" type="password" name="re-password">
                                 </div>
                                 <button class="btn btn-primary text-bg-primary float-end" type="submit" style="margin-top: 0px;">Save Changes</button>
 

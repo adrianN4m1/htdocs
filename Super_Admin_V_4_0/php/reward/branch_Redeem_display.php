@@ -44,46 +44,7 @@ if ($result->num_rows > 0) {
             </tr>';
 
         // Generate the modal HTML for each transaction
-        echo '<div class="modal fade" role="dialog" tabindex="-1" id="receipt-modal-' . $row['transaction_id'] . '">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Receipt - ' . $row['transaction_id'] . '</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div>
-                                            <p>Order ID:&nbsp;<span>' . $row['order_id'] . '</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div>
-                                            <p>Date:&nbsp;<span>' . $row['order_date'] . '</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div>
-                                            <p>Points:&nbsp;<span>' . number_format($row['points'], 2) . '</span></p>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="col-md-12">
-                                        <div class="table-responsive">
-                                            <!-- Your table content here -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <!-- Your modal footer content here -->
-                        </div>
-                    </div>
-                </div>
-            </div>';
+       
     }
 } else {
     echo "No transactions found.";

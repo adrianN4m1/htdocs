@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        echo '<div class="modal fade" role="dialog" tabindex="-1" id="receipt-modal">
+        echo '<div class="modal fade" role="dialog" tabindex="-1" id="receipt-modal" onclick="redirectCloseModal()">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

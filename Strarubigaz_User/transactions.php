@@ -14,17 +14,18 @@
     <link rel="stylesheet" href="assets/css/Button-modal-ecommerce-modal-ecommerce.css">
     <link rel="stylesheet" href="assets/css/Dynamic-Table.css">
     <link rel="stylesheet" href="assets/css/shopping-ecommerce-products.css">
+    <script src=js/search.js></script>
 </head>
 
 <body>
 <nav class="navbar navbar-light navbar-expand-md sticky-top navbar-shrink py-3" id="mainNav">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><span class="bs-icon-sm bs-icon-circle bs-icon-primary shadow d-flex justify-content-center align-items-center me-2 bs-icon"><i class="fas fa-gas-pump"></i></span><span>Starubigaz</span></a>
+    <div class="container"><a class="navbar-brand d-flex align-items-center"href="index.php?user_id=<?php include('parameters.php')?>"><span class="bs-icon-sm bs-icon-circle bs-icon-primary shadow d-flex justify-content-center align-items-center me-2 bs-icon"><i class="fas fa-gas-pump"></i></span><span>Starubigaz</span></a>
             <div class="collapse navbar-collapse" id="navcol-1" style="margin-right: 0px;">
             <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" href="index.php?user_id=<?php include('parameters.php')?>">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="buy_list.php?user_id=<?php include('parameters.php')?>">Buy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="buy_list.php?user_id=<?php include('parameters.php')?>">Buy</a></li>
                     <li class="nav-item"><a class="nav-link" href="rewards.php?user_id=<?php include('parameters.php')?>">Rewards</a></li>
-                    <li class="nav-item"><a class="nav-link" href="transactions.php?user_id=<?php include('parameters.php')?>">Transactions</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="transactions.php?user_id=<?php include('parameters.php')?>">Transactions</a></li>
                     <li class="nav-item"><a class="nav-link" href="settings.php?user_id=<?php include('parameters.php')?>">Settings</a></li>
                 </ul>
                 </div><a href="cart.php?user_id=<?php include('parameters.php')?>"><i class="fas fa-shopping-bag" style="font-size: 20px;color: var(--bs-yellow);margin-right: 6px;"></i></a><span><?php include('getlistcount.php')?></span>
@@ -35,13 +36,13 @@
         <hr style="margin-right: 24px;margin-left: 24px;">
         <div class="container">
             <div class="row">
-                <div class="col-md-6"><input class="d-xxl-flex align-items-xxl-center form-control form-control-sm" type="search" aria-controls="dataTable" placeholder="Search"></div>
+                <div class="col-md-6"><input class="d-xxl-flex align-items-xxl-center form-control form-control-sm" id="searchInput" onkeyup="searchTable()" type="search" aria-controls="dataTable" placeholder="Search"></div>
                 <div class="col-md-6"></div>
             </div>
         </div>
         <div class="container py-5 container-main" style="overflow-y: scroll;height: 100%;margin-top: 0px;">
             <div class="table-responsive">
-                <table class="table">
+                <table class="table my-0" id="dataTable">
                     <thead>
                         <tr>
                             <th>Date</th>
