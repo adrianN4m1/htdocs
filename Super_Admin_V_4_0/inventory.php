@@ -68,14 +68,16 @@
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                         aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
-                                            class="d-none d-lg-inline me-2 text-gray-600 small">Super Admin</span><img class="border rounded-circle img-profile"
+                                            class="d-none d-lg-inline me-2 text-gray-600 small">Super Admin</span><img
+                                            class="border rounded-circle img-profile"
                                             src="assets/img/avatars/avatar1.jpeg"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
                                             class="dropdown-item" href="profile.php"><i
                                                 class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a
                                             class="dropdown-item" href="#"><i
                                                 class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="/login.php"><i
+                                        <div class="dropdown-divider"></div><a class="dropdown-item"
+                                            href="/login.php"><i
                                                 class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
                                 </div>
@@ -83,8 +85,11 @@
                         </ul>
                     </div>
                 </nav>
+                <?php
+                        include ("php/inventory/get_type.php");
+                        ?>
                 <div class="container-fluid" style="padding-top: 0px;">
-                    <div class="row">
+                    <div class="row" id="typeResult">
                         <!-- <div class="col-md-3" style="padding-bottom: 24px;">
                             <div
                                 style="border-radius: 4px;padding: 4px;background: var(--bs-white);border: 1px none rgb(217,217,217);box-shadow: 0px 0px 12px var(--bs-gray-400);padding-left: 0px;padding-right: 0px;padding-bottom: 0px;overflow: hidden;">
@@ -107,12 +112,15 @@
                                 </div>
                             </div>
                         </div> -->
+                        
+
                         <div class="col-md-3" style="padding-bottom: 24px;padding-top: 0px;min-height: 300px;">
                             <div style="width: 100%;height: 100%;"><button class="btn btn-primary" type="button"
                                     style="width: 100%;height: 100%;background: rgb(255,255,255);border-style: none;box-shadow: 0px 0px 2px var(--bs-gray);padding-top: 0px;padding-right: 0px;padding-left: 0px;margin-right: 0px;padding-bottom: 24px;"
                                     data-bs-target="#add-items" data-bs-toggle="modal"><i class="fas fa-plus"
                                         style="font-size: 68px;color: var(--bs-gray);"></i></button></div>
                         </div>
+
                         <?php
                         include ("php/inventory/inventory_display.php");
                         ?>
@@ -342,6 +350,38 @@
         <script src="assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/bs-init.js"></script>
         <script src="assets/js/theme.js"></script>
+        <script>
+            function handlechange() {
+                var typeSelect = document.getElementById('typeSelect'); // Define typeSelect here
+                var type = typeSelect.value;
+
+                fetchType(type);
+            }
+
+            function fetchType(Prod_type) {
+                var xhr2 = new XMLHttpRequest();
+                xhr2.open("GET", "php/inventory/inventory_display.php?Prod_type=" + Prod_type, true);
+                xhr2.onreadystatechange = function () {
+                    if (xhr2.readyState === 4) {
+                        if (xhr2.status === 200) {
+                            document.getElementById("typeResult").innerHTML = xhr2.responseText;
+                        } else {
+                            console.error("Error fetching sales cost data: " + xhr2.status);
+                        }
+                    }
+                };
+                xhr2.send();
+            }
+
+            // Call handlechange initially
+            handlechange();
+
+            // Add event listener to typeSelect
+            var typeSelect = document.getElementById('typeSelect');
+            typeSelect.addEventListener('change', handlechange);
+        </script>
+
+
 </body>
 
 </html>

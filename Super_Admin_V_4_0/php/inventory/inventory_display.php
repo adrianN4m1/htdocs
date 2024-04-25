@@ -10,32 +10,64 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-// Retrieve product and inventory data
-// $sql = "SELECT p.product_name, i.quantity, p.prod_image FROM products p JOIN inventory i ON p.product_id = i.product_id";
-$sql2 = "SELECT
-            inv.inventory_id,
-            prod.product_name,
-            prod.Prod_type,
-            prod.price,
-            prod.base_price,
-            prod.prod_image,
-            supp.supplier_name,
-            prod.expiration_date,
-            inv.quantity,
-            inv.inv_limit
-        FROM
-            inventory inv
-        JOIN
-            products prod ON inv.product_id = prod.product_id
-        JOIN
-            suppliers supp ON prod.supplier_id = supp.supplier_id
-        WHERE
-            inv.Inv_Type = 1
-        ORDER BY
-            inv.quantity ASC";
 
-$result = $conn->query($sql2);
+if(isset($_GET['Prod_type']) && $_GET['Prod_type'] !== "") {
+    $prodType = $_GET['Prod_type'];
 
+    // Prepare and bind the SQL statement
+    $sql2 = "SELECT
+                inv.inventory_id,
+                prod.product_name,
+                prod.Prod_type,
+                prod.price,
+                prod.base_price,
+                prod.prod_image,
+                supp.supplier_name,
+                prod.expiration_date,
+                inv.quantity,
+                inv.inv_limit
+            FROM
+                inventory inv
+            JOIN
+                products prod ON inv.product_id = prod.product_id
+            JOIN
+                suppliers supp ON prod.supplier_id = supp.supplier_id
+            WHERE
+                inv.Inv_Type = 1 AND
+                prod.Prod_type = ?
+            ORDER BY
+                inv.quantity ASC";
+
+    $stmt = $conn->prepare($sql2);
+    $stmt->bind_param("s", $prodType);
+    $stmt->execute();
+    $result = $stmt->get_result();
+} else {
+    // Retrieve all product and inventory data if prod_type is not set or is empty
+    $sql2 = "SELECT
+                inv.inventory_id,
+                prod.product_name,
+                prod.Prod_type,
+                prod.price,
+                prod.base_price,
+                prod.prod_image,
+                supp.supplier_name,
+                prod.expiration_date,
+                inv.quantity,
+                inv.inv_limit
+            FROM
+                inventory inv
+            JOIN
+                products prod ON inv.product_id = prod.product_id
+            JOIN
+                suppliers supp ON prod.supplier_id = supp.supplier_id
+            WHERE
+                inv.Inv_Type = 1
+            ORDER BY
+                inv.quantity ASC";
+
+    $result = $conn->query($sql2);
+}
 if ($result->num_rows > 0) {
     
     while ($row = $result->fetch_assoc()) {
@@ -195,3 +227,4 @@ if ($result->num_rows > 0) {
 }
 $conn->close();
 ?>
+
