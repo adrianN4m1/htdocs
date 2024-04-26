@@ -121,8 +121,8 @@ if ($result->num_rows > 0) {
           </div>
         </div>
         <div class="modal-footer">
-        <p style="font-size: 20px;">Points Earned:&nbsp;<span style="font-weight: bold;">' . number_format($points_earned, 2) . '</span></p>
-          <p style="font-size: 20px;">Total :&nbsp;<span style="font-weight: bold;">P' . number_format($total_price, 2) . '</span></p>
+        <p style="font-size: 20px;">Points Earned:&nbsp;<span style="font-weight: bold;">' .$points_earned. '</span></p>
+          <p style="font-size: 20px;">Total :&nbsp;<span style="font-weight: bold;">P' . $total_price . '</span></p>
         </div>
         </div>
         </div>
