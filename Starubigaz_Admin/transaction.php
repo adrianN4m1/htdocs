@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="assets/css/Add-Another-Button.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
+    <script src="js/search.js"></script>
 </head>
 
 <body id="page-top">
@@ -68,13 +69,12 @@
                     <div class="col">
                         <h3>Transaction History</h3>
                         <div class="row">
-                            <div class="col col-md-5"><input class="d-xxl-flex align-items-xxl-center form-control form-control-sm" type="search" aria-controls="dataTable" placeholder="Search" style="margin-top: 12px;margin-bottom: 8px;"></div>
-                            <div class="col"></div>
+                            <div class="col col-md-5"><input class="d-xxl-flex align-items-xxl-center form-control form-control-sm" type="search" aria-controls="dataTable" placeholder="Search" style="margin-top: 12px;margin-bottom: 8px;" id="searchInput" onkeyup="searchTable()"></div>
                         </div>
                         <div style="height: 60vh;overflow-y: scroll;">
                             <hr>
                             <div class="table-responsive">
-                                <table class="table">
+                                <table class="table" id="dataTable">
                                     <thead>
                                         <tr>
                                             <th>Transaction ID</th>

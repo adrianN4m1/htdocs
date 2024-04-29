@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/css/Add-Another-Button.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
-    <script src=js/search.js></script>
+    <script src=js/twosearch.js></script>
 </head>
 
 <body id="page-top">
@@ -78,7 +78,8 @@
                                             <div class="col-md-6">
                                             <div class="text-md-end dataTables_filter" id="dataTable_filter-2">
                                                     <label class="form-label" style="width: 100%;"><input type="search"
-                                                            class="form-control form-control-sm" id="searchInput" onkeyup="searchTable()"
+                                                            class="form-control form-control-sm" id="searchInput1"
+                                                        onkeyup="searchTable('dataTable1')"
                                                             aria-controls="dataTable" placeholder="Search"
                                                             style="width: 100%;"></label>
                                                 </div>                                            </div>
@@ -86,7 +87,7 @@
                                         </div>
                                         <div style="height: 40vh;overflow-y: scroll;">
                                             <div class="table-responsive table mt-2" id="dataTable-2" role="grid" aria-describedby="dataTable_info">
-                                                <table class="table my-0" id="dataTable">
+                                                <table class="table my-0" id="dataTable1">
                                                     <thead>
                                                         <tr>
                                                             <th>Image</th>
@@ -117,14 +118,15 @@
                                 <div class="collapse" id="collapse-4">
                                     <div class="row" style="padding: 0px;padding-right: 20px;padding-left: 20px;padding-top: 20px;">
                                         <div class="col-md-6">
-                                            <div class="text-md-end dataTables_filter" id="dataTable_filter-3"><label class="form-label" style="width: 100%;"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" style="width: 100%;"></label></div>
+                                            <div class="text-md-end dataTables_filter" id="dataTable_filter-3"><label class="form-label" style="width: 100%;"><input type="search" id="searchInput2"
+                                                        onkeyup="searchTable('dataTable2')" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search" style="width: 100%;"></label></div>
                                         </div>
                                         <div class="col d-xxl-flex justify-content-xxl-end"></div>
                                     </div>
                                     <div class="card-body">
                                         <div style="height: 40vh;overflow-y: scroll;">
                                             <div class="table-responsive table mt-2" id="dataTable-3" role="grid" aria-describedby="dataTable_info">
-                                                <table class="table my-0" id="dataTable">
+                                                <table class="table my-0" id="dataTable2">
                                                     <thead>
                                                         <tr>
                                                             <th>Date</th>

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/Add-Another-Button.css">
     <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
-    <script src="js/search.js"></script>
+    <script src="js/twosearch.js"></script>
     <!-- Include necessary scripts, stylesheets, etc. -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -184,9 +184,9 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="text-md-end dataTables_filter" id="dataTable_filter-4">
-                                                    <label class="form-label" style="width: 100%;"><input type="search"
-                                                            id="searchInput" class="form-control form-control-sm"
-                                                            onkeyup="searchTable()" aria-controls="dataTable"
+                                                    <label class="form-label" style="width: 100%;"><input type="search" class="form-control form-control-sm"
+                                                    id="searchInput1"
+                                                        onkeyup="searchTable('dataTable1')" aria-controls="dataTable"
                                                             placeholder="Search" style="width: 100%;"></label>
                                                 </div>
                                             </div>
@@ -199,7 +199,7 @@
                                         </div>
                                         <div class="table-responsive table mt-2" id="dataTable-4" role="grid"
                                             aria-describedby="dataTable_info">
-                                            <table class="table my-0" id="dataTable">
+                                            <table class="table my-0" id="dataTable1">
                                                 <thead>
                                                     <tr>
                                                         <th>ID</th>
@@ -236,14 +236,15 @@
                                         <div class="row">
                                             <div class="col col-md-5"><input
                                                     class="d-xxl-flex align-items-xxl-center form-control form-control-sm"
-                                                    type="search" aria-controls="dataTable" placeholder="Search"
+                                                    type="search" aria-controls="dataTable" placeholder="Search" id="searchInput2"
+                                                        onkeyup="searchTable('dataTable2')"
                                                     style="margin-top: 12px;margin-bottom: 8px;"></div>
                                             <div class="col"></div>
                                         </div>
                                         <div style="height: 60vh;overflow-y: scroll;">
                                             <hr>
                                             <div class="table-responsive">
-                                                <table class="table">
+                                                <table class="table" id="dataTable2">
                                                     <thead>
                                                         <tr>
                                                             <th>Transaction ID</th>
