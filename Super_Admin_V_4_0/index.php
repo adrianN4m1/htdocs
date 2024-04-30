@@ -99,9 +99,8 @@
               <?php include 'php/index/get_branchid.php'; ?>
             </div>
             <div class="col-md-6 float-end d-xxl-flex justify-content-xxl-end">
-              <a class="btn btn-success d-xxl-flex justify-content-xxl-end btn-icon-split" role="button"
-                style="background: rgba(255, 255, 255, 0.42); border-style: solid; border-color: rgb(230, 230, 230);"
-                href="generate_pdf.php">
+              <a id="print" class="btn btn-success d-xxl-flex justify-content-xxl-end btn-icon-split" role="button"
+                style="background: rgba(255, 255, 255, 0.42); border-style: solid; border-color: rgb(230, 230, 230);">
                 <span class="text-light icon" style="background: rgb(230, 230, 230)">
                   <i class="fas fa-print" style="color: rgb(106, 106, 106)"></i>
                 </span>
@@ -110,8 +109,8 @@
             </div>
           </div>
         </div>
-        <div class="container-fluid">
-          <div class="d-flex d-sm-flex justify-content-between align-items-center justify-content-xxl-start mb-4"></div>
+        <div id="printable-content" >
+        <div class="container-fluid" >
           <div class="row">
             <div class="col col-9">
               <div class="card shadow mb-4">
@@ -287,6 +286,7 @@
             </div>
           </div>
         </div>
+        </div>
       </div>
       <footer class="bg-white sticky-footer">
         <div class="container my-auto">
@@ -294,10 +294,10 @@
             <span>Copyright © Starubikals 2024</span>
           </div>
         </div>
-        <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+        <!-- <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a> -->
       </footer>
     </div>
-    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    <!-- <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a> -->
   </div>
   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="assets/js/chart.min.js"></script>
@@ -467,6 +467,95 @@
     // Assuming you have jQuery included in your project
 
   </script>
+<script>
+const printBtn = document.getElementById('print');
+printBtn.addEventListener('click', function(){
+    // Clone the content inside the printable-content div
+    const contentToPrint = document.getElementById('printable-content').cloneNode(true);
+    
+    // Include all elements with class card-body in the cloned content
+    const cardBodies = contentToPrint.getElementsByClassName('card-body');
+    const clonedCardBodies = [];
+    for (let i = 0; i < cardBodies.length; i++) {
+        const cardBodyClone = cardBodies[i].cloneNode(true);
+        clonedCardBodies.push(cardBodyClone);
+    }
+
+    // Append the cloned card bodies to the content
+    const contentWrapper = contentToPrint.querySelector('#content-wrapper');
+    if (contentWrapper) {
+        clonedCardBodies.forEach(function(cardBodyClone) {
+            contentWrapper.appendChild(cardBodyClone);
+        });
+    } else {
+        console.error('#content-wrapper element not found in contentToPrint');
+    }
+
+    // Create script elements for CSS and JavaScript files
+    const bootstrapCSS = document.createElement('link');
+    bootstrapCSS.rel = 'stylesheet';
+    bootstrapCSS.href = 'assets/bootstrap/css/bootstrap.min.css';
+
+    const fontStyles = document.createElement('link');
+    fontStyles.rel = 'stylesheet';
+    fontStyles.href = 'https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap';
+
+    const fontAwesome = document.createElement('link');
+    fontAwesome.rel = 'stylesheet';
+    fontAwesome.href = 'assets/fonts/fontawesome-all.min.css';
+
+    const customStyles = document.createElement('link');
+    customStyles.rel = 'stylesheet';
+    customStyles.href = 'assets/css/-Login-form-Page-BS4--Login-form-Page-BS4.css';
+
+    const addButton1Styles = document.createElement('link');
+    addButton1Styles.rel = 'stylesheet';
+    addButton1Styles.href = 'assets/css/Add-Another-Button-1.css';
+
+    const addButtonStyles = document.createElement('link');
+    addButtonStyles.rel = 'stylesheet';
+    addButtonStyles.href = 'assets/css/Add-Another-Button.css';
+
+    const loginFormIcons = document.createElement('link');
+    loginFormIcons.rel = 'stylesheet';
+    loginFormIcons.href = 'assets/css/Login-Form-Basic-icons.css';
+
+    const gridImagesStyles = document.createElement('link');
+    gridImagesStyles.rel = 'stylesheet';
+    gridImagesStyles.href = 'assets/css/Projects-Grid-images.css';
+
+    const bootstrapJS = document.createElement('script');
+    bootstrapJS.src = 'assets/bootstrap/js/bootstrap.min.js';
+
+    const chartJS = document.createElement('script');
+    chartJS.src = 'assets/js/chart.min.js';
+
+    const bsInitJS = document.createElement('script');
+    bsInitJS.src = 'assets/js/bs-init.js';
+
+    const themeJS = document.createElement('script');
+    themeJS.src = 'assets/js/theme.js';
+
+    // Create a new window to print the content
+    const printWindow = window.open('', '_blank');
+    printWindow.document.body.appendChild(contentToPrint);
+    printWindow.document.head.appendChild(bootstrapCSS);
+    printWindow.document.head.appendChild(fontStyles);
+    printWindow.document.head.appendChild(fontAwesome);
+    printWindow.document.head.appendChild(customStyles);
+    printWindow.document.head.appendChild(addButton1Styles);
+    printWindow.document.head.appendChild(addButtonStyles);
+    printWindow.document.head.appendChild(loginFormIcons);
+    printWindow.document.head.appendChild(gridImagesStyles);
+    printWindow.document.body.appendChild(bootstrapJS);
+    printWindow.document.body.appendChild(chartJS);
+    printWindow.document.body.appendChild(bsInitJS);
+    printWindow.document.body.appendChild(themeJS);
+
+    // Print the content
+    printWindow.print();
+});
+</script>
 
 
 

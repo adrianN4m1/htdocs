@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
 </head>
+<script>
+
+</script>
 
 <body id="page-top">
     <div id="wrapper">
@@ -71,14 +74,17 @@
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                         aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
-                                            class="d-none d-lg-inline me-2 text-gray-600 small"><?php include("getname.php")?></span><img class="border rounded-circle img-profile"
+                                            class="d-none d-lg-inline me-2 text-gray-600 small"><?php include ("getname.php") ?></span><img
+                                            class="border rounded-circle img-profile"
                                             src="assets/img/avatars/avatar1.jpeg"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
-                                            class="dropdown-item" href="profile.php?user_id=<?php include ('parameters.php') ?>"><i
+                                            class="dropdown-item"
+                                            href="profile.php?user_id=<?php include ('parameters.php') ?>"><i
                                                 class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a
                                             class="dropdown-item" href="#"><i
                                                 class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a>
-                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="/login.php"><i
+                                        <div class="dropdown-divider"></div><a class="dropdown-item"
+                                            href="/login.php"><i
                                                 class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
                                 </div>
@@ -98,9 +104,9 @@
                         <div class="col-md-6 float-end d-xxl-flex justify-content-xxl-end"><a
                                 class="btn btn-success d-xxl-flex justify-content-xxl-end btn-icon-split" role="button"
                                 style="background: rgba(255,255,255,0.42);border-style: solid;border-color: rgb(230,230,230);"
-                                href="error_pages/error_print.html"><span class="text-light icon"
-                                    style="background: rgb(230,230,230);"><i class="fas fa-print"
-                                        style="color: rgb(106,106,106);"></i></span><span class="d-xxl-flex text"
+                                href="error_pages/error_print.html">
+                                <span class="text-light icon" style="background: rgb(230,230,230);"><i class="fas fa-print"
+                                        style="color: rgb(106,106,106);"></i></span><span class="d-xxl-flex text" id="print"
                                     style="color: rgb(106,106,106);">Print Reports</span></a>
                         </div>
                     </div>
