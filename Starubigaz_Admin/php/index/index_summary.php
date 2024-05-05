@@ -21,7 +21,7 @@ $user_id = $_GET['user_id'];
 if (empty($start_date) || empty($end_date)) {
     // Calculate the start and end dates of the current week
     $start_date = date('Y-m-d', strtotime('monday this week'));
-    $ends_date = date('Y-m-d', strtotime('sunday this week'));
+    $ends_date = date('Y-m-d', strtotime('sunday this week'. ' +1 day'));
 }
 
 // Your SQL query with the dynamic start and end dates

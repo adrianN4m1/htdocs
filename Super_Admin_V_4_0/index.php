@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="assets/css/Add-Another-Button.css" />
   <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css" />
   <link rel="stylesheet" href="assets/css/Projects-Grid-images.css" />
+
 </head>
 
 <body id="page-top">
@@ -98,7 +99,7 @@
               </h3>
               <?php include 'php/index/get_branchid.php'; ?>
             </div>
-            <div class="col-md-6 float-end d-xxl-flex justify-content-xxl-end">
+            <!-- <div class="col-md-6 float-end d-xxl-flex justify-content-xxl-end">
               <a id="print" class="btn btn-success d-xxl-flex justify-content-xxl-end btn-icon-split" role="button"
                 style="background: rgba(255, 255, 255, 0.42); border-style: solid; border-color: rgb(230, 230, 230);">
                 <span class="text-light icon" style="background: rgb(230, 230, 230)">
@@ -106,84 +107,207 @@
                 </span>
                 <span class="d-xxl-flex text" style="color: rgb(106, 106, 106)">Print Reports</span>
               </a>
-            </div>
+              <script>
+                document.getElementById('print').addEventListener('click', function () {
+                  var branchId = document.getElementById('branchSelect').value;
+                  var startDate = document.getElementById('startDate').value;
+                  var endDate = document.getElementById('endDate').value;
+                  var xhr = new XMLHttpRequest();
+                  // Corrected the URL to include the parameters
+                  xhr.open('GET', 'toprint.php?branch_id=' + branchId + '&start_date=' + startDate + '&end_date=' + endDate, true);
+                  xhr.responseType = 'blob'; // Set the response type to blob
+                  xhr.onload = function () {
+                    if (this.status === 200) {
+                      // Create a blob URL from the response
+                      var blob = new Blob([this.response], { type: 'application/pdf' });
+                      var url = window.URL.createObjectURL(blob);
+
+                      // Create a link element to trigger the download
+                      var a = document.createElement('a');
+                      a.href = url;
+                      a.download = 'document.pdf'; // Set the filename for the downloaded PDF
+                      document.body.appendChild(a);
+
+                      // Click the link to initiate the download
+                      a.click();
+
+                      // Cleanup
+                      window.URL.revokeObjectURL(url);
+                      document.body.removeChild(a);
+                    }
+                  };
+                  xhr.send(); // Removed the parameters from here
+                });
+              </script>
+            </div> -->
           </div>
         </div>
-        <div id="printable-content" >
-        <div class="container-fluid" >
-          <div class="row">
-            <div class="col col-9">
-              <div class="card shadow mb-4">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                  <div class="d-flex">
-                    <h6 class="text-primary fw-bold m-0" style="color: rgb(28, 200, 138)">
-                      Revenue
-                    </h6>
-                    <h6 class="text-primary fw-bold m-0">
-                      &nbsp; and&nbsp;&nbsp;
-                    </h6>
-                    <h6 class="text-primary fw-bold m-0" style="color: rgb(255, 164, 113)">
-                      Transaction
-                    </h6>
+        <div id="printable-content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col col-9">
+                <div class="card shadow mb-4">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="d-flex">
+                      <h6 class="text-primary fw-bold m-0" style="color: rgb(28, 200, 138)">
+                        Revenue
+                      </h6>
+                      <h6 class="text-primary fw-bold m-0">
+                        &nbsp; and&nbsp;&nbsp;
+                      </h6>
+                      <h6 class="text-primary fw-bold m-0" style="color: rgb(255, 164, 113)">
+                        Transaction
+                      </h6>
+                    </div>
+                    <input id="startDate" class="form-control-sm" type="date"
+                      style="color: var(--bs-gray-dark);font-weight: bold;font-family: Nunito, sans-serif;text-align: center;border-style: solid;border-color: var(--bs-card-border-color);">
+                    <span>&nbsp; to &nbsp;</span>
+                    <input id="endDate" class="form-control-sm" type="date"
+                      style="color: var(--bs-gray-dark);font-weight: bold;font-family: Nunito, sans-serif;text-align: center;border-style: solid;border-color: var(--bs-card-border-color);">
                   </div>
-                  <input id="startDate" class="form-control-sm" type="date"
-                    style="color: var(--bs-gray-dark);font-weight: bold;font-family: Nunito, sans-serif;text-align: center;border-style: solid;border-color: var(--bs-card-border-color);">
-                  <span>&nbsp; to &nbsp;</span>
-                  <input id="endDate" class="form-control-sm" type="date"
-                    style="color: var(--bs-gray-dark);font-weight: bold;font-family: Nunito, sans-serif;text-align: center;border-style: solid;border-color: var(--bs-card-border-color);">
+                  <div class="card-body">
+                    <div style="--bs-success: #1cc88a;--bs-success-rgb: 28,200,138;">
+                      <canvas id="displaychart"></canvas>
+                    </div>
+                  </div>
                 </div>
-                <div class="card-body">
-                  <div style="--bs-success: #1cc88a;--bs-success-rgb: 28,200,138;">
-                    <canvas id="displaychart"></canvas>
+              </div>
+              <div class="col col-3">
+                <div>
+                  <div class="card mb-4">
+                    <div class="card-header py-3">
+                      <h6 class="m-0" style="color: var(--bs-blue)">
+                        Revenue and Transactions
+                      </h6>
+                    </div>
+                    <div id="newResult" class="card-body" style="display: grid;">
+
+                      <?php include ("php/index/index_sales_cost.php") ?>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="card shadow border-start-warning py-2">
+                  <div class="card-body" style="padding-top: 5px">
+                    <div style="padding-top: 10px;transform-style: preserve-3d;padding-bottom: 10px;">
+                      <canvas id="pieChart"></canvas>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col col-3">
-              <div>
-                <div class="card mb-4">
+            <hr />
+            <div class="row">
+              <div class="col">
+                <div class="card shadow">
                   <div class="card-header py-3">
-                    <h6 class="m-0" style="color: var(--bs-blue)">
-                      Revenue and Transactions
-                    </h6>
+                    <p class="text-primary m-0 fw-bold">Available Stocks</p>
                   </div>
-                  <div id="newResult" class="card-body" style="display: grid;">
-
-                    <?php include ("php/index/index_sales_cost.php") ?>
-
+                  <div class="card-body">
+                    <div style="overflow: scroll; overflow-x: hidden; height: 40vh">
+                      <div class="table-responsive table mt-2" id="dataTable-6" role="grid"
+                        aria-describedby="dataTable_info">
+                        <table class="table my-0" id="dataTable">
+                          <thead>
+                            <tr>
+                              <th>Barcode</th>
+                              <th>Product</th>
+                              <th>Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <?php include ("php/index/index_stock_display.php") ?>
+                          </tbody>
+                          <tfoot>
+                            <tr></tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="card shadow border-start-warning py-2">
-                <div class="card-body" style="padding-top: 5px">
-                  <div style="padding-top: 10px;transform-style: preserve-3d;padding-bottom: 10px;">
-                    <canvas id="pieChart"></canvas>
-                  </div>
+              <div class="col col-md-8">
+                <hr style="margin-bottom: 0px" />
+                <div style="--bs-success: #1cc88a; --bs-success-rgb: 28, 200, 138">
+                  <?php include ("php/index/index_stock_graph.php") ?>
                 </div>
               </div>
             </div>
-          </div>
-          <hr />
-          <div class="row">
-            <div class="col">
-              <div class="card shadow">
-                <div class="card-header py-3">
-                  <p class="text-primary m-0 fw-bold">Available Stocks</p>
-                </div>
-                <div class="card-body">
-                  <div style="overflow: scroll; overflow-x: hidden; height: 40vh">
-                    <div class="table-responsive table mt-2" id="dataTable-6" role="grid"
+            <hr />
+            <div class="row" style="margin-top: 28px">
+              <div class="col">
+                <div class="card shadow">
+                  <div class="card-header py-3">
+                    <div>
+                      <p class="text-primary d-inline m-0 fw-bold" style="display: inline">
+                        Top 5 Sold Products on the Month of <?php echo date('F', strtotime('last month')); ?>
+                      </p>
+                    </div>
+                  </div>
+                  <div class="card-body" style="padding-top: 3px">
+                    <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
                       aria-describedby="dataTable_info">
                       <table class="table my-0" id="dataTable">
                         <thead>
-                          <tr>
-                            <th>Barcode</th>
-                            <th>Product</th>
-                            <th>Status</th>
+                          <tr style="
+                              text-align: center;
+                              background: #00492f;
+                              border-color: rgb(255, 255, 255);
+                            ">
+                            <th></th>
+                            <th style="
+                                border-color: rgb(255, 255, 255);
+                                color: rgb(255, 255, 255);
+                              ">
+                              Barcode
+                            </th>
+                            <th style="
+                                border-color: rgb(255, 255, 255);
+                                color: rgb(255, 255, 255);
+                              ">
+                              Product
+                            </th>
+                            <th style="
+                                border-color: rgb(255, 255, 255);
+                                color: rgb(255, 255, 255);
+                              ">
+                              Sales
+                            </th>
                           </tr>
                         </thead>
                         <tbody>
-                          <?php include ("php/index/index_stock_display.php") ?>
+                          <?php include ("php/index/index_top_inv.php") ?>
+                        </tbody>
+                        <tfoot>
+                          <tr></tr>
+                        </tfoot>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col" style="padding-bottom: 30px">
+                <div class="card shadow">
+                  <div class="card-header py-3">
+                    <p class="text-primary m-0 fw-bold">
+                      Top 5 Customer on the Month of <?php echo date('F', strtotime('last month')); ?>
+                    </p>
+                  </div>
+                  <div class="card-body" style="padding-top: 3px">
+                    <div class="table-responsive table mt-2" id="dataTable-3" role="grid"
+                      aria-describedby="dataTable_info">
+                      <table class="table my-0" id="dataTable">
+                        <thead>
+                          <tr style="text-align: center; background: #a77800">
+                            <th></th>
+                            <th style="color: rgb(255, 255, 255)">ID</th>
+                            <th style="color: rgb(255, 255, 255)">Name</th>
+                            <th style="color: rgb(255, 255, 255)">Points</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php include ("php/index/index_top_cst.php") ?>
                         </tbody>
                         <tfoot>
                           <tr></tr>
@@ -194,98 +318,7 @@
                 </div>
               </div>
             </div>
-            <div class="col col-md-8">
-              <hr style="margin-bottom: 0px" />
-              <div style="--bs-success: #1cc88a; --bs-success-rgb: 28, 200, 138">
-                <?php include ("php/index/index_stock_graph.php") ?>
-              </div>
-            </div>
           </div>
-          <hr />
-          <div class="row" style="margin-top: 28px">
-            <div class="col">
-              <div class="card shadow">
-                <div class="card-header py-3">
-                  <div>
-                    <p class="text-primary d-inline m-0 fw-bold" style="display: inline">
-                      Top 5 Sold Products on the Month of <?php echo date('F', strtotime('last month')); ?>
-                    </p>
-                  </div>
-                </div>
-                <div class="card-body" style="padding-top: 3px">
-                  <div class="table-responsive table mt-2" id="dataTable-1" role="grid"
-                    aria-describedby="dataTable_info">
-                    <table class="table my-0" id="dataTable">
-                      <thead>
-                        <tr style="
-                              text-align: center;
-                              background: #00492f;
-                              border-color: rgb(255, 255, 255);
-                            ">
-                          <th></th>
-                          <th style="
-                                border-color: rgb(255, 255, 255);
-                                color: rgb(255, 255, 255);
-                              ">
-                            Barcode
-                          </th>
-                          <th style="
-                                border-color: rgb(255, 255, 255);
-                                color: rgb(255, 255, 255);
-                              ">
-                            Product
-                          </th>
-                          <th style="
-                                border-color: rgb(255, 255, 255);
-                                color: rgb(255, 255, 255);
-                              ">
-                            Sales
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php include ("php/index/index_top_inv.php") ?>
-                      </tbody>
-                      <tfoot>
-                        <tr></tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col" style="padding-bottom: 30px">
-              <div class="card shadow">
-                <div class="card-header py-3">
-                  <p class="text-primary m-0 fw-bold">
-                    Top 5 Customer on the Month of <?php echo date('F', strtotime('last month')); ?>
-                  </p>
-                </div>
-                <div class="card-body" style="padding-top: 3px">
-                  <div class="table-responsive table mt-2" id="dataTable-3" role="grid"
-                    aria-describedby="dataTable_info">
-                    <table class="table my-0" id="dataTable">
-                      <thead>
-                        <tr style="text-align: center; background: #a77800">
-                          <th></th>
-                          <th style="color: rgb(255, 255, 255)">ID</th>
-                          <th style="color: rgb(255, 255, 255)">Name</th>
-                          <th style="color: rgb(255, 255, 255)">Points</th>
-                        </tr>
-                      </thead>
-                      <tbody id="branchresult">
-                        <?php include ("php/index/index_top_cst.php") ?>
-                      </tbody>
-                      <tfoot>
-                        <tr></tr>
-                      </tfoot>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         </div>
       </div>
       <footer class="bg-white sticky-footer">
@@ -467,98 +500,6 @@
     // Assuming you have jQuery included in your project
 
   </script>
-<script>
-const printBtn = document.getElementById('print');
-printBtn.addEventListener('click', function(){
-    // Clone the content inside the printable-content div
-    const contentToPrint = document.getElementById('printable-content').cloneNode(true);
-    
-    // Include all elements with class card-body in the cloned content
-    const cardBodies = contentToPrint.getElementsByClassName('card-body');
-    const clonedCardBodies = [];
-    for (let i = 0; i < cardBodies.length; i++) {
-        const cardBodyClone = cardBodies[i].cloneNode(true);
-        clonedCardBodies.push(cardBodyClone);
-    }
-
-    // Append the cloned card bodies to the content
-    const contentWrapper = contentToPrint.querySelector('#content-wrapper');
-    if (contentWrapper) {
-        clonedCardBodies.forEach(function(cardBodyClone) {
-            contentWrapper.appendChild(cardBodyClone);
-        });
-    } else {
-        console.error('#content-wrapper element not found in contentToPrint');
-    }
-
-    // Create script elements for CSS and JavaScript files
-    const bootstrapCSS = document.createElement('link');
-    bootstrapCSS.rel = 'stylesheet';
-    bootstrapCSS.href = 'assets/bootstrap/css/bootstrap.min.css';
-
-    const fontStyles = document.createElement('link');
-    fontStyles.rel = 'stylesheet';
-    fontStyles.href = 'https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap';
-
-    const fontAwesome = document.createElement('link');
-    fontAwesome.rel = 'stylesheet';
-    fontAwesome.href = 'assets/fonts/fontawesome-all.min.css';
-
-    const customStyles = document.createElement('link');
-    customStyles.rel = 'stylesheet';
-    customStyles.href = 'assets/css/-Login-form-Page-BS4--Login-form-Page-BS4.css';
-
-    const addButton1Styles = document.createElement('link');
-    addButton1Styles.rel = 'stylesheet';
-    addButton1Styles.href = 'assets/css/Add-Another-Button-1.css';
-
-    const addButtonStyles = document.createElement('link');
-    addButtonStyles.rel = 'stylesheet';
-    addButtonStyles.href = 'assets/css/Add-Another-Button.css';
-
-    const loginFormIcons = document.createElement('link');
-    loginFormIcons.rel = 'stylesheet';
-    loginFormIcons.href = 'assets/css/Login-Form-Basic-icons.css';
-
-    const gridImagesStyles = document.createElement('link');
-    gridImagesStyles.rel = 'stylesheet';
-    gridImagesStyles.href = 'assets/css/Projects-Grid-images.css';
-
-    const bootstrapJS = document.createElement('script');
-    bootstrapJS.src = 'assets/bootstrap/js/bootstrap.min.js';
-
-    const chartJS = document.createElement('script');
-    chartJS.src = 'assets/js/chart.min.js';
-
-    const bsInitJS = document.createElement('script');
-    bsInitJS.src = 'assets/js/bs-init.js';
-
-    const themeJS = document.createElement('script');
-    themeJS.src = 'assets/js/theme.js';
-
-    // Create a new window to print the content
-    const printWindow = window.open('', '_blank');
-    printWindow.document.body.appendChild(contentToPrint);
-    printWindow.document.head.appendChild(bootstrapCSS);
-    printWindow.document.head.appendChild(fontStyles);
-    printWindow.document.head.appendChild(fontAwesome);
-    printWindow.document.head.appendChild(customStyles);
-    printWindow.document.head.appendChild(addButton1Styles);
-    printWindow.document.head.appendChild(addButtonStyles);
-    printWindow.document.head.appendChild(loginFormIcons);
-    printWindow.document.head.appendChild(gridImagesStyles);
-    printWindow.document.body.appendChild(bootstrapJS);
-    printWindow.document.body.appendChild(chartJS);
-    printWindow.document.body.appendChild(bsInitJS);
-    printWindow.document.body.appendChild(themeJS);
-
-    // Print the content
-    printWindow.print();
-});
-</script>
-
-
-
 </body>
 
 </html>

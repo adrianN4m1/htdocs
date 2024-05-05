@@ -187,22 +187,22 @@
                         </div>
                         <div style="padding-bottom: 0px;margin-bottom: 14px;">
                             <p style="margin-bottom: -3px;font-size: 10px;">Supplier Name</p><input type="text"
-                                id="supplr_name" placeholder="Sev Christian Constantino" name="supplr_name"
+                                id="supplr_name" placeholder="" name="supplr_name"
                                 style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                         </div>
                         <div style="padding-bottom: 0px;margin-bottom: 14px;">
                             <p style="margin-bottom: -3px;font-size: 10px;">Contact Person</p><input type="text"
-                                id="supplr_person" placeholder="Karl Adriane Catalan" name="supplr_person"
+                                id="supplr_person" placeholder="" name="supplr_person"
                                 style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                         </div>
                         <div style="padding-bottom: 0px;margin-bottom: 14px;">
                             <p style="margin-bottom: -3px;font-size: 10px;">Email</p><input type="text"
-                                id="supplr_email" placeholder="email@email.com" name="supplr_email"
+                                id="supplr_email" placeholder="" name="supplr_email"
                                 style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                         </div>
                         <div style="padding-bottom: 0px;margin-bottom: 14px;">
                             <p style="margin-bottom: -3px;font-size: 10px;">Mobile #</p><input type="text"
-                                id="supplr_number" placeholder="09876543210" name="supplr_number"
+                                id="supplr_number" placeholder="" name="supplr_number"
                                 style="width: 100%;--bs-primary: #4e73df;--bs-primary-rgb: 78,115,223;">
                         </div>
                         <div style="padding-bottom: 0px;margin-bottom: 14px;">

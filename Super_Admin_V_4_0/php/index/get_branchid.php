@@ -1,4 +1,5 @@
 <?php
+
 // Database connection
 $servername = "localhost";
 $username = "root";
@@ -15,7 +16,7 @@ if ($conn->connect_error) {
 // Query to retrieve branches
 $sql = "SELECT * FROM branches WHERE branch_type = 1";
 $result = $conn->query($sql);
-
+$branch_id='';
 // Display select box
 echo '<select id="branchSelect" class="d-xxl-flex justify-content-xxl-end" style="
                     color: var(--bs-blue);

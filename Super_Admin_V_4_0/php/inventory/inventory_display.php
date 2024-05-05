@@ -178,18 +178,16 @@ if ($result->num_rows > 0) {
                                 </tbody>
                             </table>
                             <div>
-                        <button class="btn btn-light" type="button" data-bs-dismiss="modal" style="background: var(--bs-gray-700);color: var(--bs-modal-bg);margin-right: 10px;border-style: none;">
-                        <i class="fas fa-undo-alt"></i>&nbsp;Reset</button>
-                        <button name="Edit_save" class="btn btn-primary" type="submit" style="background: var(--bs-warning);border-style: none;">
-                        <i class="far fa-edit"></i>&nbsp;Save</button>
-                       
-                    </div>
+                            <button name="Edit_save" class="btn btn-primary" type="submit" style="background: var(--bs-warning);border-style: none;">
+                            <i class="far fa-edit"></i>&nbsp;Save</button>
+                           
                         </div>
+                            </div>
+                        </div>
+                        </form>
                     </div>
-                    </form>
-                </div>
-                <div class="modal-footer justify-content-between">
-                <button class="btn btn-light" type="button" onclick="archiveItem(' . $row['inventory_id'] . ', \'' . $row["prod_image"] . '\');" style="background: var(--bs-orange); color: var(--bs-modal-bg); border-style: none;">Archive</button>;
+                    <div class="modal-footer justify-content-between">
+                    <button class="btn btn-light" type="button" onclick="archiveItem(' . $row['inventory_id'] . ', \'' . $row["prod_image"] . '\');" style="background: var(--bs-orange); color: var(--bs-modal-bg); border-style: none;">Archive</button>;
                 <script>
                     function archiveItem(inventoryId, pImage) {
                         // Make an AJAX request to php/inventory/inventory_archive.php

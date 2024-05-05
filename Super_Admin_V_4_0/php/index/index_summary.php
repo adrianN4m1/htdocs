@@ -60,7 +60,7 @@ if (isset($_GET['branch_id']) && !empty($_GET['branch_id'])) {
     } else {
         // SQL query without branch and date filter
         $start_date = date('Y-m-d', strtotime('monday this week'));
-        $ends_date = date('Y-m-d', strtotime('sunday this week'));
+        $ends_date = date('Y-m-d', strtotime('sunday this week'. ' +1 day'));
         $sql = "SELECT DATE(t.transaction_date) AS date, 
         SUM(oi.quantity * oi.price) AS overall_revenue,
         SUM(oi.quantity * p.base_price) AS overall_revenue_bprice

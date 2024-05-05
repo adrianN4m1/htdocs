@@ -85,42 +85,27 @@
                         </ul>
                     </div>
                 </nav>
-                <?php
-                        include ("php/inventory/get_type.php");
-                        ?>
+                <?php include ("php/inventory/get_type.php"); ?>
+                <div class="container-fluid" style="padding-top: 0px;">
+                    <div class="col" style="text-align: right;"><button
+                            class="btn btn-outline-primary text-truncate text-end float-none float-sm-none add-another-btn"
+                            data-bss-hover-animate="pulse" type="button" style="position: relative;"
+                            data-bs-target="#add-items" data-bs-toggle="modal">Add Inventory<i
+                                class="fas fa-truck-loading edit-icon"></i></button>
+                    </div>
+                </div>
                 <div class="container-fluid" style="padding-top: 0px;">
                     <div class="row" id="typeResult">
-                        <!-- <div class="col-md-3" style="padding-bottom: 24px;">
-                            <div
-                                style="border-radius: 4px;padding: 4px;background: var(--bs-white);border: 1px none rgb(217,217,217);box-shadow: 0px 0px 12px var(--bs-gray-400);padding-left: 0px;padding-right: 0px;padding-bottom: 0px;overflow: hidden;">
-                                <div class="d-xl-flex justify-content-xxl-center align-items-xxl-center"
-                                    style="height: 200px;border-radius: 12px;margin-top: 12px;"><img
-                                        class="border rounded border-1" style="height: 100%;"
-                                        src="image"></div>
-                                <div style="padding-left: 8px;">
-                                    <h5
-                                        style="font-weight: bold;color: var(--bs-gray-700);padding-top: 10px;margin-bottom: 0px;">
-                                        prodcut_name</h5>
-                                    <p style="margin-bottom: 0px;font-weight: bold;">stock:&nbsp;<span
-                                            style="color: var(--bs-danger);">24</span></p>
-                                </div>
-                                <div class="row">
-                                    <div class="col col-md5"><a class="btn btn-primary" role="button"
-                                            style="padding-right: 10px;padding-left: 10px;background: var(--bs-btn-hover-bg);color: rgb(255,255,255);border-style: none;border-radius: 12px;width: 100%;margin-top: 10px;font-size: 16px;--bs-body-font-weight: normal;margin-bottom: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;border-top-left-radius: 4px;border-top-right-radius: 4px;box-shadow: 0px 0px 8px var(--bs-gray);padding-bottom: 10px;opacity: 0.80;"
-                                            href="rewards_information.html" data-bs-target="#display-items"
-                                            data-bs-toggle="modal">Check Item</a></div>
-                                </div>
-                            </div>
-                        </div> -->
-                        
-
-                        <div class="col-md-3" style="padding-bottom: 24px;padding-top: 0px;min-height: 300px;">
-                            <div style="width: 100%;height: 100%;"><button class="btn btn-primary" type="button"
+                        <div class="col-md-3"
+                            style="padding-bottom: 24px;padding-top: 0px;min-height: 300px;">
+                            <div style="width: 100%;height: 100%;">
+                                <button class="btn btn-primary" type="button"
                                     style="width: 100%;height: 100%;background: rgb(255,255,255);border-style: none;box-shadow: 0px 0px 2px var(--bs-gray);padding-top: 0px;padding-right: 0px;padding-left: 0px;margin-right: 0px;padding-bottom: 24px;"
-                                    data-bs-target="#add-items" data-bs-toggle="modal"><i class="fas fa-plus"
-                                        style="font-size: 68px;color: var(--bs-gray);"></i></button></div>
+                                    data-bs-target="#add-items" data-bs-toggle="modal">
+                                    <i class="fas fa-plus" style="font-size: 68px;color: var(--bs-gray);"></i>
+                                </button>
+                            </div>
                         </div>
-
                         <?php
                         include ("php/inventory/inventory_display.php");
                         ?>
@@ -169,7 +154,7 @@
                                             <td>
                                                 <input type="text"
                                                     style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                    placeholder="0x153" disabled="">
+                                                    placeholder="AUTO GENERATED" disabled="">
                                                 <p class="text-end"
                                                     style="color: var(--bs-danger);font-size: 8px;margin-bottom: 0px;">
                                                     Edit unavailable</p>
@@ -178,27 +163,28 @@
                                         <tr>
                                             <td>Product</td>
                                             <td><input id="product_name" name="product_name" type="text"
-                                                    style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);">
+                                                    style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
+                                                    required>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Type</td>
                                             <td><input id="product_type" name="product_type" type="text"
                                                     style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                    value=""></td>
+                                                    value="" required></td>
                                         </tr>
                                         <tr>
                                             <td>Price</td>
                                             <td><input id="price" name="price" type="text"
                                                     style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                    value=""></td>
+                                                    value="" required></td>
                                         </tr>
                                         <tr>
                                         <tr>
                                             <td>Base Price</td>
                                             <td><input id="price_base" name="price_base" type="text"
                                                     style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                    value=""></td>
+                                                    value="" required></td>
                                         </tr>
                                         <tr>
                                             <td>Name of Supplier</td>
@@ -217,20 +203,20 @@
                                             <td>
                                                 <input type="date" id="expiration" name="expiration"
                                                     style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                    value="">
+                                                    value="" required>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Stock</td>
                                             <td><input id="inv_stock" name="inv_stock" type="text"
                                                     style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                    value=""></td>
+                                                    value="" required></td>
                                         </tr>
                                         <tr>
                                             <td>Stock Limit</td>
                                             <td><input id="inv_limit" name="inv_limit" type="text"
                                                     style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                    value=""></td>
+                                                    value="" required></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -245,94 +231,7 @@
                 </form>
             </div>
         </div>
-        <!-- <div class="modal fade" role="dialog" tabindex="-1" id="display-items">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Item</h4><button type="button" class="btn-close"
-                        data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="d-xl-flex justify-content-xxl-center align-items-xxl-center"
-                        style="height: 200px;background: rgba(197,197,197,0.19);border-radius: 10px;margin: 12px;margin-right: 0px;margin-left: 0px;margin-top: 0px;margin-bottom: 0px;">
-                        <img class="border rounded border-1" style="height: 100%;" src="assets/img/products/2.jpg">
-                    </div><input type="file"
-                        style="padding-bottom: 10px;margin-bottom: 4px;width: 100%;padding-top: 4px;">
-                    <div>
-                        <h6 style="color: var(--bs-gray-dark);font-weight: bold;margin-bottom: 0px;">Manage</h6>
-                        <hr style="margin-top: -1px;padding-top: 0px;padding-bottom: 0px;">
-                    </div>
-                    <div>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr></tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Barcode</td>
-                                        <td><input type="text"
-                                                style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                value="0x153" disabled="">
-                                            <p class="text-end"
-                                                style="color: var(--bs-danger);font-size: 8px;margin-bottom: 0px;">Edit
-                                                unavailable</p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Product</td>
-                                        <td><input type="text"
-                                                style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                value="Diesel Max"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Type</td>
-                                        <td><input type="text"
-                                                style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                value="Diesel"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Price</td>
-                                        <td><input type="text"
-                                                style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                value="68.09"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Supplier</td>
-                                        <td><input type="text"
-                                                style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                value="Sev Constantino"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Expiration</td>
-                                        <td><input type="text"
-                                                style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                value="08/10/2024"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>In Stock</td>
-                                        <td><input type="text"
-                                                style="padding-top: 4px;padding-right: 8px;padding-bottom: 4px;padding-left: 8px;font-size: 12px;width: 100%;color: var(--bs-gray-900);border-radius: 4px;border: 1px solid var(--bs-table-active-color);"
-                                                value="24"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer justify-content-between"><button class="btn btn-light" type="button"
-                        data-bs-dismiss="modal"
-                        style="background: var(--bs-orange);color: var(--bs-modal-bg);border-style: none;"><i
-                            class="far fa-file-archive"></i>&nbsp;Archive</button>
-                    <div><button class="btn btn-light" type="button" data-bs-dismiss="modal"
-                            style="background: var(--bs-gray-700);color: var(--bs-modal-bg);margin-right: 10px;border-style: none;"><i
-                                class="fas fa-undo-alt"></i>&nbsp;Reset</button><button class="btn btn-primary"
-                            type="button" style="background: var(--bs-warning);border-style: none;"><i
-                                class="far fa-edit"></i>&nbsp;Save</button></div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+
         <div class="modal fade" role="dialog" tabindex="-1" id="archive-modal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
